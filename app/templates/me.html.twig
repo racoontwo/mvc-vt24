@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Om mig{% endblock %}
+
+{% block body %}
+    <h1>Om mig</h1>
+    <p>An image which can be clicked on.</p>
+    <p>Hej, jag heter Oliver och jag är 31 år. Jag går programmet Webbprogrammering på distans och vi börjar närma oss slutet på första läsåret.</p>
+    <p>Utöver programmering så gillar jag att vara ute i naturen och härja, gärna vandra kanske vågsurfa om vädret tillåter, gärna tillsammans med vänner.</p>
+<a href="{{ asset('img/hundoja.jpg') }}" class="image-link">
+    <img src="{{ asset('img/hundoja.jpg') }}" alt="">
+    </a>
+    
+{% endblock %}

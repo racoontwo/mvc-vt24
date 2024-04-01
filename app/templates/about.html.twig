@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="grid-container">
+        <div class="left-column">
+            <h1>Om MVC-kursen</h1>
+            <p>MVC-kursen är till för att vi ska lära oss om ramverk kring webbutveckling. Det vi har lärt oss tidigare är databas, design och koden som kopplar.</p>
+            <p>Lite tanken med denna kursen är att koppla dessa element, Model-View-Controller som är en kommuniktion mellan vyer, kontroller och databasmodeller.</p>
+            <p>Det blir som en sammanfattning och ett sätt att knyta ihop säcken för detta läsåret, och bygga ihop det vi har lärt oss.</p>
+            <p>Check out the source code on GitHub: <a href="https://github.com/racoontwo/design-ht23">GitHub Repository</a></p>
+            <p>Check out the source code on GitHub: <a href="https://github.com/dbwebb-se/mvc.git">GitHub Repository</a></p>
+        </div>
+        <div class="right-column">
+            <a href="{{ asset('img/mvc.jpeg') }}">
+                <img src="{{ asset('img/mvc.jpeg') }}" alt="">
+            </a>
+        </div>
+    </div>
+{% endblock %}
