@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="grid-container">
+        <div class="left-column">
+            <h1 id="kmom01">Kmom01</h1>
+            <p>Mina förkunskaper är grundade i det som vi har lärt oss från tidigare kurser i Webbprogrammering distans, dvs det från JavaScript och Objectorienterad Python.</p>
+            <p>Det är en liten tröskel i att börja lära sig arbeta objectorienterat upplever jag, 
+            men när man väl kommer in i det så är det ett logiskt och effektivt arbetssätt.
+            Inför den här kursen så känner jag mig hyfsat bekväm att jobba objektorienterat 
+            men det kommer troligtvis (och förhoppningsvis) vara en del man behöver lära sig.</p>
+            <p>För PHPs modell för klasser och objekt så arbetar man med ett objekt som man skapar med en klass. Varje objekt är en instans av klassen och har vissa egenskaper (propertires).</p>
+            <p>Ett objekt kan vara en stol, en bil, en person, allt möjligt, och de fungerar på olika sätt.</p>
+            <p>I objektklassen finns även metoder (funktioner) som man kan anropa. Metoderna tillhör objektet och är klasspecifika.</p>
+            <p>Kodbasen som användes för me/report blir som grunden för en hemsida där man kan samla olika funktioner på hemsidan på olika ställen</p>
+            <p>När man sen använder "npm run build" så bygger den hemsidans struktur utifrån de parametrar som getts</p>
+            
+            <p>
+            Parametrarna är indelade i tre stora kategorier.
+            Model förmedlar datan till hemsidan och kommunicerar med View och Controller, men är inte lika beroende utav dem.
+            View blir template-filerna bland annat i denna struktur, och utgörs av hur sidan ser ut snarare än hur den fungerar.
+            Controller är PHP-filerna (eller filen) som innehåller olika routes och tar emot information från den som använder hemsidan.
+            </p>
+            
+            <p>
+            Från artikeln: "The Right Way", så var det intressant att läsa att PHP fungerar med rekursion men mest fokuserar på iteration. 
+            Jag undrar vad som är fördelarna med respektive, då eftersom vi fokuserade en stor del på rekursion i objektorienterade Pythonkursen.
+            Det ska bli intressant att lära sig om skillnader i sättet att arbeta mellan två objektorienterade språk.
+            </p>
+
+            <p>TIL för detta momentet var att instsallera Symfony och att få identifiera de mer centrala delarna i ramverket,
+            alltså, de delar som man arbetar mest med. Har också lärt mig att felsöka routrar i Terminalen!</p>
+            <p></p>
+            
+        </div>
+        <div class="right-column">
+            <a href="{{ path('report') }}#kmom01">Kmom01</a>
+            <a href="{{ path('report') }}#kmom02">Kmom02</a>
+            <a href="{{ path('report') }}#kmom03">Kmom03</a>
+            <a href="{{ path('report') }}#kmom04">Kmom04</a>
+            <a href="{{ path('report') }}#kmom05">Kmom05</a>
+            <a href="{{ path('report') }}#kmom06">Kmom06</a>
+            <a href="{{ path('report') }}#kmom07">Kmom07</a>
+        </div>
+    </div>
+{% endblock %}

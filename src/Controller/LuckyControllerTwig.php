@@ -14,7 +14,7 @@ class LuckyControllerTwig extends AbstractController
     {
         return $this->render('me.html.twig');
     }
-    
+
     #[Route("/lucky/number/twig", name: "lucky_number")]
     public function number(): Response
     {
@@ -27,7 +27,7 @@ class LuckyControllerTwig extends AbstractController
         return $this->render('lucky_number.html.twig', $data);
     }
 
-        #[Route("/home", name: "home")]
+    #[Route("/home", name: "home")]
     public function home(): Response
     {
         return $this->render('home.html.twig');
@@ -37,6 +37,12 @@ class LuckyControllerTwig extends AbstractController
     public function about(): Response
     {
         return $this->render('about.html.twig');
+    }
+
+    #[Route("/report", name: "report")]
+    public function report(): Response
+    {
+        return $this->render('report.html.twig');
     }
 
     #[Route("/api/quote", name: "quote")]
@@ -53,7 +59,7 @@ class LuckyControllerTwig extends AbstractController
         $randomQuote = $quotes[$randomIndex];
 
         $date = new \DateTime();
-    
+
         $data = [
             'lucky-number' => $number,
             'todays quote' => $randomQuote,
