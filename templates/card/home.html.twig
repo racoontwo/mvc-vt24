@@ -1,7 +1,18 @@
-{% extends "base.html.twig" %}
+{% extends "base2.html.twig" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Card Game{% endblock %}
 
-{% block body %}
-    <h1>Home</h1>
+{% block main %}
+<h1>Card game</h1>
+
+<p>Här berättar jag lite om upplägget för kortspelet.</p>
+<p>Jag tänker att jag gör kort som kan existera utan en kortlek men i en kortlek blir de begränsade till max 1 av varje och max 52st.</p>
+<p>Lite hur jag tänkt kring deck, shuffle, draw, draw:number kommer nedan.</p>
+<p>Deck visar samtliga kort i leken, sorterade per färg och värde.</p>
+<p>Shuffle visar samtliga kort i kortleken när den har blandats.</p>
+<p>Draw, drar ett kort från kortleken och visar upp vilket kort det är. När kortet är draget visas även antalet kort som är kvar i leken.</p>
+
+<a href="{{ path('card_init') }}" class="button">Starta kortspelet!</a>
+
+
 {% endblock %}

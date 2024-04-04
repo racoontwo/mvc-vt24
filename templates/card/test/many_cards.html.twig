@@ -1,0 +1,17 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}CardGame{% endblock %}
+
+{% block main %}
+<h1>Get many cards</h1>
+
+<p>You picked {{ num_cards }} cards. Here is the value of the cards.</p>
+
+<ul class="cardarea">
+{% for pick in cardList %}
+    <li><span class="card">{{ pick }}</span></li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

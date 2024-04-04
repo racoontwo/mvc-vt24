@@ -1,0 +1,37 @@
+{# {% extends "base2.html.twig" %}
+
+{% block title %}CardGame{% endblock %}
+
+{% block main %}
+<h1>Session</h1>
+
+
+
+<a href="{{ path('session_delete') }}">Delete Session</a>
+
+{% endblock %}
+#}
+
+{% extends "base2.html.twig" %}
+
+{% block title %}CardGame{% endblock %}
+
+{% block main %}
+    <h1>Session</h1>
+    
+    <ul>
+        {% for key, value in app.session.all() %}
+            <li><strong>{{ key }}</strong>: {% if value is iterable %} 
+                {% for subvalue in value %}
+                    {{ subvalue }}
+                    {% if not loop.last %}, {% endif %}
+                {% endfor %}
+            {% else %}
+                {{ value }}
+            {% endif %}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('session_delete') }}">Delete Session</a>
+{% endblock %}
+
