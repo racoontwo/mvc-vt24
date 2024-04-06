@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
+use App\Card\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -29,10 +30,31 @@ class CardGameController extends AbstractController
         return $this->render('card/home.html.twig');
     }
 
+    #[Route("/game/card/test/pick_card/{num<\d+>}", name: "test_many_cards")]
+    public function testPickCardGraphic(int $num): Response
+    {
+        if ($num > 52) {
+            throw new \Exception("Can not pick more than 52 Cards!");
+        }
+
+        $cardHand = [];
+        for ($i = 1; $i <= $num; $i++) {
+            $card = new CardGraphic();
+            $card->pick();
+            $cardHand[] = $card->getAsString();
+        }
+
+        $data = [
+            "num_cards" => count($cardHand),
+            "cardHand" => $cardHand,
+        ];
+
+        return $this->render('card/test/many_cards.html.twig', $data);
+    }
+
     #[Route("/game/card/test/pick_card", name: "test_pick_card")]
     public function testPickCard(): Response
     {
-        // $card = new Card();
         $card = new CardGraphic();
 
         $data = [
@@ -44,29 +66,29 @@ class CardGameController extends AbstractController
         return $this->render('card/test/pick.html.twig', $data);
     }
 
-    #[Route("/game/card/test/pick_card/{num<\d+>}", name: "test_many_cards")]
-    public function testPickCardGraphic(int $num): Response
-    {
-        if ($num > 52) {
-            throw new \Exception("Can not roll more than 52 Cards!");
-        }
 
-        $cardList = [];
-        for ($i = 1; $i <= $num; $i++) {
-            // $card = new Card();
-            $card = new CardGraphic();
-            $card->pick();
-            $cardList[] = $card->getAsString();
-        }
+    #[Route("/game/card/test/card_deck", name: "test_card_deck")]
+    public function testCardDeck(): Response
+    {
+
+        $value = 12;
+        $suit = "clubs";
+        $card = new CardGraphic($value, $suit);
+        $deck = new DeckOfCards();
+        $card = $deck->drawCard();
+
 
         $data = [
-            "num_cards" => count($cardList),
-            "cardList" => $cardList,
+            "cardString" => $card->getAsString(),
+            "cardText" => $card->getAsText(),
+            "cardsLeft" => $deck->cardsLeft(),
         ];
-
-        return $this->render('card/test/many_cards.html.twig', $data);
+    
+        return $this->render('card/test/pick.html.twig', $data);
     }
 
+
+    //Here is the session routes
     #[Route("/game/card/session_display", name: "session_display")]
     public function sessionDisplay(SessionInterface $session): Response
     {
@@ -93,5 +115,7 @@ class CardGameController extends AbstractController
 
         return $this->redirectToRoute('session_display');
     }
+
+    
 
 }

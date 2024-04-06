@@ -4,6 +4,7 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
+    use CardTrait;
 
     private $diamonds = [
         '🃁',
@@ -17,7 +18,6 @@ class CardGraphic extends Card
         '🃉',
         '🃊',
         '🃋',
-
         '🃍',
         '🃎',
     ];
@@ -72,11 +72,10 @@ class CardGraphic extends Card
 
     private $joker = '🃟';
 
-    public function __construct()
+    public function __construct($value, $suit)
     {
-        parent::__construct();
+        parent::__construct($value, $suit);
     }
-
 
     public function getAsString(): string
     {

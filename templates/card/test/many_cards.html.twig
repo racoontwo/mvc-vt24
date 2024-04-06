@@ -8,7 +8,7 @@
 <p>You picked {{ num_cards }} cards. Here is the value of the cards.</p>
 
 <ul class="cardarea">
-{% for pick in cardList %}
+{% for pick in cardHand %}
     <li><span class="card">{{ pick }}</span></li>
 {% endfor %}
 </ul>

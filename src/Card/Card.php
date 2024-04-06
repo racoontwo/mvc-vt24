@@ -4,21 +4,28 @@ namespace App\Card;
 
 class Card
 {
+    use CardTrait;
+
     protected $value;
     protected $suit;
 
-    public function __construct()
+    public function __construct($value = null, $suit = null)
     {
-        $this->value = null;
-        $this->suit = null;
+        if ($value !== null && $suit !== null) {
+            $this->value = $value;
+            $this->suit = $suit;
+        } else {
+            $this->value = null;
+            $this->suit = null;
+        }
     }
 
     public function pick(): void
     {
         $this->value = random_int(1, 13);
-        $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
-        $this->suit = $suits[array_rand($suits)];
+        $this->suit = $this->suits[array_rand($this->suits)];
     }
+
 
     public function getValue(): int
     {
