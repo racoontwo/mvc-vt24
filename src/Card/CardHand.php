@@ -10,37 +10,25 @@ class CardHand
     /**
      * @var CardGraphic
      */
-    private $deck;
-    private $cards;
+    private $hand;
 
-    public function __construct(int $cards = 52)
+    public function add(CardGraphic $card): void
     {
-
+        $this->hand[] = $card;
     }
 
-}
+    public function draw()
+    {
+        if (!empty($this->hand)) {
+            return array_shift($this->hand);
+        } else {
+            return null;
+        }
+    }
 
-// class DiceHand
-// {
-//     /**
-//      * @var Dice $dices   Array consisting of dices.
-//      * @var int  $values  Array consisting of last roll of the dices.
-//      */
-//     private $dices;
-//     private $values;
+    public function getNumberCards(): int
+    {
+        return count($this->hand);
+    }
 
-//     /**
-//      * Constructor to initiate the dicehand with a number of dices.
-//      *
-//      * @param int $dices Number of dices to create, defaults to five.
-//      */
-//     public function __construct(int $dices = 5)
-//     {
-//         $this->dices  = [];
-//         $this->values = [];
-
-//         for ($i = 0; $i < $dices; $i++) {
-//             $this->dices[]  = new Dice();
-//             $this->values[] = null;
-//         }
-//     }
+    }

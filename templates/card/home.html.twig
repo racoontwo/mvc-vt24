@@ -12,12 +12,16 @@
 <p>Shuffle visar samtliga kort i kortleken när den har blandats.</p>
 <p>Draw, drar ett kort från kortleken och visar upp vilket kort det är. När kortet är draget visas även antalet kort som är kvar i leken.</p>
 
+<a href="{{ asset('img/cards_umg.png') }}" class="image-link">
+    <img src="{{ asset('img/cards_umg.png') }}" alt="">
+    </a>
+
 <ul class="cardLinks">
 <a href="{{ path('deck') }}" class="button">Deck: Visa alla korten i kortleken</a>
 <a href="{{ path('shuffle') }}" class="button">Shuffle: Visa alla korten blandade</a>
 <a href="{{ path('draw') }}" class="button">Draw: Dra kort ur kortleken</a>
-<a href="{{ path('test_deck') }}" class="button">Testmiljö</a>
-<a href="{{ path('api') }}" class="button">Api</a>
+{# <a href="{{ path('test_deck') }}" class="button">Testmiljö</a> #}
+<a href="{{ path('api') }}" class="button">JSON-API</a>
 </ul>
 
 {% endblock %}
