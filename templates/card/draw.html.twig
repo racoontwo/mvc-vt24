@@ -3,12 +3,12 @@
 {% block title %}Card Game{% endblock %}
 
 {% block main %}
-<h1>Cards left in deck</h1>
+<h1>Draw a Card</h1>
+
 <li>Cards Left:{{ cardsLeft }}</li>
 
 <ul class="cardarea">
-    {% for card in remainingCards %}
-        <li><span class="card">{{ card.getAsString() }}</span></li>
-    {% endfor %}
+    <li><span class="card">{{ cardString }}</span></li>
+    <li><span class="card">{{ cardText }}</span></li>
 </ul>
 {% endblock %}

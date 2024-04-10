@@ -12,7 +12,12 @@
 <p>Shuffle visar samtliga kort i kortleken när den har blandats.</p>
 <p>Draw, drar ett kort från kortleken och visar upp vilket kort det är. När kortet är draget visas även antalet kort som är kvar i leken.</p>
 
-<a href="{{ path('card_init') }}" class="button">Starta kortspelet!</a>
-
+<ul class="cardLinks">
+<a href="{{ path('deck') }}" class="button">Deck: Visa alla korten i kortleken</a>
+<a href="{{ path('shuffle') }}" class="button">Shuffle: Visa alla korten blandade</a>
+<a href="{{ path('draw') }}" class="button">Draw: Dra kort ur kortleken</a>
+<a href="{{ path('test_deck') }}" class="button">Testmiljö</a>
+<a href="{{ path('api') }}" class="button">Api</a>
+</ul>
 
 {% endblock %}

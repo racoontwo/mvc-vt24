@@ -152,6 +152,7 @@ ul.cardarea {
 
 ul.cardarea li {
     display: inline;
+    
 }
 
 .flash-notice {
@@ -172,4 +173,24 @@ ul.cardarea li {
 }
 .flash-warning:before {
     content: "⚠";
+}
+
+.cardLinks {
+    list-style-type: none;
+    padding: 0;
+    }
+
+.cardLinks a.button {
+display: block;
+padding: 10px 20px;
+margin-bottom: 10px;
+background-color: #301231; /* Default button background color */
+color: #fff; /* Default button text color */
+text-decoration: none;
+border-radius: 5px;
+transition: background-color 0.3s ease;
+}
+
+.cardLinks a.button:hover {
+background-color: #a1a1a1; /* Button background color on hover */
 }
