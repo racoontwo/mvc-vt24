@@ -64,12 +64,12 @@ class DeckOfCards
 
     public function sortDeck()
     {
-        usort($this->deck, function($a, $b) {
+        usort($this->deck, function ($a, $b) {
             $suitOrder = array_search($a->getSuit(), $this->suits) - array_search($b->getSuit(), $this->suits);
             if ($suitOrder != 0) {
                 return $suitOrder;
             }
-            
+
             return $a->getValue() - $b->getValue();
         });
     }
@@ -84,7 +84,7 @@ class DeckOfCards
         }
 
         // Sort the deck by suit and value
-        usort($this->deck, function($a, $b) {
+        usort($this->deck, function ($a, $b) {
             $suitOrder = array_search($a->getSuit(), $this->suits) - array_search($b->getSuit(), $this->suits);
             if ($suitOrder != 0) {
                 return $suitOrder;
@@ -103,11 +103,11 @@ class DeckOfCards
     public function jsonDeckRaw(): string
     {
         $jsonDeck = [];
-    
+
         foreach ($this->deck as $card) {
             $jsonDeck[] = $card->getValue() . ' of ' . $card->getSuit();
         }
-    
+
         return json_encode($jsonDeck);
     }
     public function jsonDeckPretty(): string
@@ -127,7 +127,7 @@ class DeckOfCards
             }
             $jsonDeck[] = $value . ' of ' . ucfirst($card->getSuit());
         }
-    
+
         return json_encode($jsonDeck);
     }
 

@@ -9,8 +9,12 @@
 
 <ul class="cardLinks">
 <a href="{{ path('api_deck') }}" class="button">Deck: returnerar en JSON sturktur med hela kortleken sorterad per färg och värde.</a>
-<a href="{{ path('api_deck_shuffle') }}" class="button">Shuffle: blandar kortleken och returnerar en JSON struktur med kortleken.</a>
-<a href="{{ path('api_draw') }}" class="button">Deck Draw: Drar ett eller flera kort från kortleken och visar upp dem i en JSON-struktur samt antalet kort som är kvar i leken.</a>
-</ul>
+<form method="post" action="{{ path('api_deck_shuffle') }}">
+    <button type="submit" class="button">Shuffle: blandar kortleken och returnerar en JSON struktur med kortleken.</button>
+</form>
+
+<form method="post" action="{{ path('api_draw') }}">
+    <button type="submit" class="button">Deck Draw: Drar ett eller flera kort från kortleken och visar upp dem i en JSON-struktur samt antalet kort som är kvar i leken.</button>
+</form>
 
 {% endblock %}

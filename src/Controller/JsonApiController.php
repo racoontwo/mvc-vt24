@@ -29,8 +29,8 @@ class JsonApiController extends AbstractController
     #[Route("/game/card/api/deck", name: "api_deck", methods: ['GET'])]
     public function apiDeck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
+
         $deck = new DeckOfCards();
         $data = $deck->jsonDeckPretty();
         $jsonResponse = json_encode($data, JSON_UNESCAPED_UNICODE);
@@ -38,9 +38,14 @@ class JsonApiController extends AbstractController
         return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
     }
 
-    #[Route("/game/card/api/deck/shuffle", name: "api_deck_shuffle", methods: ['GET'])]
-    public function apiDeckShuffle(SessionInterface $session): Response
+    #[Route("/game/card/api/deck/shuffle", name: "api_deck_shuffle", methods: ['POST'])]
+    public function apiDeckShuffle(
+        Request $request,
+        SessionInterface $session
+        ): Response
     {
+        $remainingCards = $request->request->get('remaining_cards');
+
         $deck = new DeckOfCards();
         $deck->shuffle();
         $data = $deck->jsonDeckPretty();
@@ -49,13 +54,13 @@ class JsonApiController extends AbstractController
         $session->set("api_shuffled", $data);
 
         return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
+        // return $this->redirectToRoute('api_deck', $jsonData);
     }
 
-    #[Route("/game/card/api/deck/draw", name: "api_draw", methods: ['GET'])]
+    #[Route("/game/card/api/deck/draw", name: "api_draw", methods: ['POST'])]
     public function apiDrawCard(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         // if ($num > 52) {
         //     throw new \Exception("Can not draw more than 52 cards!");
@@ -64,11 +69,9 @@ class JsonApiController extends AbstractController
         if ($session->has("remaining_cards")) {
             $sessionData = json_decode($session->get("remaining_cards", true));
             $deck = new DeckOfCards($sessionData);
-            $deck->shuffle();
             // $deck = new DeckOfCards($session->get("remaining_cards"));
         } else {
             $deck = new DeckOfCards();
-            $deck->shuffle();
         }
 
         $card = $deck->drawCard();
@@ -79,7 +82,7 @@ class JsonApiController extends AbstractController
             "cardText" => $card->getAsText(),
             "cardsLeft" => $deck->cardsLeft(),
         ];
-    
+
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -88,10 +91,10 @@ class JsonApiController extends AbstractController
     }
 
     #[Route("/game/card/api/deck/draw/{num<\d+>}", name: "api_draw_many", methods: ['GET'])]
-    public function drawMany(int $num, 
-    SessionInterface $session
-    ): Response
-    {
+    public function drawMany(
+        int $num,
+        SessionInterface $session
+    ): Response {
 
         if ($num > 52) {
             throw new \Exception("Can not draw more than 52 cards!");
@@ -122,7 +125,7 @@ class JsonApiController extends AbstractController
             "cardsLeft" => $deck->cardsLeft(),
         ];
 
-                $response = new JsonResponse($data);
+        $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
@@ -134,8 +137,7 @@ class JsonApiController extends AbstractController
     #[Route("/game/card/api/test_deck", name: "test_api_deck", methods: ['GET'])]
     public function testApiDeck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = new DeckOfCards();
         $remainder = $deck->getRemainingCards();
         $card = $remainder[13];
@@ -156,18 +158,18 @@ class JsonApiController extends AbstractController
         return $response;
     }
 
-        // $data = [
-        //     'lucky-number' => $number,
-        //     'todays quote' => $randomQuote,
-        //     'todays date' => $date->format('Y-m-d'),
-        //     'printed time' => $date->format('H:i:s'),
-        // ];
+    // $data = [
+    //     'lucky-number' => $number,
+    //     'todays quote' => $randomQuote,
+    //     'todays date' => $date->format('Y-m-d'),
+    //     'printed time' => $date->format('H:i:s'),
+    // ];
 
-        // // return new JsonResponse($data);
+    // // return new JsonResponse($data);
 
-        // $response = new JsonResponse($data);
-        // $response->setEncodingOptions(
-        //     $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        // );
-        // return $response;
+    // $response = new JsonResponse($data);
+    // $response->setEncodingOptions(
+    //     $response->getEncodingOptions() | JSON_PRETTY_PRINT
+    // );
+    // return $response;
 }

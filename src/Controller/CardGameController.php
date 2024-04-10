@@ -77,10 +77,10 @@ class CardGameController extends AbstractController
             $deck = new DeckOfCards();
             $deck->shuffle();
         }
-    
+
         $card = $deck->drawCard();
         $remainingCards = $deck->getRemainingCards();
-    
+
         // Prepare data to pass to the template
         $data = [
             "cardString" => $card->getAsString(),
@@ -91,7 +91,7 @@ class CardGameController extends AbstractController
 
 
         $session->set("deck", $deck);
-    
+
         return $this->render('card/test/pick.html.twig', $data);
     }
 
@@ -108,7 +108,7 @@ class CardGameController extends AbstractController
             "remainingCards" => $remainingCards,
             "cardsLeft" => $deck->cardsLeft(),
         ];
-    
+
         return $this->render('card/card_deck.html.twig', $data);
     }
 
@@ -125,7 +125,7 @@ class CardGameController extends AbstractController
             "remainingCards" => $remainingCards,
             "cardsLeft" => $deck->cardsLeft(),
         ];
-    
+
         return $this->render('card/card_deck.html.twig', $data);
     }
 
@@ -142,7 +142,7 @@ class CardGameController extends AbstractController
             "cardText" => $card->getAsText(),
             "cardsLeft" => $deck->cardsLeft(),
         ];
-    
+
         return $this->render('card/draw.html.twig', $data);
     }
 
@@ -209,7 +209,7 @@ class CardGameController extends AbstractController
             'notice',
             'Your session has been deleted!'
         );
-    
+
         return $this->redirectToRoute('session_display');
     }
 

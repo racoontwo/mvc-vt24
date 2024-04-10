@@ -13,7 +13,7 @@ class CardHand
     private $deck;
     private $cards;
 
-    public function __construct(int $cards= 52)
+    public function __construct(int $cards = 52)
     {
 
     }

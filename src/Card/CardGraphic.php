@@ -116,7 +116,7 @@ class CardGraphic extends Card
                 $suitText = 'Unknown';
                 break;
         }
-    
+
         // Handling special cases for face cards
         switch ($this->value) {
             case 1:
@@ -135,7 +135,7 @@ class CardGraphic extends Card
                 $valueText = (string)$this->value;
                 break;
         }
-    
+
         return "$valueText of $suitText";
     }
 

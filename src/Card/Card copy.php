@@ -14,7 +14,8 @@ class Card
         $this->value = null;
     }
 
-    public static function create($value, $suit) {
+    public static function create($value, $suit)
+    {
         return new Card($value, $suit);
     }
 
