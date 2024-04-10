@@ -5,12 +5,13 @@
 {% block main %}
 <h1>Draw many cards</h1>
 
-<p>You picked {{ num_cards }} cards. Here is the value of the cards.</p>
 <li>Cards Left:{{ cardsLeft }}</li>
+<p>You picked {{ num_cards }} cards. Here are the values of the cards.</p>
 
 <ul class="cardarea">
-
-    <li><span class="card">{{ data }}</span></li>
+    {% for card in cardHand %}
+    <li><span class="card">{{ card }}</span></li>
+    {% endfor %}
 
 </ul>
 

@@ -42,8 +42,7 @@ class JsonApiController extends AbstractController
     public function apiDeckShuffle(
         Request $request,
         SessionInterface $session
-        ): Response
-    {
+    ): Response {
         $remainingCards = $request->request->get('remaining_cards');
 
         $deck = new DeckOfCards();

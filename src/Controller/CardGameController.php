@@ -164,22 +164,13 @@ class CardGameController extends AbstractController
         }
 
         $data = [
-            "num_cards" => count($cardHand),
+            "num_cards" => $num,
             "cardHand" => $cardHand,
             "cardsLeft" => $deck->cardsLeft(),
         ];
 
         return $this->render('card/draw_many.html.twig', $data);
     }
-
-    //JSON API
-    #[Route("/game/card/api", name: "json_api")]
-    public function jsonApi(): Response
-    {
-        return $this->render('card/draw_many.html.twig', $data);
-    }
-
-
 
     //Here is the session routes
     #[Route("/game/card/session_display", name: "session_display")]
