@@ -33,6 +33,42 @@
             <p>TIL för detta momentet var att instsallera Symfony och att få identifiera de mer centrala delarna i ramverket,
             alltså, de delar som man arbetar mest med. Har också lärt mig att felsöka routrar i Terminalen!</p>
             <p></p>
+
+            <h1 id="kmom02">Kmom02</h1>
+            <p>Man börjar få en större överblick av hur ramverket håller ihop en applikation och vi har testat lite andra funktioner och andra controllers i detta kursmoment. 
+                Det man har fått upp ögonen för i det här momentet är att man nu kan bygga på olika applikationer utifrån samma MVC-ramverk och struktur som vi har jobbat med. 
+                Vi börjar skapa oss ett skelett, en struktur, en stomme, en husgrund där vi undersöker hur el vatten och avlopp rör sig, 
+                för att sedan kunna bygga flera olika hus i alla dess storlekar och sorter.</p>
+            <p>
+                De objektorienterade konstruktionerna arv, komposition, interface och trait fungerar som följande:
+            </p>
+            <p>
+                Arv objektorienterad programmering använder man klasser för att ”bygga upp” sin kod och där fyller arv funktionen, 
+                att man kan bygga vidare på att en klass utan att behöva om själva grundklassen och man kan då återanvända kod som finns i grundklassen till det den klassen som ärver. 
+                En viktig distinktion är att klasser som ärver inte kan existera utan den kod som de ärver ifrån.
+            </p>
+            <p>
+                Komposition är när en klass använder en annan klass men där den första klassen fortfarande kan existera utan den klassen som den använder kompositionsmässigt.
+            </p>
+            <p>
+                Interface är ett ”löfte” om att en klass kommer behöva använda alla funktionen som finns i interfacet och får ett felmeddelande om detta krav ej uppfylls.
+            </p>
+            <p>
+                Trait är som ett löst arv, den utgör bara olika funktioner eller attribut som kan återanvändas, men som inte är beroende på samma sätt som arv och komposition.
+            </p>
+            <p> 
+                Jag löste uppgiften genom att först göra en controller för Cards, där jag lånade skelettet från Pig-övningen och gjorde om vissa delar, 
+                bland annat strukturen på kort-klassen som behövde ha ett value och en suit. 
+                Suit sparade jag som ett trait, för det var något som jag visste kommer användas om och om igen. 
+            </p>
+            <p>
+                Jag hoppade över att spara allt i session för det jag mycket problem med det, bland annat hur jag skulle radera sessionen och som jag inte hittade något exempel av i pig-övningen, så det gick åt mycket tid åt att leta efter det. Istället hårdkodade jag in data för kortens värde och utgick från det. Sen skapade jag en till kontroller för JSON-api: och skapade routerna med det. Satt länge och förstod inte varför inte POST-fungerade tills jag såg att man behövde ett formulär för det och då löste jag det och sen fungerade det. Ibland lär man sig den hårda vägen :) 
+                Nu tog det väldigt mycket tid att hitta lösningar för allting så det som är klart är i det enklaste fallet, men jag var i alla fall nöjd med att det fungerar så pass bra. Förbättringspotential skulle kunna vara för hur man hanterar session och ha det mer strukturerat, kanske i en egen funktion i deck-klassen, nu var det lite spretigt. Och man kan också rensa bort många funktioner och kod som jag inte använde i slutändan. 
+                Så här långt med Symfony är det ett välstrukturerat och logiskt sätt att jobba med olika vyer, controllers och models. Just så här i början är det spretigt, det känns som ett ramverk som har relativt hög tröskel att komma in i men som man ser potentialen med att skapa program. Det är skillnad på det som visas i json-strukturen och det som sparas i Session, och det skulle man kunna förbättra för tydlighetens skull med några funktioner så man lättare kan spara bägge i samma struktur. 
+            </p>
+            <p>
+                TIL för detta moment var nog mycket hur API:er fungerar och hur man strukturerar upp det som vi gjorde i kontrollerna. Det är TIL, och så att POST-metoder måste ha formulär. 
+            </p>
             
         </div>
         <div class="right-column">

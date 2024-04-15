@@ -1,0 +1,85 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Documentation{% endblock %}
+
+{% block main %}
+    <div class="grid-container">
+        <div class="left-column">
+            <h1 id="documentation">Documentation</h1>
+            <p>BlackJack Documentation.</p>
+
+            <a href="{{ asset('img/blackjack_flowchart.png') }}" class="image-link">
+                <img src="{{ asset('img/blackjack_flowchart.png') }}" alt="">
+                </a>
+
+            <h1 id="psuedokod">Psuedokod</h1>
+            <p>// Initialize deck
+                deck = create_deck()
+            </p>
+            <p>
+                // Shuffle deck
+                shuffle(deck)
+            </p>
+            <p>
+                // Initialize player and dealer hands
+                player_hand = []
+                dealer_hand = []
+            </p>
+            <p> 
+                // Deal initial cards
+                deal_cards(player_hand, dealer_hand, deck)
+            </p>
+            <p> 
+                // Player's turn
+                while player_wants_to_hit():
+                    // Deal a card to the player
+                    deal_card(player_hand, deck)
+                </p>
+                <p>
+                    // Check if player busted
+                    if calculate_hand_value(player_hand) > 21:
+                        // Player busts, end the game
+                        display_message("Player busts, dealer wins!")
+                        end_game()
+                        break
+                    </p>
+                    <p> 
+                // Dealer's turn
+                while calculate_hand_value(dealer_hand) < 17:
+                    // Dealer hits
+                    deal_card(dealer_hand, deck)
+                </p>
+                <p>
+                // Determine winner
+                winner = determine_winner(player_hand, dealer_hand)
+            </p>
+            <p>
+                // Display winner
+                display_winner(winner)
+            </p>
+            <p> 
+                // End game
+                end_game()
+                </p>
+            <h1 id="klasser">Klasser tänkta att implementeras:</h1>
+                <p>
+                - Card, Deck, CardGraphic, som lånar jag från tidigare kursmoment.
+                </p>
+                <p>
+                - Dealer, User är klasser som jag tänker mig skriva för detta moment.
+                </p>
+                <p>
+                Dealer och User tänker jag kommer vara snarlika och möjligtvis ärva eller ha samma trait från varandra.
+                De kommer ha vissa funktioner som att lagra nuvarande kort och se om det är blackjack. 
+                Det som kommer särskilja dealern lite är att den alltid kommer plocka tills den har 17.
+                </p>
+                
+            
+        </div>
+        <div class="right-column">
+            <a href="{{ path('documentation') }}#documentation">Documentation</a>
+            <a href="{{ path('documentation') }}#psuedokod">Psuedokod</a>
+            <a href="{{ path('documentation') }}#klasser">Klasser för spelet</a>
+        </div>
+    </div>
+{% endblock %}

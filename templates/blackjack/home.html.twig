@@ -1,0 +1,23 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block main %}
+<h1>Blackjack</h1>
+
+<p>Blackjack är ett populärt kortspel som spelas på casinon över hela världen. 
+    Målet är att slå dealerns hand utan att överstiga 21. 
+    Spelare får kort och kan välja att 'ta' för fler kort eller 'stå' för att behålla sin nuvarande hand. 
+    Ess kan räknas som antingen 1 eller 11, bilder som 10 och numrerade kort som deras valör. 
+</p>
+
+<a href="{{ asset('img/jackblack.png') }}" class="image-link">
+    <img src="{{ asset('img/jackblack.png') }}" alt="">
+    </a>
+
+<ul class="cardLinks">
+<a href="{{ path('init') }}" class="button">Start the game!</a>
+<a href="{{ path('documentation') }}" class="button">Documentation</a>
+</ul>
+
+{% endblock %}
