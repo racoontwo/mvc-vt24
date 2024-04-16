@@ -31,23 +31,23 @@
             </p>
             <p> 
                 // Player's turn
-                while player_wants_to_hit():
-                    // Deal a card to the player
-                    deal_card(player_hand, deck)
+                IF playerHandSum is LESS than 21:
+                hitMe() or stay()
                 </p>
                 <p>
                     // Check if player busted
-                    if calculate_hand_value(player_hand) > 21:
+                    IF player_hand->getHandSum > 21:
                         // Player busts, end the game
                         display_message("Player busts, dealer wins!")
-                        end_game()
+                        player = loser
                         break
                     </p>
                     <p> 
                 // Dealer's turn
-                while calculate_hand_value(dealer_hand) < 17:
+                WHILE dealer_hand->getHandSum < 21:
                     // Dealer hits
-                    deal_card(dealer_hand, deck)
+                    dealer_hand->drawCardFromDeck();</21:>
+                    IF 
                 </p>
                 <p>
                 // Determine winner
@@ -66,12 +66,11 @@
                 - Card, Deck, CardGraphic, som lånar jag från tidigare kursmoment.
                 </p>
                 <p>
-                - Dealer, User är klasser som jag tänker mig skriva för detta moment.
+                - Jag skapar en Blackjack-klass som får ha ordning på logiken på spelet.
                 </p>
                 <p>
-                Dealer och User tänker jag kommer vara snarlika och möjligtvis ärva eller ha samma trait från varandra.
-                De kommer ha vissa funktioner som att lagra nuvarande kort och se om det är blackjack. 
-                Det som kommer särskilja dealern lite är att den alltid kommer plocka tills den har 17.
+                Blackjack kommer ha vissa funktioner som att lagra nuvarande kort hos spelarna och se om det är blackjack. 
+                
                 </p>
         </div>
         <div class="right-column">

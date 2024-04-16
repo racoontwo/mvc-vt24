@@ -7,7 +7,7 @@ use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
-use App\Blackjack\Gambler;
+use App\BlackJack\BlackJack;
 
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,28 +32,26 @@ class BlackJackController extends AbstractController
     #[Route("/game/play_blackjack", name: "play_blackjack")]
     public function init(): Response
     {
-        $gambler = new Gambler();
         $cardHand = new CardHand();
+        $dealerHand = new CardHand();
         $deck = new DeckOfCards();
-
-        $gambler->hitMe();
         $deck->shuffle();
-        $card1 = $deck->drawCard();
-        $card2 = $deck->drawCard();
-        $cardHand->add($card1);
-        $cardHand->add($card2);
-        // $cardHand->add($deck->drawCard());
-        // $cardFromHand = $cardHand->draw();
-        $cardFromHand = $card1;
 
+        $game = new BlackJack($deck, $cardHand, $dealerHand);
+
+        $game->hitMe();
+        $game->hitMe();
+        $game->hitMe();
+        $game->hitMe();
+
+        
+        $playerHand = $game->getPlayerHand();
+        $sumCards = $playerHand->getHandSum();
 
         $data = [
-            "cardsLeft" => $gambler->hitMe(),
-            "cardText" => $card2->getAsString(),
-            "cardHand" => $cardFromHand->getAsString(),
-            "handSum" => $cardHand->getHandSum(),
+            "playerHand" => $playerHand->getHand(),
+            "sumCards" => $sumCards,
         ];
-
 
         return $this->render('blackjack/blackjack_play.html.twig', $data);
     }
