@@ -7,9 +7,13 @@ use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
+use App\Blackjack\Gambler;
+
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlackJackController extends AbstractController
 {
-    #[Route("/game/blackjack", name: "black_jack")]
+    #[Route("/game/black_jack", name: "black_jack")]
     public function home(): Response
     {
         session_start();
@@ -25,17 +29,66 @@ class BlackJackController extends AbstractController
         return $this->render('blackjack/home.html.twig');
     }
 
-    #[Route("/game/blackjack_init", name: "init")]
+    #[Route("/game/play_blackjack", name: "play_blackjack")]
     public function init(): Response
     {
+        $gambler = new Gambler();
+        $cardHand = new CardHand();
+        $deck = new DeckOfCards();
 
-        return $this->render('blackjack/home.html.twig');
+        $gambler->hitMe();
+        $deck->shuffle();
+        $card1 = $deck->drawCard();
+        $card2 = $deck->drawCard();
+        $cardHand->add($card1);
+        $cardHand->add($card2);
+        // $cardHand->add($deck->drawCard());
+        // $cardFromHand = $cardHand->draw();
+        $cardFromHand = $card1;
+
+
+        $data = [
+            "cardsLeft" => $gambler->hitMe(),
+            "cardText" => $card2->getAsString(),
+            "cardHand" => $cardFromHand->getAsString(),
+            "handSum" => $cardHand->getHandSum(),
+        ];
+
+
+        return $this->render('blackjack/blackjack_play.html.twig', $data);
+    }
+
+    #[Route("/game/hit_me", name: "hit_me")]
+    public function hit_me(): Response
+    {
+
+        return $this->redirectToRoute('play_blackjack');
     }
 
     #[Route("/game/documentation", name: "documentation")]
     public function documentation(): Response
     {
         return $this->render('blackjack/documentation.html.twig');
+    }
+
+    #[Route("/game/blackjack/api", name: "blackjack_api", methods: ['GET'])]
+    public function api(): Response
+    {
+        $card = new CardGraphic(12, "diamonds");
+        // $card = $card-drawCard();
+
+        $data = [
+            'card' => $card->getAsString(),
+            'value' => $card->getValue(),
+            'suit' => $card->getSuit(),
+            'stringcard' => $card->getValue() . ' of ' . $card->getSuit()
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 
 

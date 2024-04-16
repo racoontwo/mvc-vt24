@@ -1,0 +1,27 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block main %}
+<h1>Blackjack</h1>
+
+<p>
+    Nu kör vi!
+</p>
+
+<li>Cards Left:{{ cardsLeft }}</li>
+
+<ul class="cardarea">
+    {# <li><span class="card">{{ cardString }}</span></li> #}
+    <li><span class="card">{{ cardText }}</span></li>
+    <li><span class="card">{{ cardHand }}</span></li>
+    <li><span class="card">{{ handSum }}</span></li>
+</ul>
+
+<form method="post" action="{{ path('hit_me') }}">
+    <button type="submit" class="button">Hit me!</button>
+    <button type="submit" class="button">I'll stay.</button>
+</form>
+
+
+{% endblock %}

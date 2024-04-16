@@ -28,7 +28,23 @@ class CardHand
 
     public function getNumberCards(): int
     {
-        return count($this->hand);
+        return count($this->hand);        
+    }
+
+    public function getHand(): array
+    {
+    return $this->hand;
+    }
+
+    public function getHandSum(): int
+    {
+        $sum = 0;
+        
+        foreach ($this->hand as $card) {
+            $sum += $card->getValue();
+        }
+        
+        return $sum;
     }
 
     }
