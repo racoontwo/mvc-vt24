@@ -43,6 +43,11 @@ class BlackJackController extends AbstractController
             $deck = new DeckOfCards();
             $deck->shuffle();
             $cardHand->add($deck->drawCard());
+            $cardHand->add($deck->drawCard());
+            $cardHand->add($deck->drawCard());
+            $cardHand->add($deck->drawCard());
+            $cardHand->add($deck->drawCard());
+            $cardHand->add($deck->drawCard());
     
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
@@ -56,8 +61,15 @@ class BlackJackController extends AbstractController
     }
 
     #[Route("/game/play_black_jack", name: "play_black_jack")]
-    public function play(): Response
+    public function play(
+    SessionInterface $session): Response
     {
+        $gameData = $session->get('black_jack_game');
+        $playerHand = $gameData['player_hand'];
+        var_dump($playerHand);
+        // Assuming $jsonData contains your JSON data
+        // $blackjack = BlackJack::createFromJson($jsonData);
+        
         $cardHand = new CardHand();
         $dealerHand = new CardHand();
         $deck = new DeckOfCards();

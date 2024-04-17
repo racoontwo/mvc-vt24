@@ -9,21 +9,15 @@ trait CardTrait
 {
     protected $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
 
-    public function printHistogram()
+    public function jsonFormatContainer($container): string
     {
-        $histogram = '';
+        $jsonDeck = [];
 
-        foreach ($this->suits as $suit) {
-            $count = 0;
-            foreach ($this->cards as $card) {
-                if ($card->getSuit() === $suit) {
-                    $count++;
-                }
-            }
-            $histogram .= ucfirst($suit) . ": " . str_repeat('* ', $count) . "\n";
+        foreach ($container as $card) {
+            $jsonDeck[] = $card->getValue() . ' of ' . $card->getSuit();
         }
 
-        return $histogram;
+        return json_encode($jsonDeck);
     }
 
 }

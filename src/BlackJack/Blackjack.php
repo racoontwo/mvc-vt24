@@ -18,7 +18,6 @@ class BlackJack
         $this->deck = $deck;
         $this->playerHand = $playerHand;
         $this->dealerHand = $dealerHand;
-
     }
 
     public function hitMe()
@@ -38,10 +37,24 @@ class BlackJack
         return $this->dealerHand;
     }
 
-    public function BlackJack()
-    {
-
-    }
+    // public static function createFromJson(array $jsonData): BlackJack
+    // {
+    //     // Reconstruct DeckOfCards from JSON
+    //     $deck = new DeckOfCards();
+    //     $deck->loadFromJson($jsonData['deck']);
+    
+    //     // Reconstruct player hand from JSON
+    //     $playerHand = new CardHand();
+    //     $playerHand->loadFromJson($jsonData['player_hand']);
+    
+    //     // Reconstruct dealer hand from JSON
+    //     $dealerHand = new CardHand();
+    //     $dealerHand->loadFromJson($jsonData['dealer_hand']);
+    
+    //     // Create and return a new BlackJack object
+    //     return new self($deck, $playerHand, $dealerHand);
+    // }
+    
 
 
 }

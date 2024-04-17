@@ -7,6 +7,7 @@ use App\Card\CardGraphic;
 
 class CardHand
 {
+    use CardTrait;
     /**
      * @var CardGraphic
      */
@@ -52,16 +53,14 @@ class CardHand
         $handArray = [];
         
         if ($this->hand !== null) {
-    
+
             foreach ($this->hand as $card) {
-                $handArray[] = '"' . $card->getAsText() . '"';
+                $handArray[] = $card->getValue() . ' of ' . $card->getSuit();
             }
     
-            return '[' . implode(',', $handArray) . ']';
+            return json_encode($handArray);
         } else {
             return "";
         }
     }
-
-
-    }
+}

@@ -77,6 +77,11 @@ class CardGraphic extends Card
         parent::__construct($value, $suit);
     }
 
+    public function getAsRaw(): string
+    {
+        return "[{$this->value} of {$this->suit}]";
+    }
+
     public function getAsString(): string
     {
         switch ($this->suit) {
