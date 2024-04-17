@@ -24,7 +24,6 @@ class BlackJack
     public function hitMe()
     {
         $card = $this->deck->drawCard();
-        echo($card->getAsText());
         $this->playerHand->add($card);
         return $card;
     }
@@ -37,6 +36,11 @@ class BlackJack
     public function getDealerHand()
     {
         return $this->dealerHand;
+    }
+
+    public function BlackJack()
+    {
+
     }
 
 

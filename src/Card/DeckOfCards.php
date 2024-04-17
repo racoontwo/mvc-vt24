@@ -78,7 +78,7 @@ class DeckOfCards
     {
         $sortedDeck = [];
 
-        // Initialize the sortedDeck with empty arrays for each suit
+
         foreach ($this->suits as $suit) {
             $sortedDeck[$suit] = [];
         }

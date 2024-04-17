@@ -117,7 +117,6 @@ class CardGraphic extends Card
                 break;
         }
 
-        // Handling special cases for face cards
         switch ($this->value) {
             case 1:
                 $valueText = 'Ace';

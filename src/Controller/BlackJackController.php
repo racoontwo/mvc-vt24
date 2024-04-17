@@ -22,15 +22,41 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlackJackController extends AbstractController
 {
     #[Route("/game/black_jack", name: "black_jack")]
-    public function home(): Response
+    public function home(
+        SessionInterface $session): Response
     {
         session_start();
 
-        return $this->render('blackjack/home.html.twig');
+        return $this->render('black_jack/home.html.twig');
     }
 
-    #[Route("/game/play_blackjack", name: "play_blackjack")]
-    public function init(): Response
+    #[Route("/game/black_jack_init", name: "black_jack_init")]
+    public function init(
+        SessionInterface $session): Response
+    {
+        $gameData = $session->get('black_jack_game');
+
+        if (!$gameData) {
+
+            $cardHand = new CardHand();
+            $dealerHand = new CardHand();
+            $deck = new DeckOfCards();
+            $deck->shuffle();
+            $cardHand->add($deck->drawCard());
+    
+            $gameData = [
+                'deck' => $deck->jsonDeckRaw(),
+                'player_hand' => $cardHand->getHandAsJson(),
+                'dealer_hand' => $dealerHand->getHandAsJson(),
+            ];
+
+            $session->set('black_jack_game', $gameData);
+        }   
+        return $this->redirectToRoute('play_black_jack');
+    }
+
+    #[Route("/game/play_black_jack", name: "play_black_jack")]
+    public function play(): Response
     {
         $cardHand = new CardHand();
         $dealerHand = new CardHand();
@@ -44,7 +70,6 @@ class BlackJackController extends AbstractController
         $game->hitMe();
         $game->hitMe();
 
-        
         $playerHand = $game->getPlayerHand();
         $sumCards = $playerHand->getHandSum();
 
@@ -53,40 +78,50 @@ class BlackJackController extends AbstractController
             "sumCards" => $sumCards,
         ];
 
-        return $this->render('blackjack/blackjack_play.html.twig', $data);
+        return $this->render('black_jack/black_jack_play.html.twig', $data);
     }
 
     #[Route("/game/hit_me", name: "hit_me")]
     public function hit_me(): Response
     {
 
-        return $this->redirectToRoute('play_blackjack');
+        return $this->redirectToRoute('play_black_jack');
     }
 
     #[Route("/game/documentation", name: "documentation")]
     public function documentation(): Response
     {
-        return $this->render('blackjack/documentation.html.twig');
+        return $this->render('black_jack/documentation.html.twig');
     }
 
-    #[Route("/game/blackjack/api", name: "blackjack_api", methods: ['GET'])]
-    public function api(): Response
+    #[Route("/game/black_jack/api", name: "black_jack_api", methods: ['GET'])]
+    public function api(
+        SessionInterface $session): Response
     {
-        $card = new CardGraphic(12, "diamonds");
-        // $card = $card-drawCard();
 
-        $data = [
-            'card' => $card->getAsString(),
-            'value' => $card->getValue(),
-            'suit' => $card->getSuit(),
-            'stringcard' => $card->getValue() . ' of ' . $card->getSuit()
-        ];
+        $gameData = $session->get('black_jack_game');
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
+        if (!$gameData) {
+
+            $cardHand = new CardHand();
+            $dealerHand = new CardHand();
+            $deck = new DeckOfCards();
+            $deck->shuffle();
+            $cardHand->add($deck->drawCard());
+    
+            $gameData = [
+                'deck' => $deck->jsonDeckRaw(),
+                'player_hand' => $cardHand->getHandAsJson(),
+                'dealer_hand' => $dealerHand->getHandAsJson(),
+            ];
+    
+
+            $session->set('black_jack_game', $gameData);
+        }
+
+        $jsonResponse = json_encode($gameData, JSON_UNESCAPED_UNICODE);
+
+        return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
     }
 
 

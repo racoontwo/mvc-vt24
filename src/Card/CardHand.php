@@ -47,4 +47,21 @@ class CardHand
         return $sum;
     }
 
+    public function getHandAsJson(): string
+    {
+        $handArray = [];
+        
+        if ($this->hand !== null) {
+    
+            foreach ($this->hand as $card) {
+                $handArray[] = '"' . $card->getAsText() . '"';
+            }
+    
+            return '[' . implode(',', $handArray) . ']';
+        } else {
+            return "";
+        }
+    }
+
+
     }
