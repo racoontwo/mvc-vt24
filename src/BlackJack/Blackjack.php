@@ -23,6 +23,7 @@ class BlackJack
     {
         $card = $this->deck->drawCard();
         $this->playerHand->add($card);
+
         return $card;
     }
 
@@ -46,6 +47,21 @@ class BlackJack
         return $this->dealerHand;
     }
 
+    public function getResult()
+    {
+        if ($this->playerHand->getHandSum() > 21)
+        {
+            return "You lost ...";
+        };
+
+        if ($this->playerHand->getHandSum() == 21)
+        {
+            return "Black Jack!";
+        };
+
+        return null;
+    }
+
     public static function createFromJson(array $jsonData): BlackJack
     {
         $deck = DeckOfCards::createFromJson($jsonData['deck']);
@@ -53,20 +69,6 @@ class BlackJack
         $dealerHand = CardHand::createFromJson($jsonData['dealer_hand']);
         return new self($deck, $playerHand, $dealerHand);
     }
-
-    // public static function createFromJson(array $jsonData): BlackJack
-    // {
-    //     $deck = new DeckOfCards();
-    //     $deck->createFromJson($jsonData['deck']);
-    
-    //     $playerHand = new CardHand();
-    //     $playerHand->createFromJson($jsonData['player_hand']);
-
-    //     $dealerHand = new CardHand();
-    //     $dealerHand->createFromJson($jsonData['dealer_hand']);
-
-    //     return new self($deck, $playerHand, $dealerHand);
-    // }
 
     public function exportToJson(): array
     {
@@ -78,7 +80,5 @@ class BlackJack
 
         return $gameData;
     }
-
-
 
 }

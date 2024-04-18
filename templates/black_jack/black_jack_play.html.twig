@@ -5,27 +5,31 @@
 {% block main %}
 <h1>Blackjack</h1>
 
+{{ include('flash.html.twig') }}
+
 <p>
     Nu kör vi!
 </p>
 
-<li><span>Cards left in deck: {{ cardsLeft }}</span></li>
-<li><span>Sum of cards in hand: {{ sumCards }}</span></li>
+<li><span>Cards left in deck: {{ game.getDeck.cardsLeft() }}</span></li>
+<li><span>Sum of cards in hand: {{ game.getPlayerHand.getHandSum() }}</span></li>
 
 <ul class="cardarea">
-    {% for card in playerHand %}
+    {% for card in game.getPlayerHand.getHand() %}
     <li><span class="card">{{ card.getAsString() }}</span></li>
     {% endfor %}
 </ul>
 
-<form method="post" action="{{ path('hit_me') }}">
-    <button type="submit" class="button">Hit me!</button>
-    <button type="submit" class="button">I'll stay</button>
+<ul class="cardLinks">    
+    <a href="{{ path('hit_me') }}" class="button">Hit me!</a>    
+    <form method="post" action="{{ path('stay') }}">
+        <input type="hidden" name="handSum" value="{{ game.getPlayerHand.getHandSum() }}">
+        <button type="submit" class="button">Stay ... </button>
+    </form>
+    
+</ul>
+<form method="post" action="{{ path('restart') }}">
+    <button type="submit" class="button">Restart game</button>
 </form>
-
-<form method="post" action="{{ path('shuffle') }}">
-    <button type="submit" class="button">Shuffle deck</button>
-</form>
-
 
 {% endblock %}

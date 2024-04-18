@@ -43,7 +43,6 @@ class BlackJackController extends AbstractController
             $deck = new DeckOfCards();
             $deck->shuffle();
             $playerHand->add($deck->drawCard());
-            $playerHand->add($deck->drawCard());
 
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
@@ -68,18 +67,9 @@ class BlackJackController extends AbstractController
         };
 
         $game = BlackJack::createFromJson($gameData);
-        $playerHand = $game->getPlayerHand();
-        var_dump($playerHand->getHandAsJson());
         $gameData = $game->exportToJson();
-        var_dump($gameData);
         $session->set('black_jack_game', $gameData);
-
-
-        $data = [
-            "playerHand" => $playerHand->getHand(),
-            "sumCards" => $playerHand->getHandSum(),
-            "cardsLeft" => $game->getDeck()->cardsLeft(),
-        ];
+        $data["game"] = $game;
 
         return $this->render('black_jack/black_jack_play.html.twig', $data);
     }
@@ -96,12 +86,47 @@ class BlackJackController extends AbstractController
 
         $game = BlackJack::createFromJson($gameData);
         $game->hitMe();
+        $message = $game->getResult();
+
+        if ($message){
+            $this->addFlash(
+                'notice',
+                $message
+            );
+        }
+
         $gameData = $game->exportToJson();
         $session->set('black_jack_game', $gameData);
 
+        return $this->redirectToRoute('play_black_jack');
+    }
+
+    #[Route("/game/stay", name: "stay", methods: ['POST'])]
+    public function stay(
+    Request $request,
+    SessionInterface $session
+    ): Response {
+
+        $handSum = $request->request->get('handSum');
+        var_dump($handSum);
+
+        $session->set('stayed', $handSum);
+
+        $this->addFlash(
+            'notice',
+            'You decided to stay...'
+        );
 
         return $this->redirectToRoute('play_black_jack');
     }
+
+
+    #[Route("/game/dealer", name: "dealer")]
+    public function dealer(): Response
+    {
+        return $this->render('black_jack/dealer.html.twig');
+    }
+
 
     #[Route("/game/documentation", name: "documentation")]
     public function documentation(): Response
@@ -159,10 +184,7 @@ class BlackJackController extends AbstractController
     #[Route("/game/card/session_delete", name: "session_delete")]
     public function sessionDelete(SessionInterface $session): Response
     {
-
-        // Finally, destroy the session.
         $session->clear();
-
 
         $this->addFlash(
             'notice',
@@ -170,6 +192,20 @@ class BlackJackController extends AbstractController
         );
 
         return $this->redirectToRoute('session_display');
+    }
+
+    #[Route("/game/card/restart", name: "restart")]
+    public function restart(
+        SessionInterface $session): Response
+    {
+        $session->clear();
+
+        $this->addFlash(
+            'notice',
+            'You restarted the game. Another chance ... Good luck!!'
+        );
+
+        return $this->redirectToRoute('play_black_jack');
     }
 
 

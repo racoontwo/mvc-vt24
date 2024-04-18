@@ -147,8 +147,4 @@ class DeckOfCards
     $deck = new DeckOfCards($deckArray);
     return $deck;
     }
-
-
-
-
 }
