@@ -7,7 +7,6 @@ use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
 
 class BlackJack
-
 {
     private $deck;
     private $playerHand;
@@ -27,6 +26,16 @@ class BlackJack
         return $card;
     }
 
+    public function shuffleDeck()
+    {
+        $this->deck->shuffle();
+    }
+
+    public function getDeck()
+    {
+        return $this->deck;
+    }
+
     public function getPlayerHand()
     {
         return $this->playerHand;
@@ -37,24 +46,39 @@ class BlackJack
         return $this->dealerHand;
     }
 
+    public static function createFromJson(array $jsonData): BlackJack
+    {
+        $deck = DeckOfCards::createFromJson($jsonData['deck']);
+        $playerHand = CardHand::createFromJson($jsonData['player_hand']);
+        $dealerHand = CardHand::createFromJson($jsonData['dealer_hand']);
+        return new self($deck, $playerHand, $dealerHand);
+    }
+
     // public static function createFromJson(array $jsonData): BlackJack
     // {
-    //     // Reconstruct DeckOfCards from JSON
     //     $deck = new DeckOfCards();
-    //     $deck->loadFromJson($jsonData['deck']);
+    //     $deck->createFromJson($jsonData['deck']);
     
-    //     // Reconstruct player hand from JSON
     //     $playerHand = new CardHand();
-    //     $playerHand->loadFromJson($jsonData['player_hand']);
-    
-    //     // Reconstruct dealer hand from JSON
+    //     $playerHand->createFromJson($jsonData['player_hand']);
+
     //     $dealerHand = new CardHand();
-    //     $dealerHand->loadFromJson($jsonData['dealer_hand']);
-    
-    //     // Create and return a new BlackJack object
+    //     $dealerHand->createFromJson($jsonData['dealer_hand']);
+
     //     return new self($deck, $playerHand, $dealerHand);
     // }
-    
+
+    public function exportToJson(): array
+    {
+        $gameData = [
+            'deck' => $this->deck->jsonDeckRaw(),
+            'player_hand' => $this->playerHand->getHandAsJson(),
+            'dealer_hand' => $this->dealerHand->getHandAsJson(),
+        ];
+
+        return $gameData;
+    }
+
 
 
 }

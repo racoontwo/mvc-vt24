@@ -38,6 +38,11 @@ class DeckOfCards
         }
     }
 
+    public function add(CardGraphic $card): void
+    {
+        $this->deck[] = $card;
+    }
+
     public function drawCard(): ?CardGraphic
     {
         if (!empty($this->deck)) {
@@ -131,6 +136,17 @@ class DeckOfCards
         return json_encode($jsonDeck);
     }
 
+    public static function createFromJson(string $json): DeckOfCards
+    {
+    $deckArray = json_decode($json, true);
+    
+    if (!is_array($deckArray)) {
+        throw new \InvalidArgumentException("Invalid JSON format.");
+    }
+    
+    $deck = new DeckOfCards($deckArray);
+    return $deck;
+    }
 
 
 

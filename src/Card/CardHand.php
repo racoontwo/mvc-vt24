@@ -13,6 +13,16 @@ class CardHand
      */
     private $hand;
 
+    public function __construct(array $remaining_cards = [])
+    {
+        if (!empty($remaining_cards)) 
+        {
+            $this->hand = [];
+        }
+
+        $this->hand = $remaining_cards;
+    }
+
     public function add(CardGraphic $card): void
     {
         $this->hand[] = $card;
@@ -63,4 +73,38 @@ class CardHand
             return "";
         }
     }
+
+    public function loadFromJson(string $json): void
+    {
+        $handArray = json_decode($json, true);
+        
+        if (!is_array($handArray)) {
+            throw new \InvalidArgumentException("Invalid JSON format.");
+        }
+        
+        foreach ($handArray as $cardString) {
+            list($value, $suit) = explode(" of ", $cardString);
+            $this->add(new CardGraphic($value, $suit));
+        }
+    }
+
+    public static function createFromJson(string $json): CardHand
+    {
+    $handArray = json_decode($json, true);
+    
+    if (!is_array($handArray)) {
+        throw new \InvalidArgumentException("Invalid JSON format.");
+    }
+    
+    $cardHand = new CardHand();
+    
+    foreach ($handArray as $cardString) {
+        list($value, $suit) = explode(" of ", $cardString);
+        $cardHand->add(new CardGraphic($value, $suit));
+    }
+    
+    return $cardHand;
+    }
+
+    
 }

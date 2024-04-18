@@ -38,25 +38,22 @@ class BlackJackController extends AbstractController
 
         if (!$gameData) {
 
-            $cardHand = new CardHand();
+            $playerHand = new CardHand();
             $dealerHand = new CardHand();
             $deck = new DeckOfCards();
             $deck->shuffle();
-            $cardHand->add($deck->drawCard());
-            $cardHand->add($deck->drawCard());
-            $cardHand->add($deck->drawCard());
-            $cardHand->add($deck->drawCard());
-            $cardHand->add($deck->drawCard());
-            $cardHand->add($deck->drawCard());
-    
+            $playerHand->add($deck->drawCard());
+            $playerHand->add($deck->drawCard());
+
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
-                'player_hand' => $cardHand->getHandAsJson(),
+                'player_hand' => $playerHand->getHandAsJson(),
                 'dealer_hand' => $dealerHand->getHandAsJson(),
             ];
 
             $session->set('black_jack_game', $gameData);
-        }   
+        }
+
         return $this->redirectToRoute('play_black_jack');
     }
 
@@ -65,37 +62,43 @@ class BlackJackController extends AbstractController
     SessionInterface $session): Response
     {
         $gameData = $session->get('black_jack_game');
-        $playerHand = $gameData['player_hand'];
-        var_dump($playerHand);
-        // Assuming $jsonData contains your JSON data
-        // $blackjack = BlackJack::createFromJson($jsonData);
-        
-        $cardHand = new CardHand();
-        $dealerHand = new CardHand();
-        $deck = new DeckOfCards();
-        $deck->shuffle();
 
-        $game = new BlackJack($deck, $cardHand, $dealerHand);
+        if (!$gameData) {
+            return $this->redirectToRoute('black_jack');
+        };
 
-        $game->hitMe();
-        $game->hitMe();
-        $game->hitMe();
-        $game->hitMe();
-
+        $game = BlackJack::createFromJson($gameData);
         $playerHand = $game->getPlayerHand();
-        $sumCards = $playerHand->getHandSum();
+        var_dump($playerHand->getHandAsJson());
+        $gameData = $game->exportToJson();
+        var_dump($gameData);
+        $session->set('black_jack_game', $gameData);
+
 
         $data = [
             "playerHand" => $playerHand->getHand(),
-            "sumCards" => $sumCards,
+            "sumCards" => $playerHand->getHandSum(),
+            "cardsLeft" => $game->getDeck()->cardsLeft(),
         ];
 
         return $this->render('black_jack/black_jack_play.html.twig', $data);
     }
 
     #[Route("/game/hit_me", name: "hit_me")]
-    public function hit_me(): Response
+    public function hit_me(
+        SessionInterface $session): Response
     {
+        $gameData = $session->get('black_jack_game');
+
+        if (!$gameData) {
+            return $this->redirectToRoute('black_jack');
+        };
+
+        $game = BlackJack::createFromJson($gameData);
+        $game->hitMe();
+        $gameData = $game->exportToJson();
+        $session->set('black_jack_game', $gameData);
+
 
         return $this->redirectToRoute('play_black_jack');
     }

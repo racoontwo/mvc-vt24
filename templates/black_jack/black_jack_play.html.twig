@@ -9,9 +9,10 @@
     Nu kör vi!
 </p>
 
+<li><span>Cards left in deck: {{ cardsLeft }}</span></li>
+<li><span>Sum of cards in hand: {{ sumCards }}</span></li>
 
 <ul class="cardarea">
-    <li><span class="card">{{ sumCards }}</span></li>
     {% for card in playerHand %}
     <li><span class="card">{{ card.getAsString() }}</span></li>
     {% endfor %}
@@ -20,6 +21,10 @@
 <form method="post" action="{{ path('hit_me') }}">
     <button type="submit" class="button">Hit me!</button>
     <button type="submit" class="button">I'll stay</button>
+</form>
+
+<form method="post" action="{{ path('shuffle') }}">
+    <button type="submit" class="button">Shuffle deck</button>
 </form>
 
 
