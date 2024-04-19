@@ -15,8 +15,7 @@ class CardHand
 
     public function __construct(array $remaining_cards = [])
     {
-        if (!empty($remaining_cards)) 
-        {
+        if (!empty($remaining_cards)) {
             $this->hand = [];
         }
 
@@ -39,35 +38,35 @@ class CardHand
 
     public function getNumberCards(): int
     {
-        return count($this->hand);        
+        return count($this->hand);
     }
 
     public function getHand(): array
     {
-    return $this->hand;
+        return $this->hand;
     }
 
     public function getHandSum(): int
     {
         $sum = 0;
-        
+
         foreach ($this->hand as $card) {
             $sum += $card->getValue();
         }
-        
+
         return $sum;
     }
 
     public function getHandAsJson(): string
     {
         $handArray = [];
-        
+
         if ($this->hand !== null) {
 
             foreach ($this->hand as $card) {
                 $handArray[] = $card->getValue() . ' of ' . $card->getSuit();
             }
-    
+
             return json_encode($handArray);
         } else {
             return "";
@@ -77,11 +76,11 @@ class CardHand
     public function loadFromJson(string $json): void
     {
         $handArray = json_decode($json, true);
-        
+
         if (!is_array($handArray)) {
             throw new \InvalidArgumentException("Invalid JSON format.");
         }
-        
+
         foreach ($handArray as $cardString) {
             list($value, $suit) = explode(" of ", $cardString);
             $this->add(new CardGraphic($value, $suit));
@@ -90,21 +89,21 @@ class CardHand
 
     public static function createFromJson(string $json): CardHand
     {
-    $handArray = json_decode($json, true);
-    
-    if (!is_array($handArray)) {
-        throw new \InvalidArgumentException("Invalid JSON format.");
-    }
-    
-    $cardHand = new CardHand();
-    
-    foreach ($handArray as $cardString) {
-        list($value, $suit) = explode(" of ", $cardString);
-        $cardHand->add(new CardGraphic($value, $suit));
-    }
-    
-    return $cardHand;
+        $handArray = json_decode($json, true);
+
+        if (!is_array($handArray)) {
+            throw new \InvalidArgumentException("Invalid JSON format.");
+        }
+
+        $cardHand = new CardHand();
+
+        foreach ($handArray as $cardString) {
+            list($value, $suit) = explode(" of ", $cardString);
+            $cardHand->add(new CardGraphic($value, $suit));
+        }
+
+        return $cardHand;
     }
 
-    
+
 }

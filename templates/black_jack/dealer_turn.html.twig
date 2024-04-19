@@ -7,21 +7,11 @@
 
 {{ include('flash.html.twig') }}
 
-<p>
-    Nu kör vi!
-</p>
-
-<li><span>Cards left in deck: {{ game.getDeck.cardsLeft() }}</span></li>
-<li><span>Sum of cards in hand: {{ game.getDealerHand.getHandSum() }}</span></li>
-
-{# <div class="card-container">
-    <ul class="card_slow">
-        {% for card in game.getDealerHand.getHand() %}
-        <li><span class="card">{{ card.getAsString() }}</span></li>
-        {% endfor %}
-    </ul>
-</div> #}
-
+<div class="card-container">
+    <h2>
+        Player score is: {{ game.getPlayerHand.getHandSum() }}
+    </h2>
+</div>
 
 <div class="card-container">
     <ul class="card_slow">
@@ -29,7 +19,7 @@
         <li><span class="card">{{ card.getAsString() }}</span></li>
         {% endfor %}
     </ul>
-    <li id="result" class="result"><span class="card"></span></li>
+    <li id="result" class="result"> <span class="card"></span></li>
 </div>
 
 <script>
@@ -45,12 +35,16 @@ document.addEventListener("DOMContentLoaded", function() {
             if (index === cards.length - 1) {
                 setTimeout(function() {
                     var sumElement = document.createElement('span');
-                    sumElement.innerHTML = 'The result is: {{ game.getDealerHand.getHandSum() }}'; // Update sum dynamically
-                    resultElement.appendChild(sumElement); // Append sum to result element
-                    resultElement.style.display = 'block'; // Show the result after 2 seconds
+                    sumElement.innerHTML = `
+                    House gets: {{ game.getDealerHand.getHandSum() }}
+                    <br>
+                    {{ game.getWinner() }}
+                    `;
+                    resultElement.appendChild(sumElement);
+                    resultElement.style.display = 'block';
                 }, 2000);
             }
-        }, index * 1000); // Adjust the delay (in milliseconds) here
+        }, index * 1000);
     });
 });
 </script>

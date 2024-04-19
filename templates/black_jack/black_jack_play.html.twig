@@ -7,31 +7,28 @@
 
 {{ include('flash.html.twig') }}
 
-<p>
-    Nu kör vi!
-</p>
+<div class="card-container">
+    <ul class="cardarea">
+        {% for card in game.getPlayerHand.getHand() %}
+        <li><span class="card">{{ card.getAsString() }}</span></li>
+        {% endfor %}
+    </ul>
+    <p><span>You've got: {{ game.getPlayerHand.getHandSum() }}</span></p>
+</div>
 
-<li><span>Cards left in deck: {{ game.getDeck.cardsLeft() }}</span></li>
-<li><span>Sum of cards in hand: {{ game.getPlayerHand.getHandSum() }}</span></li>
-
-<ul class="cardarea">
-    {% for card in game.getPlayerHand.getHand() %}
-    <li><span class="card">{{ card.getAsString() }}</span></li>
-    {% endfor %}
-</ul>
-
-<a href="{{ path('dealer_turn') }}" class="button">Dealers Turn</a>
-
-<ul class="cardLinks">    
+<ul class="cardLinks">
+    {% if not game.busted() %}
     <a href="{{ path('hit_me') }}" class="button">Hit me!</a>
     <form method="post" action="{{ path('stay') }}">
         <input type="hidden" name="handSum" value="{{ game.getPlayerHand.getHandSum() }}">
         <button type="submit" class="button">Stay ... </button>
     </form>
+    {% endif %}
 
+    {% if game.busted() %}
+    <h2>Busted!</h2>
+    <p>You got {{ game.getPlayerHand.getHandSum() }}</p>
+    <a href="{{ path('restart') }}" class="button">Restart</a>
+    {% endif %}
 </ul>
-<form method="post" action="{{ path('restart') }}">
-    <button type="submit" class="button">Restart game</button>
-</form>
-
 {% endblock %}

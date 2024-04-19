@@ -13,8 +13,8 @@ class DeckOfCards
      * @var CardGraphic
      */
     private $deck;
-    private $cards;
-    private $values;
+    // private $cards;
+    // private $values;
 
     public function __construct(array $remaining_cards = [])
     {
@@ -138,13 +138,13 @@ class DeckOfCards
 
     public static function createFromJson(string $json): DeckOfCards
     {
-    $deckArray = json_decode($json, true);
-    
-    if (!is_array($deckArray)) {
-        throw new \InvalidArgumentException("Invalid JSON format.");
-    }
-    
-    $deck = new DeckOfCards($deckArray);
-    return $deck;
+        $deckArray = json_decode($json, true);
+
+        if (!is_array($deckArray)) {
+            throw new \InvalidArgumentException("Invalid JSON format.");
+        }
+
+        $deck = new DeckOfCards($deckArray);
+        return $deck;
     }
 }

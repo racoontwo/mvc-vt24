@@ -8,8 +8,17 @@ use App\Card\DeckOfCards;
 
 class BlackJack
 {
+    /**
+     * @var DeckOfCards
+     */
     private $deck;
+    /**
+     * @var CardHand
+     */
     private $playerHand;
+    /**
+     * @var CardHand
+     */
     private $dealerHand;
 
     public function __construct(DeckOfCards $deck, CardHand $playerHand, CardHand $dealerHand)
@@ -47,31 +56,47 @@ class BlackJack
         return $this->dealerHand;
     }
 
+    public function busted()
+    {
+        if ($this->dealerHand->getHandSum() > 21 || $this->playerHand->getHandSum() > 21) {
+            return true;
+        }
+        return null;
+    }
+
+
     public function getPlayerResult()
     {
-        if ($this->playerHand->getHandSum() > 21)
-        {
+        if ($this->playerHand->getHandSum() > 21) {
             return "You lost ...";
         };
 
-        if ($this->playerHand->getHandSum() == 21)
-        {
+        if ($this->playerHand->getHandSum() == 21) {
             return "Black Jack!";
         };
 
         return null;
     }
 
-    public function getDealerResult()
+    public function drawDealerCards()
     {
-        while ($this->dealerHand->getHandSum() < 21)
-        {
+        while ($this->dealerHand->getHandSum() <= 17) {
             $card = $this->deck->drawCard();
             $this->dealerHand->add($card);
         }
-    return $this->dealerHand;
+        return $this->dealerHand;
     }
 
+    public function getWinner()
+    {
+        if ($this->dealerHand->getHandSum() > 21) {
+            return "Player wins";
+        }
+        if ($this->playerHand->getHandSum() > $this->dealerHand->getHandSum()) {
+            return "Player wins";
+        }
+        return "House wins";
+    }
 
 
     public static function createFromJson(array $jsonData): BlackJack

@@ -152,7 +152,7 @@ ul.cardarea {
 
 ul.cardarea li {
     display: inline;
-    
+    list-style-type: none;
 }
 
 .flash-notice {
