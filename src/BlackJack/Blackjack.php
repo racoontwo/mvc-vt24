@@ -47,7 +47,7 @@ class BlackJack
         return $this->dealerHand;
     }
 
-    public function getResult()
+    public function getPlayerResult()
     {
         if ($this->playerHand->getHandSum() > 21)
         {
@@ -61,6 +61,18 @@ class BlackJack
 
         return null;
     }
+
+    public function getDealerResult()
+    {
+        while ($this->dealerHand->getHandSum() < 21)
+        {
+            $card = $this->deck->drawCard();
+            $this->dealerHand->add($card);
+        }
+    return $this->dealerHand;
+    }
+
+
 
     public static function createFromJson(array $jsonData): BlackJack
     {

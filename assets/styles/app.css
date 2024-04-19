@@ -191,6 +191,32 @@ border-radius: 5px;
 transition: background-color 0.3s ease;
 }
 
+
+/* Displaying the cards in a transition */
 .cardLinks a.button:hover {
 background-color: #a1a1a1; /* Button background color on hover */
+}
+
+.card-container {
+    text-align: center;
+}
+
+.card_slow {
+    list-style-type: none;
+}
+
+.card_slow li {
+    display: inline-block; /* Display as inline-block */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-right: 10px; /* Add spacing between cards */
+}
+
+.card_slow li.show {
+    opacity: 1;
+}
+
+.result {
+    display: block;
+    list-style-type: none;
 }

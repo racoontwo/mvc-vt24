@@ -43,6 +43,9 @@ class BlackJackController extends AbstractController
             $deck = new DeckOfCards();
             $deck->shuffle();
             $playerHand->add($deck->drawCard());
+            $dealerHand->add($deck->drawCard());
+            $dealerHand->add($deck->drawCard());
+            $dealerHand->add($deck->drawCard());
 
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
@@ -67,9 +70,8 @@ class BlackJackController extends AbstractController
         };
 
         $game = BlackJack::createFromJson($gameData);
-        $gameData = $game->exportToJson();
-        $session->set('black_jack_game', $gameData);
         $data["game"] = $game;
+        $session->set('black_jack_game', $game->exportToJson());
 
         return $this->render('black_jack/black_jack_play.html.twig', $data);
     }
@@ -86,7 +88,7 @@ class BlackJackController extends AbstractController
 
         $game = BlackJack::createFromJson($gameData);
         $game->hitMe();
-        $message = $game->getResult();
+        $message = $game->getPlayerResult();
 
         if ($message){
             $this->addFlash(
@@ -120,11 +122,21 @@ class BlackJackController extends AbstractController
         return $this->redirectToRoute('play_black_jack');
     }
 
-
-    #[Route("/game/dealer", name: "dealer")]
-    public function dealer(): Response
+    #[Route("/game/dealer_turn", name: "dealer_turn")]
+    public function dealer(
+        Request $request,
+        SessionInterface $session
+        ): Response
     {
-        return $this->render('black_jack/dealer.html.twig');
+        $gameData = $session->get('black_jack_game');
+        $game = BlackJack::createFromJson($gameData);
+        $dealerHand = $game->getDealerHand();
+        $dealerSum = $dealerHand->getHandSum();
+        $dealerCards = $dealerHand->getNumberCards();
+
+        $data["game"] = $game;
+
+        return $this->render('black_jack/dealer_turn.html.twig', $data);
     }
 
 

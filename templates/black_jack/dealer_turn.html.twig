@@ -1,0 +1,63 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Blackjack{% endblock %}
+
+{% block main %}
+<h1>Blackjack</h1>
+
+{{ include('flash.html.twig') }}
+
+<p>
+    Nu kör vi!
+</p>
+
+<li><span>Cards left in deck: {{ game.getDeck.cardsLeft() }}</span></li>
+<li><span>Sum of cards in hand: {{ game.getDealerHand.getHandSum() }}</span></li>
+
+{# <div class="card-container">
+    <ul class="card_slow">
+        {% for card in game.getDealerHand.getHand() %}
+        <li><span class="card">{{ card.getAsString() }}</span></li>
+        {% endfor %}
+    </ul>
+</div> #}
+
+
+<div class="card-container">
+    <ul class="card_slow">
+        {% for card in game.getDealerHand.getHand() %}
+        <li><span class="card">{{ card.getAsString() }}</span></li>
+        {% endfor %}
+    </ul>
+    <li id="result" class="result"><span class="card"></span></li>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var cards = document.querySelectorAll('.card_slow li');
+    var cardContainer = document.querySelector('.card-container');
+    var resultElement = document.getElementById('result');
+
+    cards.forEach(function(card, index) {
+        setTimeout(function() {
+            card.classList.add('show');
+            // Display sum after all cards have been shown
+            if (index === cards.length - 1) {
+                setTimeout(function() {
+                    var sumElement = document.createElement('span');
+                    sumElement.innerHTML = 'The result is: {{ game.getDealerHand.getHandSum() }}'; // Update sum dynamically
+                    resultElement.appendChild(sumElement); // Append sum to result element
+                    resultElement.style.display = 'block'; // Show the result after 2 seconds
+                }, 2000);
+            }
+        }, index * 1000); // Adjust the delay (in milliseconds) here
+    });
+});
+</script>
+
+
+<form method="post" action="{{ path('restart') }}">
+    <button type="submit" class="button">Restart game</button>
+</form>
+
+{% endblock %}

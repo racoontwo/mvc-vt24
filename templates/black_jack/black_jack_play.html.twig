@@ -20,13 +20,15 @@
     {% endfor %}
 </ul>
 
+<a href="{{ path('dealer_turn') }}" class="button">Dealers Turn</a>
+
 <ul class="cardLinks">    
-    <a href="{{ path('hit_me') }}" class="button">Hit me!</a>    
+    <a href="{{ path('hit_me') }}" class="button">Hit me!</a>
     <form method="post" action="{{ path('stay') }}">
         <input type="hidden" name="handSum" value="{{ game.getPlayerHand.getHandSum() }}">
         <button type="submit" class="button">Stay ... </button>
     </form>
-    
+
 </ul>
 <form method="post" action="{{ path('restart') }}">
     <button type="submit" class="button">Restart game</button>
