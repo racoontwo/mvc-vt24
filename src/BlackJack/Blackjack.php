@@ -56,7 +56,7 @@ class BlackJack
         return $this->dealerHand;
     }
 
-    public function busted(): null
+    public function busted(): null|true
     {
         if ($this->dealerHand->getHandSum() > 21 || $this->playerHand->getHandSum() > 21) {
             return true;

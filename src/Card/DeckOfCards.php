@@ -10,11 +10,9 @@ class DeckOfCards
     use CardTrait;
 
     /**
-     * @var CardGraphic
+     * @var array
      */
     private $deck;
-    // private $cards;
-    // private $values;
 
     public function __construct(array $remaining_cards = [])
     {
@@ -28,7 +26,6 @@ class DeckOfCards
                 $this->deck[] = $card;
             }
         } else {
-            // Create deck as before if no cards are provided
             foreach ($this->suits as $suit) {
                 for ($value = 1; $value <= 13; $value++) {
                     $card = new CardGraphic($value, $suit);
@@ -88,7 +85,6 @@ class DeckOfCards
             $sortedDeck[$suit] = [];
         }
 
-        // Sort the deck by suit and value
         usort($this->deck, function ($a, $b) {
             $suitOrder = array_search($a->getSuit(), $this->suits) - array_search($b->getSuit(), $this->suits);
             if ($suitOrder != 0) {
@@ -97,7 +93,6 @@ class DeckOfCards
             return $a->getValue() - $b->getValue();
         });
 
-        // Organize sorted cards into each suit
         foreach ($this->deck as $card) {
             $suit = $card->getSuit();
             $sortedDeck[$suit][] = $card->getValue();
@@ -115,7 +110,7 @@ class DeckOfCards
 
         return json_encode($jsonDeck);
     }
-    public function jsonDeckPretty(): string
+    public function jsonDeckPretty(): string|false
     {
         $jsonDeck = [];
 
