@@ -69,6 +69,40 @@
             <p>
                 TIL för detta moment var nog mycket hur API:er fungerar och hur man strukturerar upp det som vi gjorde i kontrollerna. Det är TIL, och så att POST-metoder måste ha formulär. 
             </p>
+
+            <h1 id="kmom03">Kmom03</h1>
+            <p>
+                Att strukturera upp med flödesdiagram och pseudokod hjälpte att få hjärnan i ”banan” på hur man skulle tänka, 
+                men trots att det hjälpte så upplevde jag det inte som några jättestora skillnader mot hur det hade varit att inte ha det. 
+                Dock så kan det dock vara annorlunda när det är ett större projekt för att hjälpa till att få översikt över vad man ska göra, 
+                så jag tror absolut att jag kommer att använda det mycket i framtiden. Min problematik ligger mest i att tänka vart och i vilka modeller, 
+                controller och vyer jag ska placera min kod, samt vilka delar ska ansvara för vad. Det är en process och jag känner att jag blir successivt bättre på det. 
+            </p>
+            <p>
+                Min implementation landade slutligen i att göra en BlackJack klass som fick ha hand om logiken för spelet där jag placerade alla variabler, 
+                klasser och funktioner för spelets gång. 
+                Fördelarna var att jag kunde skapa ett json-objekt för varje gång jag behövde spara det i session, 
+                likt det vi gjorde med Yahtzee-spelet i OO Python-kursen, så det var smidigt. Är nöjd med det upplägget och kände också att jag fick till aningen ”lös kod”, 
+                det vill säga att klasserna inte är avhängiga varandra för mycket utan enkelt kan konfigureras. 
+            </p>
+            <p>
+                Är också nöjd med att jag gjorde många ”små funktioner” som hade ett ansvarsområde, vilket gjorde det enkelt att hantera, 
+                få en översikt om, och också ändra när något gick fel. Förbättringspotentialen i min kod är nog, som jag kom på i efterhand, 
+                att jag kunde gjort en slags abstrakt ”container-class” som både CardHand och BlackJack kunde ärva av. Eller möjligtvis traits. 
+                De bägge klasserna hade många likheter med att sätta in och returnera kort, de är båda huvudsakligen arrayer som lagrar kort-objekt så man hade kunnat göra en bra 
+                gemensam lösning där men när jag väl kom på det så var jag så långt gången i kodandet att jag lät det vara som det är nu. Jaja, nästa gång!
+            </p>
+            <p>
+                Överlag är känslan för Symfony att man börjar få koll på det nu efter tredje kursmomentet och det är ett naturligt och enkelt sätt att hantera koden genom att dela upp det i MVC. 
+                Lite problematiskt med lintsen fortfarande och konfigurationen är något jag lär mig fortfarande. 
+            </p>
+            <p>
+                TIL för detta kmom måste nog vara överlag en större förståelse för JSON och hur man kan arbeta med det, trots att övningen inte var så fokuserad på JSON. 
+                Annars har jag lärt mig mer om PHP och klasshantering, till exempel hur jag skapar objekt från JSON i php, 
+                hur jag kallar på olika metoder i klasserna och hur klasserna hänger ihop med varandra. 
+                Det kändes som att det vi jobbade med förra momentet (kmom02) fick större betydelse i detta moment. Har också lärt mig mer att jobba med git. Det blev några TIL…
+            </p>
+            <p>
             
         </div>
         <div class="right-column">

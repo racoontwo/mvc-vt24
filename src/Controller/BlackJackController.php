@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlackJackController extends AbstractController
 {
     #[Route("/game/black_jack", name: "black_jack")]
-    public function home(): Response 
+    public function home(): Response
     {
         session_start();
         return $this->render('black_jack/home.html.twig');

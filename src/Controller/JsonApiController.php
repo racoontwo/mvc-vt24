@@ -27,7 +27,7 @@ class JsonApiController extends AbstractController
     }
 
     #[Route("/game/card/api/deck", name: "api_deck", methods: ['GET'])]
-    public function apiDeck(): Response 
+    public function apiDeck(): Response
     {
         $deck = new DeckOfCards();
         $data = $deck->jsonDeckPretty();
@@ -119,7 +119,7 @@ class JsonApiController extends AbstractController
     }
 
     #[Route("/game/card/api/test_deck", name: "test_api_deck", methods: ['GET'])]
-    public function testApiDeck(): Response 
+    public function testApiDeck(): Response
     {
         $deck = new DeckOfCards();
         $remainder = $deck->getRemainingCards();
