@@ -5,6 +5,8 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\CardGraphic;
 
+use InvalidArgumentException;
+
 class CardHand
 {
     use CardTrait;
@@ -13,13 +15,12 @@ class CardHand
      */
     private $hand;
 
-    public function __construct(array $remaining_cards = [])
+    public function __construct(array $cardArray = [])
     {
-        if (!empty($remaining_cards)) {
+        if (!empty($cardArray)) {
             $this->hand = [];
         }
-
-        $this->hand = $remaining_cards;
+        $this->hand = $cardArray;
     }
 
     public function add(CardGraphic $card): void
@@ -60,13 +61,10 @@ class CardHand
     public function getHandAsJson(): string
     {
         $handArray = [];
-
         if ($this->hand !== null) {
-
             foreach ($this->hand as $card) {
                 $handArray[] = $card->getValue() . ' of ' . $card->getSuit();
             }
-
             return json_encode($handArray);
         } else {
             return "";
@@ -78,7 +76,7 @@ class CardHand
         $handArray = json_decode($json, true);
 
         if (!is_array($handArray)) {
-            throw new \InvalidArgumentException("Invalid JSON format.");
+            throw new InvalidArgumentException("Invalid JSON format.");
         }
 
         foreach ($handArray as $cardString) {
@@ -92,7 +90,7 @@ class CardHand
         $handArray = json_decode($json, true);
 
         if (!is_array($handArray)) {
-            throw new \InvalidArgumentException("Invalid JSON format.");
+            throw new InvalidArgumentException("Invalid JSON format.");
         }
 
         $cardHand = new CardHand();
@@ -101,9 +99,6 @@ class CardHand
             list($value, $suit) = explode(" of ", $cardString);
             $cardHand->add(new CardGraphic($value, $suit));
         }
-
         return $cardHand;
     }
-
-
 }

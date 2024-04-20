@@ -5,6 +5,8 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\CardGraphic;
 
+use InvalidArgumentException;
+
 class DeckOfCards
 {
     use CardTrait;
@@ -14,11 +16,11 @@ class DeckOfCards
      */
     private $deck;
 
-    public function __construct(array $remaining_cards = [])
+    public function __construct(array $cardArray = [])
     {
 
-        if (!empty($remaining_cards)) {
-            foreach ($remaining_cards as $cards) {
+        if (!empty($cardArray)) {
+            foreach ($cardArray as $cards) {
                 $cardData = explode(" of ", $cards);
                 $value = intval($cardData[0]);
                 $suit = $cardData[1];
@@ -66,13 +68,13 @@ class DeckOfCards
 
     public function sortDeck()
     {
-        usort($this->deck, function ($a, $b) {
-            $suitOrder = array_search($a->getSuit(), $this->suits) - array_search($b->getSuit(), $this->suits);
+        usort($this->deck, function ($cardA, $cardB) {
+            $suitOrder = array_search($cardA->getSuit(), $this->suits) - array_search($cardB->getSuit(), $this->suits);
             if ($suitOrder != 0) {
                 return $suitOrder;
             }
 
-            return $a->getValue() - $b->getValue();
+            return $cardA->getValue() - $cardB->getValue();
         });
     }
 
@@ -85,12 +87,12 @@ class DeckOfCards
             $sortedDeck[$suit] = [];
         }
 
-        usort($this->deck, function ($a, $b) {
-            $suitOrder = array_search($a->getSuit(), $this->suits) - array_search($b->getSuit(), $this->suits);
+        usort($this->deck, function ($cardA, $cardB) {
+            $suitOrder = array_search($cardA->getSuit(), $this->suits) - array_search($cardB->getSuit(), $this->suits);
             if ($suitOrder != 0) {
                 return $suitOrder;
             }
-            return $a->getValue() - $b->getValue();
+            return $cardA->getValue() - $cardB->getValue();
         });
 
         foreach ($this->deck as $card) {
@@ -134,9 +136,8 @@ class DeckOfCards
     public static function createFromJson(string $json): DeckOfCards
     {
         $deckArray = json_decode($json, true);
-
         if (!is_array($deckArray)) {
-            throw new \InvalidArgumentException("Invalid JSON format.");
+            throw new InvalidArgumentException("Invalid JSON format.");
         }
 
         $deck = new DeckOfCards($deckArray);

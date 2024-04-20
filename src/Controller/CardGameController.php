@@ -15,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Exception;
+
 class CardGameController extends AbstractController
 {
     #[Route("/game/card", name: "card_start")]
@@ -31,7 +33,7 @@ class CardGameController extends AbstractController
     public function testPickCardGraphic(int $num): Response
     {
         if ($num > 52) {
-            throw new \Exception("Can not pick more than 52 Cards!");
+            throw new Exception("Can not pick more than 52 Cards!");
         }
 
         $cardHand = [];
@@ -67,11 +69,8 @@ class CardGameController extends AbstractController
     #[Route("/game/card/test/card_deck", name: "test_deck")]
     public function testCardDeck(SessionInterface $session): Response
     {
-        // Check if the "deck" is already in the session
         if ($session->has("deck")) {
             $deck = $session->get("deck");
-            // $deck = new DeckOfCards();
-            // $deck->shuffle();
         } else {
             // Create a new deck if it's not in the session
             $deck = new DeckOfCards();
@@ -79,16 +78,12 @@ class CardGameController extends AbstractController
         }
 
         $card = $deck->drawCard();
-        $remainingCards = $deck->getRemainingCards();
-
         // Prepare data to pass to the template
         $data = [
             "cardString" => $card->getAsString(),
             "cardText" => $card->getAsText(),
             "cardsLeft" => $deck->cardsLeft(),
         ];
-
-
 
         $session->set("deck", $deck);
 
@@ -135,7 +130,6 @@ class CardGameController extends AbstractController
         $deck = new DeckOfCards();
         $deck->shuffle();
         $card = $deck->drawCard();
-        $remainingCards = $deck->getRemainingCards();
 
         $data = [
             "cardString" => $card->getAsString(),
@@ -151,7 +145,7 @@ class CardGameController extends AbstractController
     {
 
         if ($num > 52) {
-            throw new \Exception("Can not draw more than 52 cards!");
+            throw new Exception("Can not draw more than 52 cards!");
         }
 
         $deck = new DeckOfCards();
@@ -191,18 +185,11 @@ class CardGameController extends AbstractController
     #[Route("/game/card/session_delete", name: "session_delete")]
     public function sessionDelete(SessionInterface $session): Response
     {
-
-        // Finally, destroy the session.
         $session->clear();
-
-
         $this->addFlash(
             'notice',
             'Your session has been deleted!'
         );
-
         return $this->redirectToRoute('session_display');
     }
-
-
 }

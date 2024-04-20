@@ -27,24 +27,18 @@ class JsonApiController extends AbstractController
     }
 
     #[Route("/game/card/api/deck", name: "api_deck", methods: ['GET'])]
-    public function apiDeck(
-        SessionInterface $session
-    ): Response {
-
+    public function apiDeck(): Response 
+    {
         $deck = new DeckOfCards();
         $data = $deck->jsonDeckPretty();
         $jsonResponse = json_encode($data, JSON_UNESCAPED_UNICODE);
-
         return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
     }
 
     #[Route("/game/card/api/deck/shuffle", name: "api_deck_shuffle", methods: ['POST'])]
     public function apiDeckShuffle(
-        Request $request,
         SessionInterface $session
     ): Response {
-        $remainingCards = $request->request->get('remaining_cards');
-
         $deck = new DeckOfCards();
         $deck->shuffle();
         $data = $deck->jsonDeckPretty();
@@ -53,7 +47,6 @@ class JsonApiController extends AbstractController
         $session->set("api_shuffled", $data);
 
         return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
-        // return $this->redirectToRoute('api_deck', $jsonData);
     }
 
     #[Route("/game/card/api/deck/draw", name: "api_draw", methods: ['POST'])]
@@ -61,14 +54,9 @@ class JsonApiController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        // if ($num > 52) {
-        //     throw new \Exception("Can not draw more than 52 cards!");
-        // }
-
         if ($session->has("remaining_cards")) {
             $sessionData = json_decode($session->get("remaining_cards", true));
             $deck = new DeckOfCards($sessionData);
-            // $deck = new DeckOfCards($session->get("remaining_cards"));
         } else {
             $deck = new DeckOfCards();
         }
@@ -96,13 +84,12 @@ class JsonApiController extends AbstractController
     ): Response {
 
         if ($num > 52) {
-            throw new \Exception("Can not draw more than 52 cards!");
+            throw new Exception("Can not draw more than 52 cards!");
         }
 
         if ($session->has("remaining_cards")) {
             $sessionData = json_decode($session->get("remaining_cards", true));
             $deck = new DeckOfCards($sessionData);
-            // $deck = new DeckOfCards($session->get("remaining_cards"));
         } else {
             $deck = new DeckOfCards();
             $deck->shuffle();
@@ -131,16 +118,12 @@ class JsonApiController extends AbstractController
         return $response;
     }
 
-
-
     #[Route("/game/card/api/test_deck", name: "test_api_deck", methods: ['GET'])]
-    public function testApiDeck(
-        SessionInterface $session
-    ): Response {
+    public function testApiDeck(): Response 
+    {
         $deck = new DeckOfCards();
         $remainder = $deck->getRemainingCards();
         $card = $remainder[13];
-
 
         $data = [
             'card' => $card->getAsString(),
@@ -156,19 +139,4 @@ class JsonApiController extends AbstractController
         );
         return $response;
     }
-
-    // $data = [
-    //     'lucky-number' => $number,
-    //     'todays quote' => $randomQuote,
-    //     'todays date' => $date->format('Y-m-d'),
-    //     'printed time' => $date->format('H:i:s'),
-    // ];
-
-    // // return new JsonResponse($data);
-
-    // $response = new JsonResponse($data);
-    // $response->setEncodingOptions(
-    //     $response->getEncodingOptions() | JSON_PRETTY_PRINT
-    // );
-    // return $response;
 }

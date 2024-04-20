@@ -98,7 +98,6 @@ class BlackJack
         return "House wins";
     }
 
-
     public static function createFromJson(array $jsonData): BlackJack
     {
         $deck = DeckOfCards::createFromJson($jsonData['deck']);
@@ -114,8 +113,6 @@ class BlackJack
             'player_hand' => $this->playerHand->getHandAsJson(),
             'dealer_hand' => $this->dealerHand->getHandAsJson(),
         ];
-
         return $gameData;
     }
-
 }

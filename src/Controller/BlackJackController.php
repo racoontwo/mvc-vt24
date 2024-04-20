@@ -22,11 +22,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlackJackController extends AbstractController
 {
     #[Route("/game/black_jack", name: "black_jack")]
-    public function home(
-        SessionInterface $session
-    ): Response {
+    public function home(): Response 
+    {
         session_start();
-
         return $this->render('black_jack/home.html.twig');
     }
 
@@ -35,9 +33,7 @@ class BlackJackController extends AbstractController
         SessionInterface $session
     ): Response {
         $gameData = $session->get('black_jack_game');
-
         if (!$gameData) {
-
             $playerHand = new CardHand();
             $dealerHand = new CardHand();
             $deck = new DeckOfCards();
@@ -57,7 +53,7 @@ class BlackJackController extends AbstractController
     }
 
     #[Route("/game/play_black_jack", name: "play_black_jack")]
-    public function play(
+    public function playBlackJack(
         SessionInterface $session
     ): Response {
         $gameData = $session->get('black_jack_game');
@@ -66,15 +62,21 @@ class BlackJackController extends AbstractController
             return $this->redirectToRoute('black_jack');
         };
 
+        // $blackJack = new BlackJack();
+        // $game = $blackJack->createFromJson($gameData);
         $game = BlackJack::createFromJson($gameData);
-        $data["game"] = $game;
+
+        $data = [
+            "game" => $game,
+        ];
+
         $session->set('black_jack_game', $game->exportToJson());
 
         return $this->render('black_jack/black_jack_play.html.twig', $data);
     }
 
     #[Route("/game/hit_me", name: "hit_me")]
-    public function hit_me(
+    public function hitMe(
         SessionInterface $session
     ): Response {
         $gameData = $session->get('black_jack_game');
@@ -114,16 +116,15 @@ class BlackJackController extends AbstractController
 
     #[Route("/game/dealer_turn", name: "dealer_turn")]
     public function dealer(
-        Request $request,
         SessionInterface $session
     ): Response {
         $gameData = $session->get('black_jack_game');
         $game = BlackJack::createFromJson($gameData);
         $game->drawDealerCards();
 
-        $winner = $game->getWinner();
-
-        $data["game"] = $game;
+        $data = [
+            "game" => $game
+        ];
 
         return $this->render('black_jack/dealer_turn.html.twig', $data);
     }
@@ -143,7 +144,6 @@ class BlackJackController extends AbstractController
         $gameData = $session->get('black_jack_game');
 
         if (!$gameData) {
-
             $cardHand = new CardHand();
             $dealerHand = new CardHand();
             $deck = new DeckOfCards();
@@ -165,36 +165,6 @@ class BlackJackController extends AbstractController
         return new JsonResponse($jsonResponse, Response::HTTP_OK, [], true);
     }
 
-
-    //Here is the session routes
-    #[Route("/game/card/session_display", name: "session_display")]
-    public function sessionDisplay(SessionInterface $session, Request $request): Response
-    {
-        $sessionName = $session->getName();
-        $sessionId = $session->getId();
-        $sessionCookie = $request->cookies->all(); // Accessing cookies directly from the Request object
-
-        return $this->render('card/session_display.html.twig', [
-            'sessionName' => $sessionName,
-            'sessionId' => $sessionId,
-            'sessionCookie' => $sessionCookie,
-            'sessionData' => $session->all(),
-        ]);
-    }
-
-    #[Route("/game/card/session_delete", name: "session_delete")]
-    public function sessionDelete(SessionInterface $session): Response
-    {
-        $session->clear();
-
-        $this->addFlash(
-            'notice',
-            'Your session has been deleted!'
-        );
-
-        return $this->redirectToRoute('session_display');
-    }
-
     #[Route("/game/card/restart", name: "restart")]
     public function restart(
         SessionInterface $session
@@ -205,9 +175,6 @@ class BlackJackController extends AbstractController
             'notice',
             'You restarted the game. Another chance ... Good luck!!'
         );
-
         return $this->redirectToRoute('play_black_jack');
     }
-
-
 }

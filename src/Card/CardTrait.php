@@ -12,12 +12,9 @@ trait CardTrait
     public function jsonFormatContainer($container): string
     {
         $jsonDeck = [];
-
         foreach ($container as $card) {
             $jsonDeck[] = $card->getValue() . ' of ' . $card->getSuit();
         }
-
         return json_encode($jsonDeck);
     }
-
 }

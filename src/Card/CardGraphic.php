@@ -148,8 +148,6 @@ class CardGraphic extends Card
                 $valueText = (string)$this->value;
                 break;
         }
-
         return "$valueText of $suitText";
     }
-
 }

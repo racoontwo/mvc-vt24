@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Exception;
+
 class DiceGameController extends AbstractController
 {
     #[Route("/game/pig", name: "pig_start")]
@@ -38,12 +40,11 @@ class DiceGameController extends AbstractController
     public function testRollDices(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can not roll more than 99 dices!");
         }
 
         $diceRoll = [];
         for ($i = 1; $i <= $num; $i++) {
-            //$die = new Dice();
             $die = new DiceGraphic();
             $die->roll();
             $diceRoll[] = $die->getAsString();
@@ -61,7 +62,7 @@ class DiceGameController extends AbstractController
     public function testDiceHand(int $num): Response
     {
         if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
+            throw new Exception("Can not roll more than 99 dices!");
         }
 
         $hand = new DiceHand();
