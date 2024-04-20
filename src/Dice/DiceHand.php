@@ -6,6 +6,9 @@ use App\Dice\Dice;
 
 class DiceHand
 {
+    /**
+     * @var array
+     */
     private $hand = [];
 
     public function add(Dice $die): void

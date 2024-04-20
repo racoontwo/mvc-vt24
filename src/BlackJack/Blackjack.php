@@ -28,7 +28,7 @@ class BlackJack
         $this->dealerHand = $dealerHand;
     }
 
-    public function hitMe()
+    public function hitMe(): CardGraphic
     {
         $card = $this->deck->drawCard();
         $this->playerHand->add($card);
@@ -36,12 +36,12 @@ class BlackJack
         return $card;
     }
 
-    public function shuffleDeck()
+    public function shuffleDeck(): void
     {
         $this->deck->shuffle();
     }
 
-    public function getDeck()
+    public function getDeck(): DeckOfCards
     {
         return $this->deck;
     }
