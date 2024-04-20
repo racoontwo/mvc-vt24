@@ -6,7 +6,13 @@ class Card
 {
     use CardTrait;
 
+    /**
+     * @var integer
+     */
     protected $value;
+    /**
+     * @var string
+     */
     protected $suit;
 
     public function __construct($value = null, $suit = null)
@@ -25,7 +31,6 @@ class Card
         $this->value = random_int(1, 13);
         $this->suit = $this->suits[array_rand($this->suits)];
     }
-
 
     public function getValue(): int
     {

@@ -6,6 +6,9 @@ class CardGraphic extends Card
 {
     use CardTrait;
 
+    /**
+     * @var array
+     */
     private $diamonds = [
         '🃁',
         '🃂',
@@ -21,7 +24,9 @@ class CardGraphic extends Card
         '🃍',
         '🃎',
     ];
-
+    /**
+     * @var array
+     */
     private $clubs = [
         '🃑',
         '🃒',
@@ -37,7 +42,9 @@ class CardGraphic extends Card
         '🃝',
         '🃞',
     ];
-
+    /**
+     * @var array
+     */
     private $hearts = [
         '🂱',
         '🂲',
@@ -53,7 +60,9 @@ class CardGraphic extends Card
         '🂽',
         '🂾',
     ];
-
+    /**
+     * @var array
+     */
     private $spades = [
         '🂡',
         '🂢',

@@ -46,17 +46,17 @@ class BlackJack
         return $this->deck;
     }
 
-    public function getPlayerHand()
+    public function getPlayerHand(): CardHand
     {
         return $this->playerHand;
     }
 
-    public function getDealerHand()
+    public function getDealerHand(): CardHand
     {
         return $this->dealerHand;
     }
 
-    public function busted()
+    public function busted(): null
     {
         if ($this->dealerHand->getHandSum() > 21 || $this->playerHand->getHandSum() > 21) {
             return true;
