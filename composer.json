@@ -1,4 +1,6 @@
 {
+    "name": "oliver/package",
+    "description": "Description of your package",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -93,7 +95,8 @@
         "lint": [
             "@phpmd",
             "@phpstan"
-        ]
+        ],
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit"
     },
     "conflict": {
         "symfony/symfony": "*"
