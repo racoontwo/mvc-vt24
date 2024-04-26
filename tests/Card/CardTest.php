@@ -44,7 +44,7 @@ class CardTest extends TestCase
 
         $this->assertGreaterThanOrEqual(1, $value);
         $this->assertLessThanOrEqual(13, $value);
-    
+
         $this->assertContains($suit, ['clubs', 'diamonds', 'hearts', 'spades']);
 
     }

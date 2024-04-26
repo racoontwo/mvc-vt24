@@ -34,11 +34,11 @@ class DiceGraphicTest extends TestCase
             '⚄',
             '⚅',
         ];
-        
+
         $die = new DiceGraphic();
         $die->roll();
         $res = $die->getAsString();
-        
+
         $this->assertNotEmpty($res);
         $this->assertContains($res, $representation);
     }

@@ -33,44 +33,44 @@ class DiceHandTest extends TestCase
 
     public function testGetNumberDices()
     {
-        $dicehand = new DiceHand(); 
+        $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);
         $numberOfDices = 3;
-    
+
         for ($i = 0; $i < $numberOfDices; $i++) {
             $dicehand->add(clone $stub);
         }
-    
+
         $dicehand->roll();
-    
+
         $res = $dicehand->getNumberDices();
-    
-        $this->assertEquals($numberOfDices, $res); 
+
+        $this->assertEquals($numberOfDices, $res);
     }
 
     public function testGetValues()
     {
-        $dicehand = new DiceHand(); 
+        $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);
         $stub->method('getValue')
         ->willReturn(6);
 
 
         $numberOfDices = 3;
-    
+
         for ($i = 1; $i <= $numberOfDices; $i++) {
             $dicehand->add(clone $stub);
         }
 
         $expectedValues = [6, 6, 6];
         $actualValues = $dicehand->getValues();
-    
+
         $this->assertEquals($expectedValues, $actualValues);
     }
 
     public function testGetString()
     {
-        $dicehand = new DiceHand(); 
+        $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);
         $numberOfDices = 5;
         $expectedValues = [];

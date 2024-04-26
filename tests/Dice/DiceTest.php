@@ -38,7 +38,7 @@ class DiceTest extends TestCase
         $exp = 6;
         $this->assertEquals($exp, $res);
     }
-    
+
     /**
      * Roll object and verify that the object has changed value
      * in most cases, use no arguments.
@@ -49,10 +49,10 @@ class DiceTest extends TestCase
 
         $initialResult = $die->roll();
         $changed = false;
-        
+
         for ($i = 0; $i < 10; $i++) {
             $newResult = $die->roll();
-            
+
             $this->assertGreaterThanOrEqual(1, $newResult);
             $this->assertLessThanOrEqual(6, $newResult);
 
@@ -72,11 +72,11 @@ class DiceTest extends TestCase
     {
         $die = new Dice();
         $die->roll();
-    
+
         $result = $die->getValue();
-    
+
         $this->assertGreaterThanOrEqual(1, $result);
         $this->assertLessThanOrEqual(6, $result);
     }
-    
+
 }
