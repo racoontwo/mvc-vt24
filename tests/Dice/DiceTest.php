@@ -38,4 +38,45 @@ class DiceTest extends TestCase
         $exp = 6;
         $this->assertEquals($exp, $res);
     }
+    
+    /**
+     * Roll object and verify that the object has changed value
+     * in most cases, use no arguments.
+     */
+    public function testRoll()
+    {
+        $die = new Dice();
+
+        $initialResult = $die->roll();
+        $changed = false;
+        
+        for ($i = 0; $i < 10; $i++) {
+            $newResult = $die->roll();
+            
+            $this->assertGreaterThanOrEqual(1, $newResult);
+            $this->assertLessThanOrEqual(6, $newResult);
+
+            if ($newResult !== $initialResult) {
+                $changed = true;
+                break;
+            }
+        }
+
+        $this->assertTrue($changed, "The result should change in most cases.");
+    }
+
+    /**
+     * Test a value between 1-6 is returned from getValue.
+     */
+    public function testGetValue()
+    {
+        $die = new Dice();
+        $die->roll();
+    
+        $result = $die->getValue();
+    
+        $this->assertGreaterThanOrEqual(1, $result);
+        $this->assertLessThanOrEqual(6, $result);
+    }
+    
 }

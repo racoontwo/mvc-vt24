@@ -9,6 +9,10 @@ class Dice
      */
     protected $value;
 
+    public function __construct()
+    {
+    }
+
     public function roll(): int
     {
         $this->value = random_int(1, 6);

@@ -2,6 +2,8 @@
 
 namespace App\Dice;
 
+use App\Dice\Dice;
+
 class DiceGraphic extends Dice
 {
     /**
