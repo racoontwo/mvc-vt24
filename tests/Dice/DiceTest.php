@@ -78,5 +78,4 @@ class DiceTest extends TestCase
         $this->assertGreaterThanOrEqual(1, $result);
         $this->assertLessThanOrEqual(6, $result);
     }
-
 }

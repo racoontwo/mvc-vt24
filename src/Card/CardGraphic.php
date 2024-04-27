@@ -85,7 +85,7 @@ class CardGraphic extends Card
     {
         parent::__construct($value, $suit);
     }
-    
+
 
     public function getAsRaw(): string
     {
@@ -107,7 +107,7 @@ class CardGraphic extends Card
                 return $this->joker; // Return joker for invalid suit
         }
     }
-    
+
 
     public function getAsText(): string
     {

@@ -23,7 +23,7 @@ class Card
         $this->value = $value ?? null;
         $this->suit = $suit ?? null;
     }
-    
+
     /**
     * This method is to pick a card with a random value.
     */

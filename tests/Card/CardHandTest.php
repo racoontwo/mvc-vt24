@@ -23,7 +23,7 @@ class CardHandTest extends TestCase
         $cardHand = new CardHand($array);
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
     }
-    
+
     public function testAddCard(): void
     {
         $card = new CardGraphic(4, "clubs");
@@ -108,18 +108,7 @@ class CardHandTest extends TestCase
         $this->assertEquals("[]", $cardHand->getHandAsJson());
     }
 
-    public function testLoadFromJsonWithInvalidJson(): void
-    {
-        $cardHand = new CardHand();
-
-        $invalidJson = '["2 of hearts","8 of diamonds",';
-
-        $this->expectException(InvalidArgumentException::class);
-        $cardHand->loadFromJson($invalidJson);
-
-    }
-
-    public function testLoadFromJsonWithValidJson(): void
+    public function testLoadFromJson(): void
     {
         $cardHand = new CardHand();
 
@@ -134,9 +123,16 @@ class CardHandTest extends TestCase
         ];
 
         $this->assertEquals($expectedHand, $cardHand->getHand());
+
+        $cardHand = new CardHand();
+
+        $invalidJson = '["2 of hearts","8 of diamonds",';
+
+        $this->expectException(InvalidArgumentException::class);
+        $cardHand->loadFromJson($invalidJson);
     }
 
-    public function testCreateFromJsonWithValidJson(): void
+    public function testCreateFromJson(): void
     {
         $json = '["2 of hearts","8 of diamonds","11 of clubs"]';
 
@@ -149,10 +145,7 @@ class CardHandTest extends TestCase
         ];
 
         $this->assertEquals($expectedHand, $cardHand->getHand());
-    }
 
-    public function testCreateFromJsonWithInvalidJson(): void
-    {
         $invalidJson = '["2 of hearts","8 of diamonds",';
 
         $this->expectException(InvalidArgumentException::class);

@@ -32,7 +32,7 @@ class CardHand
     {
         return !empty($this->hand) ? array_shift($this->hand) : null;
     }
-    
+
 
     public function getNumberCards(): int
     {
@@ -61,7 +61,7 @@ class CardHand
             return $card->getValue() . ' of ' . $card->getSuit();
         }, $this->hand)) : "";
     }
-    
+
 
     public function loadFromJson(string $json): void
     {

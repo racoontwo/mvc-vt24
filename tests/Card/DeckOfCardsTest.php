@@ -63,63 +63,56 @@ class DeckOfCardsTest extends TestCase
     {
         $array = ["2 of hearts", "8 of diamonds", "6 of clubs"];
         $cardContainer = [];
-    
+
         foreach ($array as $card) {
             list($rank, $suit) = explode(" of ", $card);
             $rank = (int)$rank;
-    
+
             $card = new CardGraphic($rank, $suit);
             $cardContainer[] = $card->getAsText();
         }
-    
+
         $deck = new DeckOfCards($array);
         $remainingCards = $deck->getRemainingCards();
-    
+
         $remAsArray = [];
         foreach ($remainingCards as $card) {
             $remAsArray[] = $card->getAsText();
         }
-    
+
         if (is_array($remAsArray)) {
             $this->assertEquals($remAsArray, $cardContainer);
         }
     }
-    
 
-    public function testShuffle(): void
-    {
-        $deck = new DeckOfCards();
-        $shuffled = $deck->shuffle();
-        $this->assertNotEquals($deck, $shuffled);
-    }
-    public function testSorted(): void
+    public function testSortedAndShuffled(): void
     {
         $deck = new DeckOfCards();
         $this->assertInstanceOf(DeckOfCards::class, $deck);
-    
+
         $shuffled = $deck->shuffle();
         $this->assertNotEquals($deck, $shuffled);
-    
+
         $deck->sortDeck();
         $this->assertInstanceOf(DeckOfCards::class, $deck);
-    
+
         $drawCard = $deck->drawCard();
         $this->assertNotNull($drawCard);
-        
+
         $this->assertInstanceOf(Card::class, $drawCard);
-    
+
         $comparison = "Ace of Clubs";
         $this->assertEquals($comparison, $drawCard->getAsText());
-    
+
         $drawCard = $deck->drawCard();
         $this->assertNotNull($drawCard);
-        
+
         $this->assertInstanceOf(Card::class, $drawCard);
-    
+
         $comparison = "2 of Clubs";
         $this->assertEquals($comparison, $drawCard->getAsText());
     }
-    
+
     public function testJsonShuffledDeck(): void
     {
         $deck = new DeckOfCards();
@@ -148,7 +141,7 @@ class DeckOfCardsTest extends TestCase
             }
         }
     }
-    public function testCreateFromJsonWithValidJson(): void
+    public function testCreateFromJson(): void
     {
         $json = '["2 of hearts","8 of diamonds","11 of clubs"]';
 
@@ -161,10 +154,7 @@ class DeckOfCardsTest extends TestCase
         ];
 
         $this->assertEquals($expectedHand, $deck->getRemainingCards());
-    }
-
-    public function testCreateFromJsonWithInvalidJson(): void
-    {
+        
         $invalidJson = '["2 of hearts","8 of diamonds",';
 
         $this->expectException(InvalidArgumentException::class);

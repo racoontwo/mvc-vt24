@@ -85,5 +85,4 @@ class DiceHandTest extends TestCase
 
         $this->assertEquals($expectedValues, $actualValues);
     }
-
 }

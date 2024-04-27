@@ -152,7 +152,7 @@ class CardGameController extends AbstractController
                 $cardHand[] = $card->getAsString();
             }
         }
-        
+
 
         $data = [
             "num_cards" => $num,

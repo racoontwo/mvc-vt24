@@ -55,7 +55,7 @@ class DeckOfCards
     //         }
     //     }
     // }
-    
+
 
 
     public function add(CardGraphic $card): void
@@ -68,7 +68,7 @@ class DeckOfCards
         $drawnCard = !empty($this->deck) ? array_shift($this->deck) : null;
         return $drawnCard;
     }
-    
+
 
     public function cardsLeft(): int
     {

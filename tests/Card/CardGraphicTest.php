@@ -75,7 +75,5 @@ class CardGraphicTest extends TestCase
         $unknownCard = new CardGraphic(4, "Peter");
         $unRes = $unknownCard->getAsText();
         $this->assertStringContainsString("Unknown", $unRes);
-
     }
-
 }

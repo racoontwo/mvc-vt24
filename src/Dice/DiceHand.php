@@ -53,5 +53,4 @@ class DiceHand
         }
         return $sum;
     }
-
 }

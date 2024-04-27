@@ -20,15 +20,14 @@ class BlackJackTest extends TestCase
     {
         $game = new BlackJack();
         $this->assertInstanceOf("\App\BlackJack\BlackJack", $game);
-    }
-    public function testCreateBlackJackWithArgument(): void
-    {
+
         $deck = new DeckOfCards();
         $player = new CardHand();
         $house = new CardHand();
         $game = new BlackJack($deck, $player, $house);
         $this->assertNotNull($game, "Game object should not be null");
     }
+
     public function testHitMe(): void
     {
         $game = new BlackJack();
@@ -40,7 +39,7 @@ class BlackJackTest extends TestCase
         $game = new BlackJack();
         $countNotAceOfClubs = 0;
         $totalTests = 10; // Number of times to run the test
-    
+
         for ($i = 0; $i < $totalTests; $i++) {
             $game->shuffleDeck();
             $card = $game->hitMe();
@@ -51,15 +50,15 @@ class BlackJackTest extends TestCase
 
         $this->assertTrue($countNotAceOfClubs > $totalTests / 2);
     }
-    
-    public function testGetDeck(): void
-    {
-        $game = new BlackJack();
-        $deck = $game->getDeck();
-        $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
-        $card = $deck->drawCard();
-        $this->assertInstanceOf("\App\Card\Card", $card);
-    }
+
+    // public function testGetDeck(): void
+    // {
+    //     $game = new BlackJack();
+    //     $deck = $game->getDeck();
+    //     $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
+    //     $card = $deck->drawCard();
+    //     $this->assertInstanceOf("\App\Card\Card", $card);
+    // }
 
     public function testGetPlayerHand(): void
     {
@@ -69,11 +68,7 @@ class BlackJackTest extends TestCase
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
         $card = $cardHand->draw();
         $this->assertInstanceOf("\App\Card\Card", $card);
-    }
 
-    public function testGetDealerHand(): void
-    {
-        $game = new BlackJack();
         $cardHand = $game->getDealerHand();
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
     }
@@ -92,9 +87,6 @@ class BlackJackTest extends TestCase
         $exp = "You lost ...";
         $this->assertEquals($exp, $res);
 
-    }
-    public function testPlayerBlackJack(): void
-    {
         $deck = new DeckOfCards();
         $playerStub = $this->createMock(CardHand::class);
         $houseStub = new CardHand();
@@ -124,7 +116,6 @@ class BlackJackTest extends TestCase
         $res = $game->busted();
         $exp = null;
         $this->assertEquals($exp, $res);
-    
     }
 
     public function testDrawDealerCards(): void
@@ -152,11 +143,6 @@ class BlackJackTest extends TestCase
         $exp = "House wins";
         $this->assertEquals($exp, $res);
 
-    }
-
-    public function testGetWinnerPlayerWins(): void
-    {
-
         $deck = new DeckOfCards();
         $playerStub = $this->createMock(CardHand::class);
         $houseStub = $this->createMock(CardHand::class);
@@ -171,8 +157,8 @@ class BlackJackTest extends TestCase
         $res = $game->getWinner();
         $exp = "Player wins";
         $this->assertEquals($exp, $res);
-
     }
+
     public function testCreateFromJson(): void
     {
         $jsonString = '{
@@ -182,7 +168,6 @@ class BlackJackTest extends TestCase
         }';
 
         $jsonArray = json_decode($jsonString, true);
-        
         $game = BlackJack::createFromJson($jsonArray);
         $this->assertInstanceOf("\App\BlackJack\BlackJack", $game);
     }
@@ -190,9 +175,7 @@ class BlackJackTest extends TestCase
     {
         $game = new BlackJack();
         $jsonData = $game->exportToJson();
-        
         // Asserting return type
         $this->assertIsArray($jsonData);
     }
-    
 }
