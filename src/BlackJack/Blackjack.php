@@ -27,27 +27,13 @@ class BlackJack
     //     $this->playerHand = $playerHand;
     //     $this->dealerHand = $dealerHand;
     // }
-
     public function __construct(DeckOfCards $deck = null, CardHand $playerHand = null, CardHand $dealerHand = null)
     {
-        if ($deck === null) {
-            $this->deck = new DeckOfCards();
-        } else {
-            $this->deck = $deck;
-        }
-
-        if ($playerHand === null) {
-            $this->playerHand = new CardHand();
-        } else {
-            $this->playerHand = $playerHand;
-        }
-
-        if ($dealerHand === null) {
-            $this->dealerHand = new CardHand();
-        } else {
-            $this->dealerHand = $dealerHand;
-        }
+        $this->deck = $deck ?? new DeckOfCards();
+        $this->playerHand = $playerHand ?? new CardHand();
+        $this->dealerHand = $dealerHand ?? new CardHand();
     }
+    
 
     public function hitMe(): CardGraphic
     {

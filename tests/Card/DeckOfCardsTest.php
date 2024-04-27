@@ -22,7 +22,6 @@ class DeckOfCardsTest extends TestCase
 
     public function testCreateDeckWithArgument(): void
     {
-        $number = 5;
         $array = ["2 of hearts","8 of diamonds","11 of clubs"];
 
         $deck = new DeckOfCards($array);
@@ -76,13 +75,13 @@ class DeckOfCardsTest extends TestCase
         $deck = new DeckOfCards($array);
         $remainingCards = $deck->getRemainingCards();
     
-        $remainingCardsAsArray = [];
+        $remAsArray = [];
         foreach ($remainingCards as $card) {
-            $remainingCardsAsArray[] = $card->getAsText();
+            $remAsArray[] = $card->getAsText();
         }
     
-        if (is_array($remainingCardsAsArray)) {
-            $this->assertEquals($remainingCardsAsArray, $cardContainer);
+        if (is_array($remAsArray)) {
+            $this->assertEquals($remAsArray, $cardContainer);
         }
     }
     

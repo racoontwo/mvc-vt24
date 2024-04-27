@@ -16,10 +16,30 @@ class DeckOfCards
      */
     private $deck;
 
-    // public function __construct(array $cardArray = [])
-    // {
+    public function __construct(array $cardArray = [])
+    {
 
-    //     if (!empty($cardArray)) {
+        if (!empty($cardArray)) {
+            foreach ($cardArray as $cards) {
+                $cardData = explode(" of ", $cards);
+                $value = intval($cardData[0]);
+                $suit = $cardData[1];
+                $card = new CardGraphic($value, $suit);
+                $this->deck[] = $card;
+            }
+        } else {
+            foreach ($this->suits as $suit) {
+                for ($value = 1; $value <= 13; $value++) {
+                    $card = new CardGraphic($value, $suit);
+                    $this->deck[] = $card;
+                }
+            }
+        }
+    }
+
+    // public function __construct($cardArray = [])
+    // {
+    //     if (!empty($cardArray) && is_array($cardArray)) {
     //         foreach ($cardArray as $cards) {
     //             $cardData = explode(" of ", $cards);
     //             $value = intval($cardData[0]);
@@ -27,39 +47,15 @@ class DeckOfCards
     //             $card = new CardGraphic($value, $suit);
     //             $this->deck[] = $card;
     //         }
-    //     } else {
-    //         foreach ($this->suits as $suit) {
-    //             for ($value = 1; $value <= 13; $value++) {
-    //                 $card = new CardGraphic($value, $suit);
-    //                 $this->deck[] = $card;
-    //             }
+    //     }
+    //     foreach ($this->suits as $suit) {
+    //         for ($value = 1; $value <= 13; $value++) {
+    //             $card = new CardGraphic($value, $suit);
+    //             $this->deck[] = $card;
     //         }
     //     }
     // }
-
-    public function __construct($cardArray = [])
-{
-    if (!empty($cardArray)) {
-        if (!is_array($cardArray)) {
-            // If $cardArray is not an array, convert it to an array
-            $cardArray = [$cardArray];
-        }
-        foreach ($cardArray as $cards) {
-            $cardData = explode(" of ", $cards);
-            $value = intval($cardData[0]);
-            $suit = $cardData[1];
-            $card = new CardGraphic($value, $suit);
-            $this->deck[] = $card;
-        }
-    } else {
-        foreach ($this->suits as $suit) {
-            for ($value = 1; $value <= 13; $value++) {
-                $card = new CardGraphic($value, $suit);
-                $this->deck[] = $card;
-            }
-        }
-    }
-}
+    
 
 
     public function add(CardGraphic $card): void
@@ -69,12 +65,10 @@ class DeckOfCards
 
     public function drawCard(): ?CardGraphic
     {
-        if (!empty($this->deck)) {
-            return array_shift($this->deck);
-        } else {
-            return null;
-        }
+        $drawnCard = !empty($this->deck) ? array_shift($this->deck) : null;
+        return $drawnCard;
     }
+    
 
     public function cardsLeft(): int
     {

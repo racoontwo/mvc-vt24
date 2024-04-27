@@ -14,11 +14,6 @@ class CardHandTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCardHand(): void
-    {
-        $cardHand = new CardHand();
-        $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
-    }
     public function testCreateCardHandWithArgument(): void
     {
         $card = new Card();
@@ -91,10 +86,10 @@ class CardHandTest extends TestCase
             $cardHand->add($card);
         }
 
-        $arithmeticProgression = 45;
+        $ariPro = 45;
 
         $totalSum = $cardHand->getHandSum();
-        $this->assertEquals($arithmeticProgression, $totalSum);
+        $this->assertEquals($ariPro, $totalSum);
     }
 
     public function testGetHandAsJsonWithCards(): void

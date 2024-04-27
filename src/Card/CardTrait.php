@@ -7,14 +7,14 @@ namespace App\Card;
  */
 trait CardTrait
 {
-    protected $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+    protected array $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
 
-    public function jsonFormatContainer($container): string
+    public function jsonFormatContainer(array $container): string
     {
         $jsonDeck = [];
         foreach ($container as $card) {
             $jsonDeck[] = $card->getValue() . ' of ' . $card->getSuit();
         }
-        return json_encode($jsonDeck);
+        return (string)json_encode($jsonDeck);
     }
 }

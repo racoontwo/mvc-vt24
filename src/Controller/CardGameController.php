@@ -69,13 +69,7 @@ class CardGameController extends AbstractController
     #[Route("/game/card/test/card_deck", name: "test_deck")]
     public function testCardDeck(SessionInterface $session): Response
     {
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            // Create a new deck if it's not in the session
-            $deck = new DeckOfCards();
-            $deck->shuffle();
-        }
+        $deck = $session->has("deck") ? $session->get("deck") : (new DeckOfCards())->shuffle();
 
         $card = $deck->drawCard();
         // Prepare data to pass to the template
@@ -154,8 +148,11 @@ class CardGameController extends AbstractController
         $cardHand = [];
         for ($i = 1; $i <= $num; $i++) {
             $card = $deck->drawCard();
-            $cardHand[] = $card->getAsString();
+            if ($card !== null) {
+                $cardHand[] = $card->getAsString();
+            }
         }
+        
 
         $data = [
             "num_cards" => $num,

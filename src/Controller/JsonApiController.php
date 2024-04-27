@@ -54,12 +54,10 @@ class JsonApiController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        if ($session->has("remaining_cards")) {
-            $sessionData = json_decode($session->get("remaining_cards", true));
-            $deck = new DeckOfCards($sessionData);
-        } else {
-            $deck = new DeckOfCards();
-        }
+        $deck = $session->has("remaining_cards") 
+        ? new DeckOfCards(json_decode($session->get("remaining_cards", true)))
+        : new DeckOfCards();
+    
 
         $card = $deck->drawCard();
 
@@ -87,13 +85,9 @@ class JsonApiController extends AbstractController
             throw new Exception("Can not draw more than 52 cards!");
         }
 
-        if ($session->has("remaining_cards")) {
-            $sessionData = json_decode($session->get("remaining_cards", true));
-            $deck = new DeckOfCards($sessionData);
-        } else {
-            $deck = new DeckOfCards();
-            $deck->shuffle();
-        }
+        $deck = $session->has("remaining_cards") 
+        ? new DeckOfCards(json_decode($session->get("remaining_cards", true)))
+        : (new DeckOfCards())->shuffle();
 
         $deck->shuffle();
 
@@ -102,11 +96,9 @@ class JsonApiController extends AbstractController
             $card = $deck->drawCard();
             if ($card !== null) {
                 $cardHand[] = $card->getAsText();
-            } else {
-                $card = null;
-            }
+            }           
         }
-        
+
 
         $session->set("remaining_cards", $deck->jsonDeckRaw());
 

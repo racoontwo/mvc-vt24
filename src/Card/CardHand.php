@@ -30,12 +30,9 @@ class CardHand
 
     public function draw()
     {
-        if (!empty($this->hand)) {
-            return array_shift($this->hand);
-        } else {
-            return null;
-        }
+        return !empty($this->hand) ? array_shift($this->hand) : null;
     }
+    
 
     public function getNumberCards(): int
     {
@@ -60,16 +57,11 @@ class CardHand
 
     public function getHandAsJson(): string
     {
-        $handArray = [];
-        if ($this->hand !== null) {
-            foreach ($this->hand as $card) {
-                $handArray[] = $card->getValue() . ' of ' . $card->getSuit();
-            }
-            return json_encode($handArray);
-        } else {
-            return "";
-        }
+        return ($this->hand !== null) ? json_encode(array_map(function ($card) {
+            return $card->getValue() . ' of ' . $card->getSuit();
+        }, $this->hand)) : "";
     }
+    
 
     public function loadFromJson(string $json): void
     {

@@ -15,16 +15,12 @@ class Card
      */
     protected $suit;
 
-    public function __construct($value = null, $suit = null)
+    public function __construct(?int $value = null, ?string $suit = null)
     {
-        if ($value !== null && $suit !== null) {
-            $this->value = $value;
-            $this->suit = $suit;
-        } else {
-            $this->value = null;
-            $this->suit = null;
-        }
+        $this->value = $value ?? null;
+        $this->suit = $suit ?? null;
     }
+    
 
     public function pick(): Card
     {

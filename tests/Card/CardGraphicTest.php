@@ -52,24 +52,24 @@ class CardGraphicTest extends TestCase
         $suits = ["spades", "diamonds", "hearts", "clubs"];
         $dress = ["Jack", "Queen", "King", "Ace"];
         $cardContainer = [];
-        $i = 0;
-        $j = 11;
+        $index = 0;
+        $startNumber = 11;
 
         foreach ($suits as $suit) {
-            if ($j > 13) {
-                $j = 1;
+            if ($startNumber > 13) {
+                $startNumber = 1;
             }
-            $card = new CardGraphic($j, $suit);
+            $card = new CardGraphic($startNumber, $suit);
             $cardContainer[] = $card;
-            $j += 1;
+            $startNumber += 1;
         }
 
         foreach ($cardContainer as $card) {
             $res = $card->getAsText();
             $this->assertNotEmpty($res);
-            $this->assertStringContainsString(ucfirst($suits[$i]), $res);
-            $this->assertStringContainsString(ucfirst($dress[$i]), $res);
-            $i += 1;
+            $this->assertStringContainsString(ucfirst($suits[$index]), $res);
+            $this->assertStringContainsString(ucfirst($dress[$index]), $res);
+            $index += 1;
         }
 
         $unknownCard = new CardGraphic(4, "Peter");

@@ -81,10 +81,11 @@ class CardGraphic extends Card
 
     private $joker = '🃟';
 
-    public function __construct($value, $suit)
+    public function __construct($value = null, $suit = null)
     {
         parent::__construct($value, $suit);
     }
+    
 
     public function getAsRaw(): string
     {
