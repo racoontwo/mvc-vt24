@@ -38,7 +38,8 @@ class BlackJackController extends AbstractController
             $dealerHand = new CardHand();
             $deck = new DeckOfCards();
             $deck->shuffle();
-            $playerHand->add($deck->drawCard());
+            $playerHand->add($deck->drawCard() ?? new CardGraphic());
+
 
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
@@ -62,9 +63,7 @@ class BlackJackController extends AbstractController
             return $this->redirectToRoute('black_jack');
         };
 
-        // $blackJack = new BlackJack();
-        // $game = $blackJack->createFromJson($gameData);
-        $game = BlackJack::createFromJson($gameData);
+        $game = BlackJack::createFromJson(is_array($gameData) ? $gameData : []);
 
         $data = [
             "game" => $game,

@@ -33,7 +33,7 @@ class BlackJack
         $this->playerHand = $playerHand ?? new CardHand();
         $this->dealerHand = $dealerHand ?? new CardHand();
     }
-    
+
 
     public function hitMe(): CardGraphic
     {
@@ -107,10 +107,14 @@ class BlackJack
 
     public static function createFromJson(array $jsonData): BlackJack
     {
-        $deck = DeckOfCards::createFromJson($jsonData['deck']);
-        $playerHand = CardHand::createFromJson($jsonData['player_hand']);
-        $dealerHand = CardHand::createFromJson($jsonData['dealer_hand']);
-        return new self($deck, $playerHand, $dealerHand);
+        $blackjack = new self();
+
+        $blackjack->deck = DeckOfCards::createFromJson($jsonData['deck']);
+        $blackjack->playerHand = CardHand::createFromJson($jsonData['player_hand']);
+        $blackjack->dealerHand = CardHand::createFromJson($jsonData['dealer_hand']);
+        
+        return $blackjack;
+
     }
 
     public function exportToJson(): array

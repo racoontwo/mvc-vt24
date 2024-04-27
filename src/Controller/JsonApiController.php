@@ -57,14 +57,14 @@ class JsonApiController extends AbstractController
         $deck = $session->has("remaining_cards") 
         ? new DeckOfCards(json_decode($session->get("remaining_cards", true)))
         : new DeckOfCards();
-    
 
         $card = $deck->drawCard();
+        $text = $card !== null ? $card->getAsText() : null;
 
         $session->set("remaining_cards", $deck->jsonDeckRaw());
 
         $data = [
-            "cardText" => $card->getAsText(),
+            "cardText" => $text,
             "cardsLeft" => $deck->cardsLeft(),
         ];
 

@@ -83,7 +83,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card",
             "name": "Card",
-            "summary": "",
+            "summary": "This\u0020class\u0020is\u0020for\u0020the\u0020playing\u0020card.",
             "url": "classes/App-Card-Card.html"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
@@ -93,22 +93,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003Apick\u0028\u0029",
             "name": "pick",
-            "summary": "",
+            "summary": "This\u0020method\u0020is\u0020to\u0020pick\u0020a\u0020card\u0020with\u0020a\u0020random\u0020value.",
             "url": "classes/App-Card-Card.html#method_pick"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetValue\u0028\u0029",
             "name": "getValue",
-            "summary": "",
+            "summary": "This\u0020method\u0020is\u0020to\u0020get\u0020the\u0020value\u0020of\u0020the\u0020card.",
             "url": "classes/App-Card-Card.html#method_getValue"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetSuit\u0028\u0029",
             "name": "getSuit",
-            "summary": "",
+            "summary": "This\u0020method\u0020is\u0020to\u0020get\u0020the\u0020suit\u0020of\u0020the\u0020card.",
             "url": "classes/App-Card-Card.html#method_getSuit"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "This\u0020method\u0020is\u0020to\u0020get\u0020the\u0020information\u0020about\u0020the\u0020card\u0020in\u0020a\u0020string.",
             "url": "classes/App-Card-Card.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Card\\Card\u003A\u003A\u0024value",
@@ -123,7 +123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "",
+            "summary": "This\u0020class\u0020is\u0020for\u0020the\u0020playing\u0020card.",
             "url": "classes/App-Card-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A__construct\u0028\u0029",
@@ -138,7 +138,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "This\u0020method\u0020is\u0020to\u0020get\u0020the\u0020information\u0020about\u0020the\u0020card\u0020in\u0020a\u0020string.",
             "url": "classes/App-Card-CardGraphic.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AgetAsText\u0028\u0029",
