@@ -16,26 +16,51 @@ class DeckOfCards
      */
     private $deck;
 
-    public function __construct(array $cardArray = [])
-    {
+    // public function __construct(array $cardArray = [])
+    // {
 
-        if (!empty($cardArray)) {
-            foreach ($cardArray as $cards) {
-                $cardData = explode(" of ", $cards);
-                $value = intval($cardData[0]);
-                $suit = $cardData[1];
+    //     if (!empty($cardArray)) {
+    //         foreach ($cardArray as $cards) {
+    //             $cardData = explode(" of ", $cards);
+    //             $value = intval($cardData[0]);
+    //             $suit = $cardData[1];
+    //             $card = new CardGraphic($value, $suit);
+    //             $this->deck[] = $card;
+    //         }
+    //     } else {
+    //         foreach ($this->suits as $suit) {
+    //             for ($value = 1; $value <= 13; $value++) {
+    //                 $card = new CardGraphic($value, $suit);
+    //                 $this->deck[] = $card;
+    //             }
+    //         }
+    //     }
+    // }
+
+    public function __construct($cardArray = [])
+{
+    if (!empty($cardArray)) {
+        if (!is_array($cardArray)) {
+            // If $cardArray is not an array, convert it to an array
+            $cardArray = [$cardArray];
+        }
+        foreach ($cardArray as $cards) {
+            $cardData = explode(" of ", $cards);
+            $value = intval($cardData[0]);
+            $suit = $cardData[1];
+            $card = new CardGraphic($value, $suit);
+            $this->deck[] = $card;
+        }
+    } else {
+        foreach ($this->suits as $suit) {
+            for ($value = 1; $value <= 13; $value++) {
                 $card = new CardGraphic($value, $suit);
                 $this->deck[] = $card;
             }
-        } else {
-            foreach ($this->suits as $suit) {
-                for ($value = 1; $value <= 13; $value++) {
-                    $card = new CardGraphic($value, $suit);
-                    $this->deck[] = $card;
-                }
-            }
         }
     }
+}
+
 
     public function add(CardGraphic $card): void
     {

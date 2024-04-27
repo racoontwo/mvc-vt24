@@ -100,8 +100,13 @@ class JsonApiController extends AbstractController
         $cardHand = [];
         for ($i = 1; $i <= $num; $i++) {
             $card = $deck->drawCard();
-            $cardHand[] = $card->getAsText();
+            if ($card !== null) {
+                $cardHand[] = $card->getAsText();
+            } else {
+                $card = null;
+            }
         }
+        
 
         $session->set("remaining_cards", $deck->jsonDeckRaw());
 

@@ -96,20 +96,17 @@ class CardGraphic extends Card
         switch ($this->suit) {
             case 'diamonds':
                 return $this->diamonds[$this->value - 1];
-                break;
             case 'clubs':
                 return $this->clubs[$this->value - 1];
-                break;
             case 'hearts':
                 return $this->hearts[$this->value - 1];
-                break;
             case 'spades':
                 return $this->spades[$this->value - 1];
-                break;
             default:
                 return $this->joker; // Return joker for invalid suit
         }
     }
+    
 
     public function getAsText(): string
     {
