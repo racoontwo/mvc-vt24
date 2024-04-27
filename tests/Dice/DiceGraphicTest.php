@@ -13,7 +13,7 @@ class DiceGraphicTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateDiceGraphic()
+    public function testCreateDiceGraphic(): void
     {
         $die = new DiceGraphic();
         $die->roll();
@@ -24,7 +24,7 @@ class DiceGraphicTest extends TestCase
         $this->assertNotEmpty($res);
     }
 
-    public function testGetDiceGraphicAsString()
+    public function testGetDiceGraphicAsString(): void
     {
         $representation = [
             '⚀',

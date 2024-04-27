@@ -12,7 +12,7 @@ class DiceHandTest extends TestCase
     /**
     * Stub the dices to assure the value can be asserted.
     */
-    public function testAddStubbedDices()
+    public function testAddStubbedDices(): void
     {
         // Create a stub for the Dice class.
         $stub = $this->createMock(Dice::class);
@@ -31,7 +31,7 @@ class DiceHandTest extends TestCase
         $this->assertEquals(12, $res);
     }
 
-    public function testGetNumberDices()
+    public function testGetNumberDices(): void
     {
         $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);
@@ -48,7 +48,7 @@ class DiceHandTest extends TestCase
         $this->assertEquals($numberOfDices, $res);
     }
 
-    public function testGetValues()
+    public function testGetValues(): void
     {
         $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);
@@ -68,7 +68,7 @@ class DiceHandTest extends TestCase
         $this->assertEquals($expectedValues, $actualValues);
     }
 
-    public function testGetString()
+    public function testGetString(): void
     {
         $dicehand = new DiceHand();
         $stub = $this->createMock(Dice::class);

@@ -536,6 +536,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Dice-Dice.html"
         },                {
+            "fqsen": "\\App\\Dice\\Dice\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Dice-Dice.html#method___construct"
+        },                {
             "fqsen": "\\App\\Dice\\Dice\u003A\u003Aroll\u0028\u0029",
             "name": "roll",
             "summary": "",

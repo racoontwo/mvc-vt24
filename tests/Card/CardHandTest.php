@@ -14,20 +14,22 @@ class CardHandTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCardHand()
+    public function testCreateCardHand(): void
     {
         $cardHand = new CardHand();
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
     }
-    public function testCreateCardHandWithArgument()
+    public function testCreateCardHandWithArgument(): void
     {
         $card = new Card();
         $array = [];
-        $array[] = $card->pick();
+        $pickedCard = $card->pick(); // Store the picked card
+        $array[] = $pickedCard; // Add it to the array
         $cardHand = new CardHand($array);
         $this->assertInstanceOf("\App\Card\CardHand", $cardHand);
     }
-    public function testAddCard()
+    
+    public function testAddCard(): void
     {
         $card = new CardGraphic(4, "clubs");
         $cardComparison = $card->getAsString();
@@ -39,7 +41,7 @@ class CardHandTest extends TestCase
 
         $this->assertEquals($cardComparison, $drawnCard);
     }
-    public function testDrawCard()
+    public function testDrawCard(): void
     {
         $card = new CardGraphic(4, "clubs");
         $cardComparison = $card->getAsString();
@@ -56,7 +58,7 @@ class CardHandTest extends TestCase
         $this->assertEquals(null, $drawnCard);
     }
 
-    public function testGetNumberCards()
+    public function testGetNumberCards(): void
     {
         $number = 9;
         $cardHand = new CardHand();
@@ -70,7 +72,7 @@ class CardHandTest extends TestCase
         $this->assertEquals($number - 1, $totalNumber);
     }
 
-    public function testGetHand()
+    public function testGetHand(): void
     {
         $cardHand = new CardHand();
 
@@ -79,7 +81,7 @@ class CardHandTest extends TestCase
         $this->assertIsArray($hand);
     }
 
-    public function testGetHandSum()
+    public function testGetHandSum(): void
     {
         $number = 9;
         $cardHand = new CardHand();
@@ -95,7 +97,7 @@ class CardHandTest extends TestCase
         $this->assertEquals($arithmeticProgression, $totalSum);
     }
 
-    public function testGetHandAsJsonWithCards()
+    public function testGetHandAsJsonWithCards(): void
     {
         $cardHand = new CardHand();
         $cardHand->add(new CardGraphic(2, "hearts"));
@@ -105,13 +107,13 @@ class CardHandTest extends TestCase
         $this->assertEquals($expectedJson, $cardHand->getHandAsJson());
     }
 
-    public function testGetHandAsJsonWithEmptyHand()
+    public function testGetHandAsJsonWithEmptyHand(): void
     {
         $cardHand = new CardHand();
         $this->assertEquals("[]", $cardHand->getHandAsJson());
     }
 
-    public function testLoadFromJsonWithInvalidJson()
+    public function testLoadFromJsonWithInvalidJson(): void
     {
         $cardHand = new CardHand();
 
@@ -122,7 +124,7 @@ class CardHandTest extends TestCase
 
     }
 
-    public function testLoadFromJsonWithValidJson()
+    public function testLoadFromJsonWithValidJson(): void
     {
         $cardHand = new CardHand();
 
@@ -139,7 +141,7 @@ class CardHandTest extends TestCase
         $this->assertEquals($expectedHand, $cardHand->getHand());
     }
 
-    public function testCreateFromJsonWithValidJson()
+    public function testCreateFromJsonWithValidJson(): void
     {
         $json = '["2 of hearts","8 of diamonds","11 of clubs"]';
 
@@ -154,7 +156,7 @@ class CardHandTest extends TestCase
         $this->assertEquals($expectedHand, $cardHand->getHand());
     }
 
-    public function testCreateFromJsonWithInvalidJson()
+    public function testCreateFromJsonWithInvalidJson(): void
     {
         $invalidJson = '["2 of hearts","8 of diamonds",';
 

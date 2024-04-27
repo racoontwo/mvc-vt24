@@ -13,7 +13,7 @@ class CardGraphicTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use arguments.
      */
-    public function testCreateCardGraphic()
+    public function testCreateCardGraphic(): void
     {
         $card = new CardGraphic(4, "spades");
         $this->assertInstanceOf("\App\Card\CardGraphic", $card);
@@ -22,7 +22,7 @@ class CardGraphicTest extends TestCase
         $this->assertNotEmpty($res);
     }
 
-    public function testGetRaw()
+    public function testGetRaw(): void
     {
         $card = new CardGraphic(4, "spades");
         $res = $card->getAsRaw();
@@ -31,7 +31,7 @@ class CardGraphicTest extends TestCase
         $this->assertStringContainsString("spades", $res);
     }
 
-    public function testSuits()
+    public function testSuits(): void
     {
         $suits = ["spades", "diamonds", "hearts", "clubs", "joker"];
         $cardContainer = [];
@@ -47,7 +47,7 @@ class CardGraphicTest extends TestCase
         }
     }
 
-    public function testGetAsText()
+    public function testGetAsText(): void
     {
         $suits = ["spades", "diamonds", "hearts", "clubs"];
         $dress = ["Jack", "Queen", "King", "Ace"];

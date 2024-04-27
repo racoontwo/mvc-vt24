@@ -13,7 +13,7 @@ class DiceTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateDice()
+    public function testCreateDice(): void
     {
         $die = new Dice();
         $this->assertInstanceOf("\App\Dice\Dice", $die);
@@ -25,7 +25,7 @@ class DiceTest extends TestCase
     /**
      * Create a mocked object that always returns 6.
      */
-    public function testStubRollDiceLastRoll()
+    public function testStubRollDiceLastRoll(): void
     {
         // Create a stub for the Dice class.
         $stub = $this->createMock(Dice::class);
@@ -43,7 +43,7 @@ class DiceTest extends TestCase
      * Roll object and verify that the object has changed value
      * in most cases, use no arguments.
      */
-    public function testRoll()
+    public function testRoll(): void
     {
         $die = new Dice();
 
@@ -68,7 +68,7 @@ class DiceTest extends TestCase
     /**
      * Test a value between 1-6 is returned from getValue.
      */
-    public function testGetValue()
+    public function testGetValue(): void
     {
         $die = new Dice();
         $die->roll();

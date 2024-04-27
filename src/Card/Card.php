@@ -26,10 +26,11 @@ class Card
         }
     }
 
-    public function pick(): void
+    public function pick(): Card
     {
         $this->value = random_int(1, 13);
         $this->suit = $this->suits[array_rand($this->suits)];
+        return new Card($this->value, $this->suit);
     }
 
     public function getValue(): int

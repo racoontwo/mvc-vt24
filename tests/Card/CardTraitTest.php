@@ -12,7 +12,7 @@ class CardTraitTest extends TestCase
     use CardTrait;
 
     // Test the jsonFormatContainer method
-    public function testJsonFormatContainer()
+    public function testJsonFormatContainer(): void
     {
         $cards = [
             new CardGraphic(9, 'hearts'),
