@@ -56,8 +56,6 @@ class DeckOfCards
     //     }
     // }
 
-
-
     public function add(CardGraphic $card): void
     {
         $this->deck[] = $card;
@@ -159,6 +157,7 @@ class DeckOfCards
             throw new InvalidArgumentException("Invalid JSON format.");
         }
 
+        //this is probably what you have to change
         $deck = new DeckOfCards($deckArray);
         return $deck;
     }

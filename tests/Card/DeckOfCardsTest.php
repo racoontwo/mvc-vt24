@@ -145,7 +145,9 @@ class DeckOfCardsTest extends TestCase
     {
         $json = '["2 of hearts","8 of diamonds","11 of clubs"]';
 
+        //this is what you have to change
         $deck = DeckOfCards::createFromJson($json);
+        // $deck->createFromJson($json);
 
         $expectedHand = [
             new CardGraphic(2, "hearts"),
@@ -158,6 +160,7 @@ class DeckOfCardsTest extends TestCase
         $invalidJson = '["2 of hearts","8 of diamonds",';
 
         $this->expectException(InvalidArgumentException::class);
-        DeckOfCards::createFromJson($invalidJson);
+        $deck = new DeckOfCards();
+        $deck->createFromJson($invalidJson);
     }
 }
