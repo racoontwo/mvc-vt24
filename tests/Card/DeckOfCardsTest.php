@@ -156,7 +156,7 @@ class DeckOfCardsTest extends TestCase
         ];
 
         $this->assertEquals($expectedHand, $deck->getRemainingCards());
-        
+
         $invalidJson = '["2 of hearts","8 of diamonds",';
 
         $this->expectException(InvalidArgumentException::class);

@@ -33,7 +33,11 @@ class BlackJack
         $this->playerHand = $playerHand ?? new CardHand();
         $this->dealerHand = $dealerHand ?? new CardHand();
     }
-
+    /**
+     * Draws a card from the deck and adds it to the player's hand.
+     *
+     * @return CardGraphic The card drawn from the deck and added to the player's hand.
+     */
     public function hitMe(): CardGraphic
     {
         $card = $this->deck->drawCard();
@@ -42,26 +46,54 @@ class BlackJack
         return $card;
     }
 
+
+
+    /**
+     * Shuffles the deck of cards.
+     * It rearranges the order of cards randomly, making it ready for the next round of the game.
+     *
+     * @return void
+     */
     public function shuffleDeck(): void
     {
         $this->deck->shuffle();
     }
 
+    /**
+     * Returns the current deck of cards
+     *
+     * @return DeckOfCards
+     */
     public function getDeck(): DeckOfCards
     {
         return $this->deck;
     }
 
+    /**
+     * Returns the current player hand of cards
+     *
+     * @return CardHand
+     */
     public function getPlayerHand(): CardHand
     {
         return $this->playerHand;
     }
-
+    /**
+     * Returns the current dealer/house hand of cards
+     *
+     * @return CardHand
+     */
     public function getDealerHand(): CardHand
     {
         return $this->dealerHand;
     }
 
+    /**
+     * Checks if either the player or the dealer has busted (gone over 21).
+     *
+     * @return bool|null Returns true if either the player or the dealer has busted,
+     *                  otherwise returns null if neither has busted.
+     */
     public function busted(): null|true
     {
         if ($this->dealerHand->getHandSum() > 21 || $this->playerHand->getHandSum() > 21) {
@@ -70,7 +102,11 @@ class BlackJack
         return null;
     }
 
-
+    /**
+     * Determines the result of the player's hand in the game and returns it.
+     *
+     * @return string|null Returns a string indicating the result of the player's hand. Or null.
+     */
     public function getPlayerResult()
     {
         if ($this->playerHand->getHandSum() > 21) {
@@ -84,6 +120,11 @@ class BlackJack
         return null;
     }
 
+    /**
+     * After the player has drawn his/her cards, this function draws the cards for the dealer
+     *
+     * @return CardHand The dealer's hand after drawing cards.
+     */
     public function drawDealerCards()
     {
         while ($this->dealerHand->getHandSum() <= 17) {
@@ -93,6 +134,11 @@ class BlackJack
         return $this->dealerHand;
     }
 
+    /**
+     * Returns whoever is the winner, either player or house.
+     *
+     * @return string The string saying who won.
+     */
     public function getWinner()
     {
         if ($this->dealerHand->getHandSum() > 21) {
@@ -104,6 +150,13 @@ class BlackJack
         return "House wins";
     }
 
+    /**
+     * Creates a new instance of the Blackjack game from JSON data.
+     *
+     * @param array $jsonData An array containing JSON data representing the Blackjack game.
+     *                        It should have keys 'deck', 'player_hand', and 'dealer_hand'.
+     * @return BlackJack A new instance of the Blackjack game initialized with the provided JSON data.
+     */
     public static function createFromJson(array $jsonData): BlackJack
     {
         $blackjack = new self();
@@ -115,6 +168,11 @@ class BlackJack
         return $blackjack;
     }
 
+    /**
+     * Converts the current state of the Blackjack game to a JSON representation to be used for session storage.
+     *
+     * @return array An array representing the current state of the Blackjack game in JSON format.
+     */
     public function exportToJson(): array
     {
         $gameData = [

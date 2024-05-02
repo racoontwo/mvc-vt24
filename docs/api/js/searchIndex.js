@@ -13,57 +13,57 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AhitMe\u0028\u0029",
             "name": "hitMe",
-            "summary": "",
+            "summary": "Draws\u0020a\u0020card\u0020from\u0020the\u0020deck\u0020and\u0020adds\u0020it\u0020to\u0020the\u0020player\u0027s\u0020hand.",
             "url": "classes/App-BlackJack-BlackJack.html#method_hitMe"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AshuffleDeck\u0028\u0029",
             "name": "shuffleDeck",
-            "summary": "",
+            "summary": "Shuffles\u0020the\u0020deck\u0020of\u0020cards.",
             "url": "classes/App-BlackJack-BlackJack.html#method_shuffleDeck"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020current\u0020deck\u0020of\u0020cards",
             "url": "classes/App-BlackJack-BlackJack.html#method_getDeck"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AgetPlayerHand\u0028\u0029",
             "name": "getPlayerHand",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020current\u0020player\u0020hand\u0020of\u0020cards",
             "url": "classes/App-BlackJack-BlackJack.html#method_getPlayerHand"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AgetDealerHand\u0028\u0029",
             "name": "getDealerHand",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020current\u0020dealer\/house\u0020hand\u0020of\u0020cards",
             "url": "classes/App-BlackJack-BlackJack.html#method_getDealerHand"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003Abusted\u0028\u0029",
             "name": "busted",
-            "summary": "",
+            "summary": "Checks\u0020if\u0020either\u0020the\u0020player\u0020or\u0020the\u0020dealer\u0020has\u0020busted\u0020\u0028gone\u0020over\u002021\u0029.",
             "url": "classes/App-BlackJack-BlackJack.html#method_busted"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AgetPlayerResult\u0028\u0029",
             "name": "getPlayerResult",
-            "summary": "",
+            "summary": "Determines\u0020the\u0020result\u0020of\u0020the\u0020player\u0027s\u0020hand\u0020in\u0020the\u0020game\u0020and\u0020returns\u0020it.",
             "url": "classes/App-BlackJack-BlackJack.html#method_getPlayerResult"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AdrawDealerCards\u0028\u0029",
             "name": "drawDealerCards",
-            "summary": "",
+            "summary": "After\u0020the\u0020player\u0020has\u0020drawn\u0020his\/her\u0020cards,\u0020this\u0020function\u0020draws\u0020the\u0020cards\u0020for\u0020the\u0020dealer",
             "url": "classes/App-BlackJack-BlackJack.html#method_drawDealerCards"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AgetWinner\u0028\u0029",
             "name": "getWinner",
-            "summary": "",
+            "summary": "Returns\u0020whoever\u0020is\u0020the\u0020winner,\u0020either\u0020player\u0020or\u0020house.",
             "url": "classes/App-BlackJack-BlackJack.html#method_getWinner"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AcreateFromJson\u0028\u0029",
             "name": "createFromJson",
-            "summary": "",
+            "summary": "Creates\u0020a\u0020new\u0020instance\u0020of\u0020the\u0020Blackjack\u0020game\u0020from\u0020JSON\u0020data.",
             "url": "classes/App-BlackJack-BlackJack.html#method_createFromJson"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003AexportToJson\u0028\u0029",
             "name": "exportToJson",
-            "summary": "",
+            "summary": "Converts\u0020the\u0020current\u0020state\u0020of\u0020the\u0020Blackjack\u0020game\u0020to\u0020a\u0020JSON\u0020representation\u0020to\u0020be\u0020used\u0020for\u0020session\u0020storage.",
             "url": "classes/App-BlackJack-BlackJack.html#method_exportToJson"
         },                {
             "fqsen": "\\App\\BlackJack\\BlackJack\u003A\u003A\u0024deck",

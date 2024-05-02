@@ -51,14 +51,14 @@ class BlackJackTest extends TestCase
         $this->assertTrue($countNotAceOfClubs > $totalTests / 2);
     }
 
-    // public function testGetDeck(): void
-    // {
-    //     $game = new BlackJack();
-    //     $deck = $game->getDeck();
-    //     $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
-    //     $card = $deck->drawCard();
-    //     $this->assertInstanceOf("\App\Card\Card", $card);
-    // }
+    public function testGetDeck(): void
+    {
+        $game = new BlackJack();
+        $deck = $game->getDeck();
+        $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);
+        $card = $deck->drawCard();
+        $this->assertInstanceOf("\App\Card\Card", $card);
+    }
 
     public function testGetPlayerHand(): void
     {
