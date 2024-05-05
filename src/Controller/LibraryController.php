@@ -155,4 +155,24 @@ class LibraryController extends AbstractController
 
         return $this->render('library/view.html.twig', $data);
     }
+
+    #[Route('/library/update{id}', name: 'library_update')]
+    public function updateBook(
+        BookRepository $bookRepository,
+        int $id
+    ): Response {
+        $book = $bookRepository
+        // ->find(1);
+        ->find($id);
+
+        // echo($id);
+        
+    $data['book'] = $book;
+
+        $data = [
+            'book' => $book
+        ];
+
+        return $this->render('library/update.html.twig', $data);
+    }
 }

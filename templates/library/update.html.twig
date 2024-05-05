@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a book to the library{% endblock %}
+
+{% block body %}
+
+{{ include('flash.html.twig') }}
+
+
+<form action="" method="post">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" required minlength="1" value="{{ book.title }}"><br>
+    <label for="isbn">ISBN Number:</label><br>
+    <input type="number" id="isbn" name="isbn" required min="1" value="{{ book.isbn }}"><br>
+    <label for="author">Author:</label><br>
+    <input type="text" id="author" name="author" required minlength="1" value="{{ book.author }}"><br>
+    <label for="image_url">URL to Image:</label><br>
+    <input type="text" id="image_url" name="image_url" required minlength="1" value="{{ book.image }}"><br><br>
+    <input type="submit" value="Update book information">
+</form>
+
+{% endblock %}
