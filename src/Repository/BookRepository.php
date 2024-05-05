@@ -18,10 +18,12 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Find all books having with isbn.
+     * 
+     * @param int $isbn input value with the value.
      *
-     * @return [] Returns an array of information about the book
+     * @return mixed array of the book information.
      */
-    public function findByISBN($isbn): array
+    public function findByISBN($isbn): mixed
     {
         $conn = $this->getEntityManager()->getConnection();
 

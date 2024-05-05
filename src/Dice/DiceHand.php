@@ -7,7 +7,7 @@ use App\Dice\Dice;
 class DiceHand
 {
     /**
-     * @var array
+     * @var Dice[] Array containing Die objects representing the dice in the hand.
      */
     private $hand = [];
 
@@ -27,7 +27,11 @@ class DiceHand
     {
         return count($this->hand);
     }
-
+    /**
+     * Get the values of the dice in the hand.
+     * 
+     * @return int[] Returns an array of integers representing the values of the dice.
+     */
     public function getValues(): array
     {
         $values = [];
@@ -37,6 +41,11 @@ class DiceHand
         return $values;
     }
 
+    /**
+     * Get the values of the dice in the hand as strings.
+     * 
+     * @return string[] Returns an array of strings representing the values of the dice.
+     */
     public function getString(): array
     {
         $values = [];

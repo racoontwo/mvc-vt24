@@ -151,9 +151,7 @@ class LibraryController extends AbstractController
     ): Response {
         $books = $bookRepository->findAll();
 
-        $data = [
-            'books' => $books
-        ];
+        $data['books'] = $books;
 
         return $this->render('library/view.html.twig', $data);
     }
@@ -164,16 +162,9 @@ class LibraryController extends AbstractController
         int $id
     ): Response {
         $book = $bookRepository
-        // ->find(1);
         ->find($id);
 
-        // echo($id);
-
         $data['book'] = $book;
-
-        $data = [
-            'book' => $book
-        ];
 
         return $this->render('library/update.html.twig', $data);
     }
