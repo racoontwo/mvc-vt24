@@ -1,6 +1,6 @@
 {% extends "base2.html.twig" %}
 
-{% block title %}Card Game{% endblock %}
+{% block title %}Json API{% endblock %}
 
 {% block main %}
 <h1>Api Routes</h1>
@@ -8,6 +8,8 @@
 <p>Här visar vilka JSON-routes som finns tillgängliga och vad de fyller för funktion.</p>
 
 <ul class="cardLinks">
+    <a href="{{ path('api_library') }}" class="button">JSON för library och books</a>
+    <a href="{{ path('api_library_isbn', {'isbn': 9780679720201}) }}" class="button">ISBN-exempel</a>
 <a href="{{ path('api_deck') }}" class="button">Deck: returnerar en JSON sturktur med hela kortleken sorterad per färg och värde.</a>
 <form method="post" action="{{ path('api_deck_shuffle') }}">
     <button type="submit" class="button">Shuffle: blandar kortleken och returnerar en JSON struktur med kortleken.</button>

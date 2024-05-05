@@ -7,6 +7,8 @@ use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
 
+use App\Repository\BookRepository;
+
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -131,6 +133,37 @@ class JsonApiController extends AbstractController
         ];
 
         $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/library/books", name: "api_library")]
+    public function showApiLibrary(
+        BookRepository $BookRepository
+    ): Response {
+        $books = $BookRepository
+            ->findAll();
+
+        // return $this->json($products);
+        $response = $this->json($books);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/library/books/{isbn}", name: "api_library_isbn")]
+    public function showApiISBN(
+        BookRepository $bookRepository,
+        int $isbn
+    ): Response {
+        $book = $bookRepository
+            ->findByISBN($isbn);
+
+        // return $this->json($book);
+        $response = $this->json($book);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );

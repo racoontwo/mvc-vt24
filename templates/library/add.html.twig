@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<h1>{{ route_name }}</h1>
+
 {{ include('flash.html.twig') }}
 
 <form action="{{ path('library_add') }}" method="post">

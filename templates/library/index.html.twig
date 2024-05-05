@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LibraryController!{% endblock %}
+{% block title %}Library{% endblock %}
 
 {% block body %}
 
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{ route_name }}</h1>
     <ul class="cardLinks">
         <a href="{{ path('library_show_all') }}" class="button">View as JSON</a>
         <a href="{{ path('library_view_all') }}" class="button">All books in library</a>
@@ -14,6 +14,7 @@
         <a href="{{ path('library_by_id', {'id': 1}) }}" class="button">[READ ONE]</a>
         <a href="{{ path('library_view_all') }}" class="button">[READ MANY]</a>
         <a href="{{ path('library_update', {'id': 1}) }}" class="button">[UPDATE]</a>
+        <a href="{{ path('api') }}" class="button">[API]</a>
     </ul>
 </div>
 {% endblock %}

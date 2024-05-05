@@ -17,7 +17,7 @@ class LibraryController extends AbstractController
     public function index(): Response
     {
         return $this->render('library/index.html.twig', [
-            'controller_name' => 'LibraryController',
+            'route_name' => 'Library',
         ]);
     }
 
@@ -31,7 +31,7 @@ class LibraryController extends AbstractController
         $isbn = 9780802845702;
         $author = 'Fyodor Dostoyevsky';
         $image = 'https://s1.adlibris.com/images/8418385/notes-from-underground.jpg';
-        
+
 
         // $book = new Book();
         // $book->setTitle('Lila');
@@ -67,7 +67,9 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
 
-        return $this->render('library/add.html.twig');
+        return $this->render('library/add.html.twig', [
+            'route_name' => 'Add book',
+        ]);
     }
 
     #[Route('/library/add', name: 'library_add', methods: ['POST'])]
@@ -86,7 +88,7 @@ class LibraryController extends AbstractController
             $book->setImage($request->request->get('image_url'));
         }
 
-        $this->addFlash('success',  "The book '{$book->getTitle()}' was added successfully to the library");
+        $this->addFlash('success', "The book '{$book->getTitle()}' was added successfully to the library");
 
         $entityManager->persist($book);
         $entityManager->flush();
@@ -117,7 +119,7 @@ class LibraryController extends AbstractController
     ): Response {
         $book = $bookRepository
             ->find($id);
-            
+
         $data['book'] = $book;
         // return $this->json($book);
         return $this->render('library/view.one.html.twig', $data);
@@ -166,8 +168,8 @@ class LibraryController extends AbstractController
         ->find($id);
 
         // echo($id);
-        
-    $data['book'] = $book;
+
+        $data['book'] = $book;
 
         $data = [
             'book' => $book
