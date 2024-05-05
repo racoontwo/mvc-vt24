@@ -4,7 +4,9 @@
 
 {% block body %}
 
-<form action="{{ path('library_add_form') }}" method="post">
+{{ include('flash.html.twig') }}
+
+<form action="{{ path('library_add') }}" method="post">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required minlength="1"><br>
     <label for="isbn">ISBN Number:</label><br>
@@ -12,7 +14,7 @@
     <label for="author">Author:</label><br>
     <input type="text" id="author" name="author" required minlength="1"><br>
     <label for="image_url">URL to Image:</label><br>
-    <input type="url" id="image_url" name="image_url" required minlength="1"><br><br>
+    <input type="text" id="image_url" name="image_url" required minlength="1"><br><br>
     <input type="submit" value="Submit">
 </form>
 

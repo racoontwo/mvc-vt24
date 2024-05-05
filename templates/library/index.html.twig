@@ -7,7 +7,13 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-    <ul>
+    <ul class="cardLinks">
+        <a href="{{ path('library_add_form') }}" class="button">Add book to the library</a>
+        <a href="{{ path('library_show_all') }}" class="button">View as JSON</a>
+        <a href="{{ path('library_view_all') }}" class="button">All books in library</a>
+        <a href="{{ path('library_by_id', {'id': 1}) }}" class="button">[READ ONE]</a>
+        <a href="{{ path('library_by_id', {'id': 1}) }}" class="button">[READ MANY]</a>
+
     </ul>
 </div>
 {% endblock %}

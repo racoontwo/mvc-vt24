@@ -8,6 +8,7 @@ use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 class LibraryController extends AbstractController
@@ -26,6 +27,12 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
 
+        $title = 'Notes from Underground';
+        $isbn = 9780802845702;
+        $author = 'Fyodor Dostoyevsky';
+        $image = 'https://s1.adlibris.com/images/8418385/notes-from-underground.jpg';
+        
+
         // $book = new Book();
         // $book->setTitle('Lila');
         // $book->setISBN(9781846881541);
@@ -39,10 +46,10 @@ class LibraryController extends AbstractController
         // $book->setImage('https://s1.adlibris.com/images/935640/the-stranger.jpg');
 
         $book = new Book();
-        $book->setTitle('Notes from Underground');
-        $book->setISBN(9780802845702);
-        $book->setAuthor('Fyodor Dostoyevsky');
-        $book->setImage('https://s1.adlibris.com/images/8418385/notes-from-underground.jpg');
+        $book->setTitle($title);
+        $book->setISBN($isbn);
+        $book->setAuthor($author);
+        $book->setImage($image);
 
         // tell Doctrine you want to (eventually) save the book
         // (no queries yet)
@@ -60,32 +67,30 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
 
-
-
-        // tell Doctrine you want to (eventually) save the book
-        // (no queries yet)
-        // $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
-        // $entityManager->flush();
-
         return $this->render('library/add.html.twig');
     }
 
-    #[Route('/library/add', name: 'library_add', methods: ['GET', 'POST'])]
+    #[Route('/library/add', name: 'library_add', methods: ['POST'])]
     public function addBook(
+        Request $request,
         ManagerRegistry $doctrine
     ): Response {
         $entityManager = $doctrine->getManager();
+        $book = new Book();
+
+        if ($request->isMethod('POST')) {
+            // Retrieve data from the form
+            $book->setTitle($request->request->get('title'));
+            $book->setISBN($request->request->get('isbn'));
+            $book->setAuthor($request->request->get('author'));
+            $book->setImage($request->request->get('image_url'));
+        }
 
 
+        $this->addFlash('success',  "The book '{$book->getTitle()}' was added successfully to the library");
 
-        // tell Doctrine you want to (eventually) save the book
-        // (no queries yet)
-        // $entityManager->persist($book);
-
-        // actually executes the queries (i.e. the INSERT query)
-        // $entityManager->flush();
+        $entityManager->persist($book);
+        $entityManager->flush();
 
         return $this->render('library/add.html.twig');
     }
