@@ -6,7 +6,7 @@
 
 <ul>
         <li>{{ book.getTitle|e }} ({{ book.getId|e }}) {{ book.getISBN|e }} {{ book.getAuthor|e }} </li>
-        <a href="{{ path('library_update', {'id': book.getId}) }}" class="button">Uppdatera information</a>
+        <a href="{{ path('library_update_form', {'id': book.getId}) }}" class="button">Uppdatera information</a>
 </ul>
 
 

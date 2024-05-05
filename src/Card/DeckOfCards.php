@@ -83,7 +83,7 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-    public function sortDeck(): integer
+    public function sortDeck()
     {
         usort($this->deck, function ($cardA, $cardB) {
             $suitOrder = array_search($cardA->getSuit(), $this->suits) - array_search($cardB->getSuit(), $this->suits);

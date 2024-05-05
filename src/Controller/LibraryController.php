@@ -156,8 +156,8 @@ class LibraryController extends AbstractController
         return $this->render('library/view.html.twig', $data);
     }
 
-    #[Route('/library/update{id}', name: 'library_update')]
-    public function updateBook(
+    #[Route('/library/update/{id}', name: 'library_update_form')]
+    public function updateFormBook(
         BookRepository $bookRepository,
         int $id
     ): Response {
@@ -167,5 +167,22 @@ class LibraryController extends AbstractController
         $data['book'] = $book;
 
         return $this->render('library/update.html.twig', $data);
+    }
+
+    #[Route('/library/update_book', name: 'library_update_book', methods: ['POST'])]
+    public function updateBook(
+        BookRepository $bookRepository,
+        Request $request
+    ): Response {
+        $bookData = $request->request->all();
+
+        $bookRepository->updateBook($bookData);
+
+        $this->addFlash('success', "The information was successfully updated");
+
+        return $this->redirectToRoute('library_update_form', ['id' => (int)$bookData['book_id']]);
+        // return $this->redirectToRoute('library_update_form', parseInt($bookData['book_id']));
+        // return $this->render('library/update.html.twig', $data);
+        // return new Response('Updated book with id '.$book->getId());
     }
 }

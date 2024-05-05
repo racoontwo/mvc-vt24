@@ -37,6 +37,34 @@ class BookRepository extends ServiceEntityRepository
         return $resultSet->fetchAllAssociative();
     }
 
+    /**
+     * Update book information based on the provided array.
+     *
+     * @param array $bookData Array containing book information.
+     *
+     * @return void
+     */
+    public function updateBook(array $bookData): void
+    {
+        $bookId = $bookData['book_id'];
+        $title = $bookData['title'];
+        $isbn = $bookData['isbn'];
+        $author = $bookData['author'];
+        $imageUrl = $bookData['image_url'];
+
+        $entityManager = $this->getEntityManager();
+        $book = $this->find($bookId);
+
+        if ($book) {
+            $book->setTitle($title);
+            $book->setIsbn($isbn);
+            $book->setAuthor($author);
+            $book->setImage($imageUrl);
+
+            $entityManager->flush();
+        }
+    }
+
     //    /**
     //     * @return Book[] Returns an array of Book objects
     //     */

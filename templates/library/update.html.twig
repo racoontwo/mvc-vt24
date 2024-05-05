@@ -6,8 +6,10 @@
 
 {{ include('flash.html.twig') }}
 
+<p>{{ book.id }}</p>
 
-<form action="" method="post">
+<form action="{{ path('library_update_book') }}" method="post">
+    <input type="hidden" id="book_id" name="book_id" value="{{ book.id }}">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required minlength="1" value="{{ book.title }}"><br>
     <label for="isbn">ISBN Number:</label><br>
