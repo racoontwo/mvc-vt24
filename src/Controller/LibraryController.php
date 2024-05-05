@@ -86,7 +86,6 @@ class LibraryController extends AbstractController
             $book->setImage($request->request->get('image_url'));
         }
 
-
         $this->addFlash('success',  "The book '{$book->getTitle()}' was added successfully to the library");
 
         $entityManager->persist($book);
@@ -118,8 +117,10 @@ class LibraryController extends AbstractController
     ): Response {
         $book = $bookRepository
             ->find($id);
-
-        return $this->json($book);
+            
+        $data['book'] = $book;
+        // return $this->json($book);
+        return $this->render('library/view.one.html.twig', $data);
     }
 
     #[Route('/library/delete/{id}', name: 'library_delete_by_id')]

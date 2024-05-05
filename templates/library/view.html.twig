@@ -7,9 +7,10 @@
 <ul>
     {% for book in books %}
         <li>
-            <a href="#" class="book-link" data-book-id="{{ book.id }}">{{ book.getTitle|e }}</a>
+            <a href="{{ path('library_by_id', {'id': book.id}) }}" class="book-link" data-book-id="{{ book.id }}">{{ book.getTitle|e }}</a>
         </li>
     {% endfor %}
 </ul>
+
 
 {% endblock %}
