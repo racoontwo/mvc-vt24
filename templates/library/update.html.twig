@@ -8,7 +8,7 @@
 
 <p>{{ book.id }}</p>
 
-<form action="{{ path('library_update_book') }}" method="post">
+<form class="book-list" action="{{ path('library_update_book') }}" method="post">
     <input type="hidden" id="book_id" name="book_id" value="{{ book.id }}">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required minlength="1" value="{{ book.title }}"><br>
@@ -18,7 +18,7 @@
     <input type="text" id="author" name="author" required minlength="1" value="{{ book.author }}"><br>
     <label for="image_url">URL to Image:</label><br>
     <input type="text" id="image_url" name="image_url" required minlength="1" value="{{ book.image }}"><br><br>
-    <input type="submit" value="Update book information">
+    <input type="submit" class="button" value="Update book information">
 </form>
 
 {% endblock %}

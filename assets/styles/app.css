@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     max-width: 600px;
-    background-color: lightblue;
+    background-color: rgb(56, 84, 94);
     /* background: url('../images/background.jpg'); */
     background-size: cover;
     padding: 20px;
@@ -219,4 +219,113 @@ background-color: #a1a1a1; /* Button background color on hover */
 .result {
     display: block;
     list-style-type: none;
+}
+
+/* Styles for the book info container */
+.book-info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styles for the book cover image */
+.book-info img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the book details list */
+.book-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.book-info ul li {
+    margin-bottom: 10px;
+}
+
+/* Styles for the update button */
+.book-info .button {
+    display: block;
+    width: fit-content;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.book-info .button:hover {
+    background-color: #0056b3;
+}
+
+.book-link {
+    color: #666; /* Choose a light color of your preference */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Add smooth color transition */
+    padding: 10px;
+    margin: 8px;
+}
+
+.book-link:hover {
+    color: #333;
+    text-decoration: underline; /* Underline the text */
+}
+
+.book-list {
+    list-style: none;
+    padding: 8px;
+    margin: 8px;
+    background-color: #ececec;
+    border-radius: 10px; /* Rounded edges */
+    overflow: hidden; /* Ensure rounded corners are properly displayed */
+}
+
+.book-list li {
+    margin-bottom: 10px; /* Spacing between list items */
+}
+
+.book-list {
+    list-style: none;
+    padding: 0;
+    background-color: #f4f4f4; /* Light grey background */
+    border-radius: 10px; /* Rounded edges */
+    overflow: hidden; /* Ensure rounded corners are properly displayed */
+}
+
+.book-list label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.book-list input[type="text"],
+.book-list input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.book-list input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-list input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
 }
