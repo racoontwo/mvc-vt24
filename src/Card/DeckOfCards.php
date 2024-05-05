@@ -83,7 +83,7 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-    public function sortDeck()
+    public function sortDeck(): integer
     {
         usort($this->deck, function ($cardA, $cardB) {
             $suitOrder = array_search($cardA->getSuit(), $this->suits) - array_search($cardB->getSuit(), $this->suits);
@@ -95,7 +95,7 @@ class DeckOfCards
         });
     }
 
-    public function jsonSortedDeck(): string
+    public function jsonSortedDeck(): string|false
     {
         $sortedDeck = [];
 
@@ -119,7 +119,7 @@ class DeckOfCards
 
         return json_encode($sortedDeck);
     }
-    public function jsonDeckRaw(): string
+    public function jsonDeckRaw(): string|false
     {
         $jsonDeck = [];
 

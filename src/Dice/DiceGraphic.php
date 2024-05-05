@@ -7,7 +7,7 @@ use App\Dice\Dice;
 class DiceGraphic extends Dice
 {
     /**
-     * @var array
+     * @var string[] Array containing string representing the dice graphic
      */
     private $representation = [
         '⚀',
