@@ -19,6 +19,7 @@
                 <li>Author: {{ book.getAuthor }}</li>
         </ul>
         <a href="{{ path('library_update_form', {'id': book.getId}) }}" class="button">Update Information</a>
+        <a href="{{ path('library_delete_by_id', {'id': book.getId}) }}" class="red-button">Delete book from database</a>
 </div>
 
 

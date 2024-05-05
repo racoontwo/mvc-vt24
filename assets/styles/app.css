@@ -329,3 +329,33 @@ background-color: #a1a1a1; /* Button background color on hover */
 .book-list input[type="submit"]:hover {
     background-color: #0056b3; /* Darker blue color on hover */
 }
+
+.red-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6347; /* Red background color */
+    color: #fff; /* White text color */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.red-button:hover {
+    background-color: #ff473d; /* Darker red color on hover */
+}
+
+.link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ccc; /* Grey background color */
+    color: #333; /* Dark text color */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    background-color: #bbb; /* Slightly darker grey color on hover */
+}

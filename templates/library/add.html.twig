@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h1>{{ route_name }}</h1>
+<h1> Add book </h1>
 
 {{ include('flash.html.twig') }}
 
@@ -20,4 +20,5 @@
     <input type="submit" value="Add book">
 </form>
 
+<a href="{{ path('library_view_all') }}" class="link-button">Show all library</a>
 {% endblock %}

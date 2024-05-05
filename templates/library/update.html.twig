@@ -6,7 +6,7 @@
 
 {{ include('flash.html.twig') }}
 
-<p>{{ book.id }}</p>
+{# <p>{{ book.id }}</p> #}
 
 <form class="book-list" action="{{ path('library_update_book') }}" method="post">
     <input type="hidden" id="book_id" name="book_id" value="{{ book.id }}">

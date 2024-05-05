@@ -67,9 +67,7 @@ class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
 
-        return $this->render('library/add.html.twig', [
-            'route_name' => 'Add book',
-        ]);
+        return $this->render('library/add.html.twig');
     }
 
     #[Route('/library/add', name: 'library_add', methods: ['POST'])]
