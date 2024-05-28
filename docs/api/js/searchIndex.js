@@ -526,11 +526,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryController.html#method_index"
         },                {
-            "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AcreateProduct\u0028\u0029",
-            "name": "createProduct",
-            "summary": "",
-            "url": "classes/App-Controller-LibraryController.html#method_createProduct"
-        },                {
             "fqsen": "\\App\\Controller\\LibraryController\u003A\u003AaddBookForm\u0028\u0029",
             "name": "addBookForm",
             "summary": "",

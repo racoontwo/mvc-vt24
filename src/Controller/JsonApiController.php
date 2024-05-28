@@ -157,7 +157,7 @@ class JsonApiController extends AbstractController
     #[Route("/api/library/books/{isbn}", name: "api_library_isbn")]
     public function showApiISBN(
         BookRepository $bookRepository,
-        int $isbn
+        string $isbn
     ): Response {
         $book = $bookRepository
             ->findByISBN($isbn);

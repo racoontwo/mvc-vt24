@@ -29,7 +29,7 @@ class DiceHand
     }
     /**
      * Get the values of the dice in the hand.
-     * 
+     *
      * @return int[] Returns an array of integers representing the values of the dice.
      */
     public function getValues(): array
@@ -43,7 +43,7 @@ class DiceHand
 
     /**
      * Get the values of the dice in the hand as strings.
-     * 
+     *
      * @return string[] Returns an array of strings representing the values of the dice.
      */
     public function getString(): array

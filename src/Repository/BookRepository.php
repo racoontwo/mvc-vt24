@@ -18,7 +18,7 @@ class BookRepository extends ServiceEntityRepository
 
     /**
      * Find all books having with isbn.
-     * 
+     *
      * @param int $isbn input value with the value.
      *
      * @return mixed array of the book information.

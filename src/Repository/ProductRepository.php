@@ -18,7 +18,7 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Find all products having a value above the specified one.
-     * 
+     *
      * @param int $value An input value with the value.
      *
      * @return mixed Returns an array of Product objects
@@ -36,7 +36,7 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Find all producs having a value above the specified one with SQL.
-     * 
+     *
      * @param int $value An input value with the value.
      *
      * @return array|mixed [][] Returns an array of arrays (i.e. a raw data set)
