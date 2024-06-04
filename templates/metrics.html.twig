@@ -1,0 +1,58 @@
+{% extends "base2.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block main %}
+<h1>Metrics</h1>
+
+<p>
+    Här kommer ett stycke om hur man kan jobba med kodvalitet, Clean code.
+    Jag börjar med en rubrik "Introduktion" och förklarar de sex C:na och hur de kan påverka kodens kvalitet.
+</p>
+
+<h3>
+    Introduktion
+</h3>
+
+<h3>
+    Phpmetrics
+</h3>
+
+<h3>
+    Scutinizer
+</h3>
+
+<p>
+    Inkludera klickbara Scrutinizer badges i min rapport för build, coverage och quality.
+    Placera samma badges i min README.md
+    Koppla min findings till de 6C. Använd gärna något ytterligare mättal som är av värde.
+</p>
+
+
+<h3>
+    Förbättringar
+</h3>
+
+<p>
+    Välj minst 3 förbättringar som jag vill göra med min kod. (Gärna fler)
+    Exempel kan vara fixa issues, öka kodtäckning, fokusera på kvalitetsindex, minska komplexitet.
+</p>
+
+<h3>
+    Diskussion
+</h3>
+
+
+
+
+<a href="{{ asset('img/jackblack.png') }}" class="image-link">
+    <img src="{{ asset('img/jackblack.png') }}" alt="">
+    </a>
+
+<ul class="cardLinks">
+    <a href="{{ path('black_jack_init') }}" class="button">Start the game!</a>
+    <a href="{{ path('documentation') }}" class="button">Documentation</a>
+    <a href="{{ path('black_jack_api') }}" class="button">BlackJack-Api</a>
+</ul>
+
+{% endblock %}
