@@ -2,6 +2,14 @@
 
 This project is based on the material from the MVC course in the Web Programming Distance program at Blekinge Tekniska Högskola.
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/?branch=main)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/?branch=main)
+
+[![Build Status](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/build.png?b=main)](https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/build-status/main)
+
+
+
 ![How we learn to handle MVC frameworks](img/mvc.jpeg)
 
 ## Table of Contents

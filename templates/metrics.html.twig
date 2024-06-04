@@ -14,14 +14,106 @@
     Introduktion
 </h3>
 
+<p>
+    De sex C:na består av:
+    Codestyle,
+    Coverage,
+    Complexity,
+    Cohesion,
+    Coupling,
+    CRAP score.
+</p>
+
+<h4>
+    Codestyle
+</h4>
+<p>
+    Alla gillar vi kod som är enkel att läsa, felsöka och hantera. Hur koden är skriven
+    har också påverkan på kodens kvalitet. Vi behöver fundera över hur "stora" vi skriver
+    olika "code snippets" eftersom storlek har påverkan på kodens kvalitet.
+    En metod eller klass som exempelvis innehåller väldigt mycked kod blir jobbigare att hantera och felsöka.
+    Att skriva metoder och klasser så att de är så lätta som möjligt att felsöka, 
+    dvs med få rader kod, är alltså en bra utgångspunkt. Ju större en klass eller en metod är, 
+    desto svårare bllir den att utveckla och underhålla.
+</p>
+
+
+<h4>
+    Coverage
+</h4>
+
+<p>Högre kodtäckning kan betyda att koden är väl testad, men det behöver inte göra det.
+    Vad man kan utgå ifrån är att en högre kodtäckning minimerar risken för buggar.
+</p>
+
+<h4>
+    Cyclomatic complexity
+</h4>
+<p>
+    Indikerar hur komplext ett program är.
+    CC mäter antalet beslutspunkter, tänk if-satser, där fler beslutspunkter blir
+    mer komplext = generellt sämre kod. 
+    Om man tänker i banor av tester så blir kod med CC:1 lätta att testa, då de endast har ett testfall,
+    men där kod med CC:30 har 30 olika utfall och blir därför svårare att testa.
+</p>
+
+<h4>
+    Cohesion
+</h4>
+<p>
+    Gör en feature och ingenting annat. En kombination med low couppling och high cohesion är bra kod.
+    På ett sätt så är cohesion ett mått på hur väl sammanhållna metoder och klasser är, att de fyller ett 
+    syfte och inget annat. 
+    På samma sätt som övriga C:n så är low cohesion-kod, alltså ett lågt mätvärde, tecken på 
+    kod som är svår att testa, underhålla och utveckla. 
+</p>
+
+<h4>
+    Coupling
+</h4>
+<p>
+    Har att göra med hur många beroenden har en klass till andra klasser.
+    Här är det bra att förhålla sig till så "fristående" klasser som möjligt. 
+    Det blir lättare att jobba med denna typer av klasser när man exempelvis ska testa eller leta buggar.
+    Tätare koppling mellan olika klasser gör det svårare att jobba och underhålla, till exempel
+    inom testning då man inte vet vilken klass som är orsak om något går fel, exempelvis.
+</p>
+
+<h4>
+    CRAP score
+</h4>
+<p>
+    CRAP score är som en mix av ovan, hur vältestad koden är.
+    CRAP score sammanställer kodens kvalitet utifrån olika parametrar och
+    man får ett värde att utgå ifrån. 
+</p>
+
 <h3>
     Phpmetrics
 </h3>
+
+<p>
+    1 - Tittar man i PhpMetrics så kan jag se att jag har 9 violations i min kod. 
+    Jag utgår från dessa och identifierar att det finns förbättringspotential för vissa områden i min kod.
+</p>
+
+<p>
+    2 - Tittar jag under Unit Testing så får jag fram vilka klasser som aldrig blivit testade.
+    Vissa av dessa är resultatet av ett medvetet val, men andra kan jag kanske se över om det finns
+    behov av bredda min testning lite.
+
+<p>
+    3 - Tittar man vidare under Object oriented metrics så kan man också se att vissa routes/metoder har hög volym, 
+    och dessa kanske man skulle kunna se över. 
+</p>
 
 <h3>
     Scutinizer
 </h3>
 
+<p>
+
+</p>
 <p>
     Inkludera klickbara Scrutinizer badges i min rapport för build, coverage och quality.
     Placera samma badges i min README.md
@@ -43,11 +135,17 @@
 </h3>
 
 
+<a href="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/" class="image-link">
+    <img src="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/quality-score.png?b=main" alt="Quality Score">
+</a>
+<a href="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/" class="image-link">
+    <img src="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/coverage.png?b=main" alt="Coverage">
+</a>
+<a href="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/" class="image-link">
+    <img src="https://scrutinizer-ci.com/g/racoontwo/mvc-vt24/badges/build.png?b=main" alt="Build Status">
+</a>
 
 
-<a href="{{ asset('img/jackblack.png') }}" class="image-link">
-    <img src="{{ asset('img/jackblack.png') }}" alt="">
-    </a>
 
 <ul class="cardLinks">
     <a href="{{ path('black_jack_init') }}" class="button">Start the game!</a>
