@@ -11,7 +11,7 @@ class CardHand
 {
     use CardTrait;
     /**
-     * @var CardGraphic
+     * @var array
      */
     private $hand;
 

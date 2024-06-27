@@ -118,6 +118,7 @@ class LibraryController extends AbstractController
         $book = $bookRepository
             ->find($id);
 
+        $data = array();
         $data['book'] = $book;
         // return $this->json($book);
         return $this->render('library/view.one.html.twig', $data);
@@ -149,6 +150,7 @@ class LibraryController extends AbstractController
     ): Response {
         $books = $bookRepository->findAll();
 
+        $data = array();
         $data['books'] = $books;
 
         return $this->render('library/view.html.twig', $data);
@@ -162,6 +164,7 @@ class LibraryController extends AbstractController
         $book = $bookRepository
         ->find($id);
 
+        $data = array();
         $data['book'] = $book;
 
         return $this->render('library/update.html.twig', $data);

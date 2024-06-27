@@ -36,7 +36,7 @@ class BlackJack
     /**
      * Draws a card from the deck and adds it to the player's hand.
      *
-     * @return CardGraphic The card drawn from the deck and added to the player's hand.
+     * @return CardGraphic|null The card drawn from the deck and added to the player's hand.
      */
     public function hitMe(): CardGraphic
     {
@@ -91,7 +91,7 @@ class BlackJack
     /**
      * Checks if either the player or the dealer has busted (gone over 21).
      *
-     * @return bool|null Returns true if either the player or the dealer has busted,
+     * @return true|null Returns true if either the player or the dealer has busted,
      *                  otherwise returns null if neither has busted.
      */
     public function busted(): null|true
