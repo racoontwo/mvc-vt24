@@ -22,9 +22,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlackJackController extends AbstractController
 {
     #[Route("/game/black_jack", name: "black_jack")]
-    public function home(): Response
+    public function home(SessionInterface $session): Response
     {
-        session_start();
+        // Ensure the session is started
+        if (!$session->isStarted()) {
+            $session->start();
+        }
+
         return $this->render('black_jack/home.html.twig');
     }
 
@@ -39,7 +43,6 @@ class BlackJackController extends AbstractController
             $deck = new DeckOfCards();
             $deck->shuffle();
             $playerHand->add($deck->drawCard() ?? new CardGraphic());
-
 
             $gameData = [
                 'deck' => $deck->jsonDeckRaw(),
