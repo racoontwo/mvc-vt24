@@ -36,4 +36,3 @@ yarn-error.log
 /tools/
 .phpdoc/
 !tools/phpdoc/phpdoc.xml
-
