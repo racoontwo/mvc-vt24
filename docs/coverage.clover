@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721035235">
-  <project timestamp="1721035235">
+<coverage generated="1721042213">
+  <project timestamp="1721042213">
     <file name="/Users/oliverroosvall/dbwebb-kurser/mvc/me/report/src/BlackJack/BlackJack.php">
       <class name="App\BlackJack\BlackJack" namespace="global">
         <metrics complexity="19" methods="12" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="38" coveredstatements="35" elements="50" coveredelements="44"/>
@@ -98,8 +98,8 @@
       <line num="112" type="method" name="getAsText" visibility="public" complexity="11" crap="11" count="4"/>
       <line num="114" type="stmt" count="4"/>
       <line num="115" type="stmt" count="4"/>
-      <line num="116" type="stmt" count="2"/>
-      <line num="117" type="stmt" count="2"/>
+      <line num="116" type="stmt" count="3"/>
+      <line num="117" type="stmt" count="3"/>
       <line num="118" type="stmt" count="4"/>
       <line num="119" type="stmt" count="4"/>
       <line num="120" type="stmt" count="4"/>
@@ -113,14 +113,14 @@
       <line num="129" type="stmt" count="1"/>
       <line num="132" type="stmt" count="4"/>
       <line num="133" type="stmt" count="4"/>
-      <line num="134" type="stmt" count="3"/>
-      <line num="135" type="stmt" count="3"/>
+      <line num="134" type="stmt" count="2"/>
+      <line num="135" type="stmt" count="2"/>
       <line num="136" type="stmt" count="4"/>
-      <line num="137" type="stmt" count="2"/>
-      <line num="138" type="stmt" count="2"/>
+      <line num="137" type="stmt" count="1"/>
+      <line num="138" type="stmt" count="1"/>
       <line num="139" type="stmt" count="4"/>
-      <line num="140" type="stmt" count="1"/>
-      <line num="141" type="stmt" count="1"/>
+      <line num="140" type="stmt" count="2"/>
+      <line num="141" type="stmt" count="2"/>
       <line num="142" type="stmt" count="4"/>
       <line num="143" type="stmt" count="1"/>
       <line num="144" type="stmt" count="1"/>
