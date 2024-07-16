@@ -21,46 +21,6 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    // #[Route('/library/create', name: 'library_create')]
-    // public function createProduct(
-    //     ManagerRegistry $doctrine
-    // ): Response {
-    //     $entityManager = $doctrine->getManager();
-
-    //     $title = 'Notes from Underground';
-    //     $isbn = 9780802845702;
-    //     $author = 'Fyodor Dostoyevsky';
-    //     $image = 'https://s1.adlibris.com/images/8418385/notes-from-underground.jpg';
-
-
-    // $book = new Book();
-    // $book->setTitle('Lila');
-    // $book->setISBN(9781846881541);
-    // $book->setAuthor('Robert M. Pirsig');
-    // $book->setImage('https://s1.adlibris.com/images/5027537/lila.jpg');
-
-    // $book = new Book();
-    // $book->setTitle('The Stranger');
-    // $book->setISBN(9780679720201);
-    // $book->setAuthor('Albert Camus');
-    // $book->setImage('https://s1.adlibris.com/images/935640/the-stranger.jpg');
-
-    // $book = new Book();
-    // $book->setTitle($title);
-    // $book->setISBN($isbn);
-    // $book->setAuthor($author);
-    // $book->setImage($image);
-
-    // tell Doctrine you want to (eventually) save the book
-    // (no queries yet)
-    // $entityManager->persist($book);
-
-    // actually executes the queries (i.e. the INSERT query)
-    //     $entityManager->flush();
-
-    //     return new Response('Saved new book with id '.$book->getId());
-    // }
-
     #[Route('/library/add_form', name: 'library_add_form')]
     public function addBookForm(
         ManagerRegistry $doctrine
