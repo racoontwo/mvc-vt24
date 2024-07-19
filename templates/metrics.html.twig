@@ -194,22 +194,30 @@
 
 
 <h3>
-    Diskussion
+    Analys och Diskussion
 </h3>
 
 <p>
-    Implementera sedan förbättringarna.
-Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
-Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
-Avsluta med ett stycke “Diskussion” där du diskuterar kort kring det du nyss gjort.
-
-Kan man aktivt jobba med kodkvalitet och “clean code” på detta sättet?
-Finns det fördelar och kanske nackdelar?
-Ser du andra möjligheter att jobba mot “clean code”?
+Efter att börjat gå igenom coverage upptäckte jag, efter mycket ledande och testande, att mycket förbättringspotential låg i Controller-klasserna.
+Eftersom detta är något som vi ännu inte gått igenom så beslöt jag mig efter många misslyckade försök att lämna de delar av coverage jag inte kunde lösa åt sidan.
+Istället fokuserade jag på att göra den coverage som jag hade kunskap om och lyckades få upp coverage från 29% till 36%.
+En lärdom från detta är att det finns ytterligare anledning till att ha så lite kod i controllern som möjligt, då blir det lättare att få högre coverage och
+istället för att testa controllern så kan man testa klasserna där funktionaliteten finns.
+</p>
+<p>
+Samtidigt så rensade jag de issues som fanns och kunde få bort en del onödig kod och också skriva mer clean code på de ställen som det behövdes och var relativt enkelt att städa.
+</p>
+<p>
+Eftersom testresultatet från början hade högt betyg så var det inte lika intressant att höja det som det var att försöka öka kodtäckningen.
+Det visade sig dock att kodtäckningen var sammanlänkat med test av controllers, något som vi inte har gått igenom, så jag fick helt enkelt lämna det och fokusera på det som gick att implementera.
 </p>
 
-
-
+<p>
+Eftersom Scrutinizer är uppkopplat till Github så kan man jobba kontinuerligt och aktivt med att städa upp koden. Scrutinizer kör testerna och skapar kontinuerligt rapporter som visar vad man kan förbättra.
+Nackdelarna som jag har märkt är att ibland så kan man börja städa koden på ett ställe och då leder det till att andra saker slutar att fungera. Det finns även risk för att man
+bara sitter och städar upp koden. Men allt som allt är fördelarna många fler. Det blir tydligare att läsa koden, lättare att se för andra hur projektet är uppbyggt, lättare att identifiera var i projektet det finns störst
+förbättringspotential osv. 
+</p>
 
 
 {% endblock %}
