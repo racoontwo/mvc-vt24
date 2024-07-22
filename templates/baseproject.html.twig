@@ -5,12 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
             <link rel="icon" href="{{ asset('img/glider.svg') }}">
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('project') }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            {{ encore_entry_script_tags('project') }}
+            {% block importmap %}{{ importmap('project') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
