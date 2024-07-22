@@ -1,13 +1,14 @@
 body {
     margin: 0 auto;
     max-width: 600px;
-    background-color: rgb(102, 211, 250);
+    background-color: rgb(72, 87, 73);
     /* background: url('../images/background.jpg'); */
     background-size: cover;
     padding: 20px;
 }
 
 h1 {
+    font-style: italic;
     border-bottom: 4px double #ccc;
     padding: 20px;
 }
@@ -29,7 +30,7 @@ h1 {
 }
 
 .navbar {
-    background-color: #333;
+    background-color: #747e5d;
     padding: 10px;
 }
 
@@ -48,11 +49,13 @@ h1 {
 .navbar-item a {
     color: white;
     text-decoration: none;
+    font: bold;
     transition: color 0.3s;
 }
 
 .navbar-item a:hover {
-    color: lightgray;
+    color: rgb(88, 88, 88);
+    text-decoration: underline;
 }
 
 
@@ -83,8 +86,8 @@ h1 {
 }
 
 footer {
-    background-color: black;
-    color: white;
+    background-color: rgb(31, 39, 35);
+    color: rgb(43, 56, 50);
     padding: 20px;
 }
 
@@ -99,6 +102,8 @@ footer ul {
 
 footer ul li {
     display: inline-block;
+    border: black;
+    background-color: rgb(138, 156, 141);
     margin-right: 10px;
 }
 
