@@ -25,6 +25,17 @@ class ProjectController extends AbstractController
     {
         return $this->render('project/about.html.twig');
     }
+    #[Route("/project/tables", name: "data_table")]
+    public function table(
+        ForestryRepository $ForestryRepository
+    ): Response {
+        $forestryData = $ForestryRepository
+            ->findAll();
+        $data = array();
+        $data['forestryData'] = $forestryData;
+        return $this->render('project/forestrytable.html.twig', $data);
+    }
+
     #[Route('/project/show_forestry', name: 'show_forestry')]
     public function showForestry(
         ForestryRepository $ForestryRepository
@@ -37,6 +48,5 @@ class ProjectController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }
-    
+    }    
 }

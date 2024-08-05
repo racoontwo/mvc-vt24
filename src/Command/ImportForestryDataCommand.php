@@ -9,6 +9,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+
+// to import data do php bin/console app:import-forestry-data
 class ImportForestryDataCommand extends Command
 {
     protected static $defaultName = 'app:import-forestry-data';
