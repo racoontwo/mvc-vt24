@@ -14,10 +14,14 @@
 <a href="{{ asset('img/15_ekosystem.png') }}" class="image-link">
     <img src="{{ asset('img/15_ekosystem.png') }}" alt="">
     </a>
-    
-<div id="graph">
-</div>
 
+<div id="graph">
+    <script type="application/json" id="chart-data">
+        {# Create a new JSON structure for the chart data #}
+        window.forestryData = {{ forestryData|json_encode|raw }};
+    </script>
+</div>
+    
 <table>
     <thead>
         <tr>

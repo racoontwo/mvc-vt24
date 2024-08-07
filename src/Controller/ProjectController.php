@@ -33,6 +33,7 @@ class ProjectController extends AbstractController
             ->findAll();
         $data = array();
         $data['forestryData'] = $forestryData;
+        
         return $this->render('project/forestrytable.html.twig', $data);
     }
 

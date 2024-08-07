@@ -1,29 +1,20 @@
-// import './bootstrap.js';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
 import './styles/project.css';
-import { visualizeData } from './js/csvTable';
+import { visualizeData } from './js/visualize';
 
-// Initialize the CSV table visualization
-// document.addEventListener('DOMContentLoaded', () => {
-//     visualizeCSVTable('csvFileInput', 'dataTable');
-// });
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/project/show_forestry')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Forest data:', data);
 
-const jsonData = [
-    { "name": "A", "value": 30 },
-    { "name": "B", "value": 80 },
-    { "name": "C", "value": 45 },
-    { "name": "D", "value": 60 },
-    { "name": "E", "value": 20 },
-    { "name": "F", "value": 90 },
-    { "name": "G", "value": 55 }
-];
+            const transformedData = data.map(item => ({
+                year: item.year,
+                value: parseInt(item.skyddszoner)
+            }));
 
-visualizeData(jsonData);
-
-console.log("testing csv")
-console.log('This log comes from assets/project.js - welcome to AssetMapper! 🎉');
+            visualizeData(transformedData);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
