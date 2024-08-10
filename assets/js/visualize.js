@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-export function visualizeData(data) {
+export function visualizeData(data, name) {
     // Set up SVG canvas dimensions
     const width = 600;
     const height = 400;
@@ -10,6 +10,14 @@ export function visualizeData(data) {
     const svg = d3.select('#graph').append('svg')
         .attr('width', width)
         .attr('height', height);
+
+    svg.append('text')
+    .attr('x', (width / 2))             
+    .attr('y', margin.top / 2)
+    .attr('text-anchor', 'middle')  
+    .style('font-size', '16px') 
+    .style('text-decoration', 'underline')  
+    .text(name);
 
     // Define scales for x and y axes
     const xScale = d3.scaleBand()
