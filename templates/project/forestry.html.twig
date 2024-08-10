@@ -1,0 +1,43 @@
+{% extends "baseproject.html.twig" %}
+
+{% block title %}Forestry{% endblock %}
+
+{% block main %}
+<h1>Skogsbruk</h1>
+
+<a href="{{ asset('img/15_ekosystem.png') }}" class="image-link">
+    <img src="{{ asset('img/15_ekosystem.png') }}" alt="">
+    </a>
+
+    
+<p>
+    Nedan presenteras data för hur biologisk mångfald och ekosystem har hanterats i skogsbruket.
+    De siffror som presenteras är andel (%) av antal miljöföreteelser som fått stor negativ påverkan i samband med föryngringsavverkning och efterföljande föryngringsarbete, i hela Sverige. (Källa: Skogsstyrelsen)
+</p>
+
+<div id="all">
+</div>
+
+<h3>
+    Klicka på namnet på indikatorerna för att synliggöra dem i grafen.
+</h3>
+<p>
+    Från och med år 1999 går andelen för skyddszoner som fått stor negativ påverkan upp, fram till 2006 då den högsta andelen skyddszoner som fått negativ påverkan uppmättes.
+    Efter 2006 tycks procentandelen vara på väg nedåt, och 2015 är siffran densamma som de åren då mätningarna började.
+</p>
+<p>
+    Det som har gått upp över tid är negativ påverkan mot kulturmiljöer och hänsynskrävande biotoper.
+    En hänsynskrävande biotop är ett område med naturvärden som avviker från den brukade produktionsskogen (Källa: Skogsstyrelsen), 
+    varför den spelar en central roll i främjandet av biologisk mångfald.
+    I början av mätningarna låg procentandelen för negativ påverkan på 7%, och mot slutet av mätningarna på 20%.
+</p>
+<p>
+    Avsaknaden av data för kulturmiljöer de tio första åren beror förmodligen på uteslutning av mätningar snarare än att
+    den negativa påverkan på kulturmiljöer var obefintlig.
+</p>
+
+<div id="kulturmiljoer">
+</div>
+
+
+{% endblock %}

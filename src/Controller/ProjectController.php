@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class ProjectController extends AbstractController
 {
     #[Route("/project", name: "project")]
-    public function table(
+    public function project(
         ForestryRepository $ForestryRepository
     ): Response {
         $forestryData = $ForestryRepository
@@ -22,8 +22,33 @@ class ProjectController extends AbstractController
         $data = array();
         $data['forestryData'] = $forestryData;
         
-        return $this->render('project/forestrytable.html.twig', $data);
+        return $this->render('project/home.html.twig', $data);
     }
+
+    #[Route("/forestry", name: "forestry")]
+    public function forestry(
+        ForestryRepository $ForestryRepository
+    ): Response {
+        $forestryData = $ForestryRepository
+            ->findAll();
+        $data = array();
+        $data['forestryData'] = $forestryData;
+        
+        return $this->render('project/forestry.html.twig', $data);
+    }
+
+    #[Route("/red_listed", name: "red_listed")]
+    public function redListed(
+        ForestryRepository $ForestryRepository
+    ): Response {
+        $forestryData = $ForestryRepository
+            ->findAll();
+        $data = array();
+        $data['forestryData'] = $forestryData;
+        
+        return $this->render('project/red_listed.html.twig', $data);
+    }
+
 
     #[Route("/project/about", name: "project_about")]
     public function about(): Response

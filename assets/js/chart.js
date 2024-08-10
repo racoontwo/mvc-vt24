@@ -5,7 +5,7 @@ export function chartData(data, width = 600, height = 400) {
     const svgWidth = width + margins.left + margins.right;
     const svgHeight = height + margins.top + margins.bottom;
 
-    const svg = d3.select(`#skyddszoner`).append('svg')
+    const svg = d3.select(`#all`).append('svg')
         .attr('width', svgWidth)
         .attr('height', svgHeight)
         .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);

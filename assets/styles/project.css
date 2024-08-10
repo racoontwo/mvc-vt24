@@ -26,7 +26,7 @@ h1 {
 .image-link img {
     max-width: 30%;
     height: auto;
-    display: inline-block;
+    display: block;
 }
 
 .navbar {
