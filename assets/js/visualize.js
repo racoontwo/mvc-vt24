@@ -4,19 +4,20 @@ export function visualizeData(data, name) {
     // Set up SVG canvas dimensions
     const width = 600;
     const height = 400;
-    const margin = { top: 20, right: 30, bottom: 40, left: 40 };
+    const margin = { top: 60, right: 30, bottom: 40, left: 40 };
+    const lowercaseName = name.toLowerCase();
 
     // Create an SVG container in the specific div
-    const svg = d3.select('#graph').append('svg')
+    const svg = d3.select(`#${lowercaseName}`).append('svg')
         .attr('width', width)
         .attr('height', height);
 
     svg.append('text')
     .attr('x', (width / 2))             
-    .attr('y', margin.top / 2)
-    .attr('text-anchor', 'middle')  
-    .style('font-size', '16px') 
-    .style('text-decoration', 'underline')  
+    .attr('y', (margin.top / 2))
+    .attr('text-anchor', 'middle')
+    .attr('class', 'offsetLabel')
+    .style('font-size', '2.1em') 
     .text(name);
 
     // Define scales for x and y axes
@@ -54,14 +55,3 @@ export function visualizeData(data, name) {
         .attr('height', d => yScale(0) - yScale(+d.value))
         .attr('fill', d => colorScale(d.name));
 }
-
-// Example usage with JSON data
-const jsonData = [
-    { "year": "1999", "value": 30 },
-    { "year": "2000", "value": 80 },
-    { "year": "2001", "value": 45 },
-    { "year": "2002", "value": 60 },
-    { "year": "2003", "value": 20 },
-    { "year": "2004", "value": 90 },
-    { "year": "2005", "value": 55 }
-];

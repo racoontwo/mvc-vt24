@@ -1,5 +1,6 @@
 import './styles/project.css';
 import { visualizeData } from './js/visualize';
+import { chartData } from './js/chart';
 
 // Function to fetch and transform data
 function fetchData() {
@@ -22,7 +23,7 @@ function fetchData() {
             value: parseInt(item.skyddszoner)
         }));
 
-        return transformedData;
+        return data;
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -30,12 +31,32 @@ function fetchData() {
     });
 }
 
+function transformData(rawData, name) {
+    const transformedData = rawData.map(item => ({
+        year: item.year,
+        value: parseInt(item[name]) // Use bracket notation to access the property dynamically
+    }));
+    return transformedData;
+}
+
+
+function getVisibleDivIds() {
+    const visibleDivs = Array.from(document.querySelectorAll('div')).filter(div => {
+        const style = window.getComputedStyle(div);
+        return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+    });
+
+    return visibleDivs.map(div => div.id).filter(id => id !== '');
+}
+
 // Event listener for DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
     fetchData()
-        .then(transformedData => {
+        .then(data => {
             const type = "Skyddszoner";
-            visualizeData(transformedData, type);
+            // visualizeData(transformedData, type);
+            console.log(data);
+            chartData(data, 600, 400);
         })
         .catch(error => {
             console.error('Error in processing data:', error);
