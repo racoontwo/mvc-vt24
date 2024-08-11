@@ -14,10 +14,6 @@ services:
     App\Command\ImportForestryDataCommand:
         tags: ['console.command']
 
-    App\Command\ImportRedlistedDataCommand:
-        tags: ['console.command']
-
-    
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

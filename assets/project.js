@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchData('/project/show_redlisted')
     .then(data => {
         console.log("This is ", data);
+        console.log(getVisibleDivIds());
         const type = "Bin";
         const transformedData = getOneData(data, type.toLowerCase());
         console.log("whats this,", transformedData);
