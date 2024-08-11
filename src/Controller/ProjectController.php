@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+use App\Entity\Redlisted;
+use App\Repository\RedlistedRepository;
+use Doctrine\ORM\EntityManagerInterface;
+
 class ProjectController extends AbstractController
 {
     #[Route("/project", name: "project")]
@@ -37,18 +41,17 @@ class ProjectController extends AbstractController
         return $this->render('project/forestry.html.twig', $data);
     }
 
-    #[Route("/red_listed", name: "red_listed")]
+    #[Route("/project/red_listed", name: "red_listed")]
     public function redListed(
-        ForestryRepository $ForestryRepository
+        RedlistedRepository $RedlistedRepository
     ): Response {
-        $forestryData = $ForestryRepository
+        $redlistedData = $RedlistedRepository
             ->findAll();
         $data = array();
-        $data['forestryData'] = $forestryData;
+        $data['redlistedData'] = $redlistedData;
         
         return $this->render('project/red_listed.html.twig', $data);
     }
-
 
     #[Route("/project/about", name: "project_about")]
     public function about(): Response
@@ -68,5 +71,19 @@ class ProjectController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }    
+    }
+
+    #[Route('/project/show_redlisted', name: 'show_redlisted')]
+    public function showRedlisted(
+        RedlistedRepository $RedlistedRepository
+    ): Response {
+        $redlistedData = $RedlistedRepository
+            ->findAll();
+
+        $response = $this->json($redlistedData);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    } 
 }

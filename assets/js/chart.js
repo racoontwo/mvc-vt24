@@ -1,7 +1,9 @@
 import * as d3 from 'd3';
 
-export function chartData(data, width = 600, height = 400) {
-    const margins = { top: 20, right: 150, bottom: 30, left: 40 }; // Initial margin setup
+export function chartData(data) {
+    const width = 600
+    const height = 300
+    const margins = { top: 20, right: 20, bottom: 30, left: 20 }; // Initial margin setup
     const svgWidth = width + margins.left + margins.right;
     const svgHeight = height + margins.top + margins.bottom;
 
@@ -48,7 +50,7 @@ export function chartData(data, width = 600, height = 400) {
         "transportOverVattendrag": "Transport Över Vattendrag"
     };
 
-    // Create bars and assign class for toggling
+    
     const bars = g.selectAll(".year-group")
         .data(data)
         .enter().append("g")
@@ -63,31 +65,31 @@ export function chartData(data, width = 600, height = 400) {
             {key: "transportOverVattendrag", value: d.transportOverVattendrag}
         ])
         .enter().append("rect")
-        .attr("class", d => `bar ${d.key}`) // Add class for toggling
+        .attr("class", d => `bar ${d.key}`)
         .attr("x", d => x1(d.key))
         .attr("y", d => y(d.value))
         .attr("width", x1.bandwidth())
         .attr("height", d => height - y(d.value))
         .attr("fill", d => color(d.key));
 
-    // Add X axis
+    
     g.append("g")
         .attr("class", "x-axis")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x0).tickSize(0).tickPadding(6));
 
-    // Add Y axis
+    
     g.append("g")
         .attr("class", "y-axis")
         .call(d3.axisLeft(y).ticks(10));
 
-    // Add Legend inside the graph with a 15px margin from the left
+    
     const legendWidth = 150;
     const legendHeight = 20;
     const legendSpacing = 10;
 
     const legend = g.append("g")
-        .attr("transform", `translate(15, 0)`); // 15px margin from the left and no vertical offset
+        .attr("transform", `translate(15, 0)`);
 
     legend.selectAll(".legend-item")
         .data(color.domain())
@@ -101,17 +103,16 @@ export function chartData(data, width = 600, height = 400) {
                 .attr("width", legendHeight)
                 .attr("height", legendHeight)
                 .attr("fill", color(d))
-                .style("cursor", "pointer"); // Add cursor pointer for interactivity
+                .style("cursor", "pointer");
 
             item.append("text")
                 .attr("x", legendHeight + 5)
                 .attr("y", legendHeight / 2)
                 .attr("dy", "0.2em")
-                .text(labels[d]) // Use the label from the mapping
+                .text(labels[d])
                 .style("font-size", "0.5em")
                 .style("alignment-baseline", "middle");
 
-            // Add click event listener to toggle visibility
             item.on("click", function() {
                 const isVisible = svg.selectAll(`.${d}`).style("display") !== "none";
                 svg.selectAll(`.${d}`).style("display", isVisible ? "none" : "block");

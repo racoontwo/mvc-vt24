@@ -17,28 +17,28 @@ class Redlisted
     private ?int $year = null;
 
     #[ORM\Column]
-    private ?int $fiskar = null;
+    private ?float $fiskar = null;
 
     #[ORM\Column]
-    private ?int $karlvaxter = null;
+    private ?float $karlvaxter = null;
 
     #[ORM\Column]
-    private ?int $storfjarilar = null;
+    private ?float $storfjarilar = null;
 
     #[ORM\Column]
-    private ?int $grodOchKraldjur = null;
+    private ?float $grodOchKraldjur = null;
 
     #[ORM\Column]
-    private ?int $bin = null;
+    private ?float $bin = null;
 
     #[ORM\Column]
-    private ?int $mossor = null;
+    private ?float $mossor = null;
 
     #[ORM\Column]
-    private ?int $faglar = null;
+    private ?float $faglar = null;
 
     #[ORM\Column]
-    private ?int $daggdjur = null;
+    private ?float $daggdjur = null;
 
     public function getId(): ?int
     {
@@ -57,96 +57,96 @@ class Redlisted
         return $this;
     }
 
-    public function getFiskar(): ?int
+    public function getFiskar(): ?float
     {
         return $this->fiskar;
     }
 
-    public function setFiskar(int $fiskar): static
+    public function setFiskar(float $fiskar): static
     {
         $this->fiskar = $fiskar;
 
         return $this;
     }
 
-    public function getKarlvaxter(): ?int
+    public function getKarlvaxter(): ?float
     {
         return $this->karlvaxter;
     }
 
-    public function setKarlvaxter(int $karlvaxter): static
+    public function setKarlvaxter(float $karlvaxter): static
     {
         $this->karlvaxter = $karlvaxter;
 
         return $this;
     }
 
-    public function getStorfjarilar(): ?int
+    public function getStorfjarilar(): ?float
     {
         return $this->storfjarilar;
     }
 
-    public function setStorfjarilar(int $storfjarilar): static
+    public function setStorfjarilar(float $storfjarilar): static
     {
         $this->storfjarilar = $storfjarilar;
 
         return $this;
     }
 
-    public function getGrodOchKraldjur(): ?int
+    public function getGrodOchKraldjur(): ?float
     {
         return $this->grodOchKraldjur;
     }
 
-    public function setGrodOchKraldjur(int $grodOchKraldjur): static
+    public function setGrodOchKraldjur(float $grodOchKraldjur): static
     {
         $this->grodOchKraldjur = $grodOchKraldjur;
 
         return $this;
     }
 
-    public function getBin(): ?int
+    public function getBin(): ?float
     {
         return $this->bin;
     }
 
-    public function setBin(int $bin): static
+    public function setBin(float $bin): static
     {
         $this->bin = $bin;
 
         return $this;
     }
 
-    public function getMossor(): ?int
+    public function getMossor(): ?float
     {
         return $this->mossor;
     }
 
-    public function setMossor(int $mossor): static
+    public function setMossor(float $mossor): static
     {
         $this->mossor = $mossor;
 
         return $this;
     }
 
-    public function getFaglar(): ?int
+    public function getFaglar(): ?float
     {
         return $this->faglar;
     }
 
-    public function setFaglar(int $faglar): static
+    public function setFaglar(float $faglar): static
     {
         $this->faglar = $faglar;
 
         return $this;
     }
 
-    public function getDaggdjur(): ?int
+    public function getDaggdjur(): ?float
     {
         return $this->daggdjur;
     }
 
-    public function setDaggdjur(int $daggdjur): static
+    public function setDaggdjur(float $daggdjur): static
     {
         $this->daggdjur = $daggdjur;
 

@@ -364,3 +364,45 @@ background-color: #a1a1a1; /* Button background color on hover */
 .link-button:hover {
     background-color: #bbb; /* Slightly darker grey color on hover */
 }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #57d0e6;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 0; /* Align dropdown to the left of the parent */
+    top: 100%; /* Position dropdown directly below the parent */
+}
+
+.dropdown-content li {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content li a {
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-content li a:hover {
+    background-color: #949494;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover a {
+    background-color: #b6b6b6;
+}

@@ -9,9 +9,40 @@
     <img src="{{ asset('img/15_ekosystem.png') }}" alt="">
     </a>
 
-    
-<p>
-</p>
+<div id="bin">
+    </div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Year</th>
+            <th>Krälväxter</th>
+            <th>Storfjärilar</th>
+            <th>Grod och Kräldjur</th>
+            <th>Bin</th>
+            <th>Mossor</th>
+            <th>Fåglar</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for species in redlistedData %}
+            <tr>
+                <td>{{ species.id }}</td>
+                <td>{{ species.year }}</td>
+                <td>{{ species.karlvaxter }}</td>
+                <td>{{ species.storfjarilar }}</td>
+                <td>{{ species.grodOchKraldjur }}</td>
+                <td>{{ species.bin }}</td>
+                <td>{{ species.mossor }}</td>
+                <td>{{ species.faglar }}</td>
+                <td>{{ species.daggdjur }}</td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
 
 
 {% endblock %}
