@@ -11,8 +11,8 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
     
-    App\Command\ImportForestryDataCommand:
-        tags: ['console.command']
+    # App\Command\ImportForestryDataCommand:
+    #     tags: ['console.command']
 
 
     # makes classes in src/ available to be used as services

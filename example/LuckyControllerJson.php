@@ -28,7 +28,6 @@ class LuckyControllerJson
     }
 
 
-
     /**
      * @Route("/api/lucky/number2")
      */

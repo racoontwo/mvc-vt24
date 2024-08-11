@@ -33,14 +33,32 @@ class BlackJack
         $this->playerHand = $playerHand ?? new CardHand();
         $this->dealerHand = $dealerHand ?? new CardHand();
     }
+    // /**
+    //  * Draws a card from the deck and adds it to the player's hand.
+    //  *
+    //  * @return CardGraphic|null The card drawn from the deck and added to the player's hand.
+    //  */
+    // public function hitMe(): CardGraphic
+    // {
+    //     $card = $this->deck->drawCard();
+    //     $this->playerHand->add($card);
+
+    //     return $card;
+    // }
     /**
      * Draws a card from the deck and adds it to the player's hand.
      *
-     * @return CardGraphic|null The card drawn from the deck and added to the player's hand.
+     * @return CardGraphic The card drawn from the deck and added to the player's hand.
+     * @throws \RuntimeException if no card is drawn from the deck.
      */
     public function hitMe(): CardGraphic
     {
         $card = $this->deck->drawCard();
+
+        if ($card === null) {
+            throw new \RuntimeException('No more cards left in the deck.');
+        }
+
         $this->playerHand->add($card);
 
         return $card;
