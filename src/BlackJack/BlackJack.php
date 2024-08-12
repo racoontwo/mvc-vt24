@@ -109,15 +109,15 @@ class BlackJack
     /**
      * Checks if either the player or the dealer has busted (gone over 21).
      *
-     * @return true|null Returns true if either the player or the dealer has busted,
-     *                  otherwise returns null if neither has busted.
+     * @return bool|false Returns true if either the player or the dealer has busted,
+     *                  otherwise returns false if neither has busted.
      */
-    public function busted(): null|true
+    public function busted(): bool
     {
         if ($this->dealerHand->getHandSum() > 21 || $this->playerHand->getHandSum() > 21) {
             return true;
         }
-        return null;
+        return false;
     }
 
     /**

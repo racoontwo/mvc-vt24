@@ -107,39 +107,4 @@ class Forestry
 
         return $this;
     }
-
-     // Add the import method
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $io = new SymfonyStyle($input, $output);
-        $csvFile = __DIR__ . '/../../assets/example_data/test_data.csv'; // Update this path to your CSV file
-
-        if (!file_exists($csvFile) || !is_readable($csvFile)) {
-            $io->error('CSV file does not exist or is not readable.');
-            return Command::FAILURE;
-        }
-
-        if (($handle = fopen($csvFile, 'r')) !== false) {
-            while (($data = fgetcsv($handle, 1000, ';')) !== false) {
-                $forestryData = new Forestry();
-                $forestryData->setYear((int)$data[0])
-                            ->setHansynskravandeBiotoper((int)$data[1])
-                            ->setSkyddszoner((int)$data[2])
-                            ->setUpplevelsevarden((int)$data[3])
-                            ->setTransportOverVattendrag((int)$data[4])
-                            ->setKulturmiljoer(isset($data[5]) ? (int)$data[5] : null);
-                
-                $this->entityManager->persist($forestryData);
-            }
-            fclose($handle);
-
-            $this->entityManager->flush();
-
-            $io->success('Forestry data imported successfully.');
-            return Command::SUCCESS;
-        } else {
-            $io->error('Unable to open CSV file.');
-            return Command::FAILURE;
-        }
-    }
 }
