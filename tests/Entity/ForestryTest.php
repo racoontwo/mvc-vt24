@@ -58,7 +58,6 @@ class ForestryTest extends TestCase
         $forestry->setKulturmiljoer($kulturmiljoer);
         $this->assertEquals($kulturmiljoer, $forestry->getKulturmiljoer());
 
-        // Test nullable value
         $forestry->setKulturmiljoer(null);
         $this->assertNull($forestry->getKulturmiljoer());
     }

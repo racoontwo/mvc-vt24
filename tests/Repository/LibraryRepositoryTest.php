@@ -23,6 +23,5 @@ class LibraryRepositoryTest extends TestCase
         $libraryRepository = new LibraryRepository($this->registry);
 
         $this->assertInstanceOf(LibraryRepository::class, $libraryRepository);
-        // $this->assertInstanceOf(ServiceEntityRepository::class, $libraryRepository);
     }
 }
