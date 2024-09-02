@@ -8,6 +8,8 @@
             {{ encore_entry_link_tags('project') }}
         {% endblock %}
 
+
+
         {% block javascripts %}
             {{ encore_entry_script_tags('project') }}
             {% block importmap %}{{ importmap('project') }}{% endblock %}
@@ -15,7 +17,7 @@
     </head>
     <body>
     
-    <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
+    <header class="site-header" style="background-image: url({{ asset('img/winding_plant.jpg') }})">
         <span class="site-title">My Project Site</span>
     </header>
 
@@ -29,7 +31,7 @@
                         <li><a href="{{ path('show_redlisted') }}">Redlisted API</a></li>
                     </ul>
                 </li>
-                <li class="navbar-item"><a href="{{ path('project') }}">Project</a></li>
+                <li class="navbar-item"><a href="{{ path('proj') }}">Project</a></li>
                 <li class="navbar-item"><a href="{{ path('forestry') }}">Forestry</a></li>
                 <li class="navbar-item"><a href="{{ path('red_listed') }}">Redlisted species</a></li>
                 <li class="navbar-item"><a href="{{ path('project_about') }}">About</a></li>

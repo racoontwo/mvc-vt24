@@ -1,16 +1,59 @@
 {% extends "baseproject.html.twig" %}
 
+
+
 {% block title %}Rödlistade arter{% endblock %}
 
 {% block main %}
 <h1>Rödlistade arter</h1>
 
+
 <a href="{{ asset('img/15_ekosystem.png') }}" class="image-link">
     <img src="{{ asset('img/15_ekosystem.png') }}" alt="">
     </a>
 
-<div id="bin">
-    </div>
+    <div id="res-result" data-res="{{ redlistedData | tojson }}" style="display: none;"></div>
+
+
+
+<div class="content">
+    <p>
+        Om man ser till statistiken från SCB för rödlistade arter i Sverige så har den varit relativt oförändrad de senaste 20 åren.
+        <div id="bin"></div> 
+        Grafen som visas nedan är ett rödlisteindex för bland annat bin, där en kan deducera att statistiken varit relativt oföränderlig.
+        Emellertid ska man inte ha för bråttom att dra slutsatsen att läget skulle vara "stabilt" för bin, eller andra arter för den delen.
+    </p>
+    <p>
+        Enligt Världsnaturfonden så minskar antalet bin och humlor i Sverige och i världen kraftigt, vilket i sin tur är ett stort hot mot balans i ekosystemen vi befinner oss i och är en del av.
+        Minskningen av antalet bin och humlor är bland annat orsakad av förlust av livsmiljöer, användandet av kemiska bekämpningsmedel i exempelvis trädgårdar,
+        föroreningar och otillräckligt skydd (WWF).
+    </p>
+    <p>
+        Indikatorerna för en rödlistad art behöver därför inte visa all information om hur läget är för den typen av art är tillräcklig eller inte.
+        Många tänker nog i första hand på honungsbiet när de tänker på bin, vilket i sig är ett tambi som bor i människans bykupor.
+        Men för att främja biologisk mångfald och ekosystem gäller det att så många arter som möjligt får goda livsförhållanden, och faktum är att 
+        honungsbiet bara är en utav 280 svenska arter bin (WWF).    
+    </p>
+    <p>
+        Datan som presenteras och som återfinns i SCB:s statistik har också senaste loggningen 2015, vilket innebär att det är en
+        lucka på ca 10 år som inte presenteras och som man, i alla fall om man utgår ifrån SCB, inte kan veta hur siffrorna ser ut i dagsläget.
+    </p>
+    <p>
+        Slutsatsen för statistiken ovan är att indikatorn för rödlisteindex tycks hålla sig relativt stabilt,
+        men att det inte går att utesluta att det finns andra faktorer som påverkar arters möjlighet till att frodas,
+        ekosystem att florera och att det finns förutsättningar för att främja dessa.
+    </p>
+</div>
+    
+
+
+<div id="karlvaxter">
+</div>
+
+<div id="mossor">
+</div>
+
+
 
 <table>
     <thead>
@@ -22,7 +65,7 @@
             <th>Bin</th>
             <th>Mossor</th>
             <th>Fåglar</th>
-            <th></th>
+            <th>Däggdjur</th>
         </tr>
     </thead>
     <tbody>
@@ -39,8 +82,20 @@
             </tr>
 
         {% endfor %}
+
+        
+
     </tbody>
 </table>
+
+<h2>Källor</h2>
+<ul>
+    <li><a href="https://www.artdatabanken.se/det-har-gor-vi/rodlistning/hur-blir-en-art-rodlistad/">Artdatabanken</a></li>
+    <li><a href="https://www.wwf.se/biologisk-mangfald/pollinering/pollinerare/radda-bina/">WWF</a></li>
+    <li><a href="https://www.wwf.se/biologisk-mangfald/pollinering/pollinerare/radda-bina/#hot-mot-bin">WWF, Bin</a></li>
+</ul>
+
+
 
 
 {% endblock %}

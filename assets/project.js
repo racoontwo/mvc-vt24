@@ -13,25 +13,39 @@ function getVisibleDivIds() {
     return visibleDivs.map(div => div.id).filter(id => id !== '');
 }
 
+
 // Event listener for DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
-    fetchData('/project/show_forestry')
+
+    // Select the div element using querySelector
+    const resultDiv = window.redlistedData;
+
+    // Retrieve the value of the data-res attribute
+    // const resData = resultDiv.getAttribute('data-res');
+
+    // Optionally, if the data is in JSON format, you can parse it
+    // const resDataParsed = JSON.parse(resData);
+
+    console.log(resultDiv);
+
+    // fetchData(`${baseUrl}/project/show_forestry`)
+    fetchData(`/project/show_forestry`)
         .then(data => {
             chartData(data);
         })
         .catch(error => {
             console.error('Error in processing data:', error);
         });
-    fetchData('/project/show_redlisted')
+    // fetchData(`${baseUrl}/project/show_redlisted`)
+    fetchData(`/project/show_redlisted`)
     .then(data => {
-        console.log("This is ", data);
-        console.log(getVisibleDivIds());
         const type = "Bin";
         const transformedData = getOneData(data, type.toLowerCase());
-        console.log("whats this,", transformedData);
         visualizeData(transformedData, type);
+        visualizeData(transformedData, "mossor");
     })
     .catch(error => {
         console.error('Error in processing data:', error);
     });
+
 });

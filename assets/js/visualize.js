@@ -2,8 +2,8 @@ import * as d3 from 'd3';
 
 export function visualizeData(data, name) {
     // Set up SVG canvas dimensions
-    const width = 600;
-    const height = 400;
+    const width = 300;
+    const height = 200;
     const margin = { top: 60, right: 30, bottom: 40, left: 40 };
     const lowercaseName = name.toLowerCase();
 
@@ -17,7 +17,7 @@ export function visualizeData(data, name) {
     .attr('y', (margin.top / 2))
     .attr('text-anchor', 'middle')
     .attr('class', 'offsetLabel')
-    .style('font-size', '2.1em') 
+    .style('font-size', '1.5em') 
     .text(name);
 
     // Define scales for x and y axes

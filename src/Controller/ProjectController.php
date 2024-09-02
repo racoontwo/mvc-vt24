@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ProjectController extends AbstractController
 {
-    #[Route("/project", name: "project")]
+    #[Route("/proj", name: "proj")]
     public function project(
         ForestryRepository $ForestryRepository
     ): Response {

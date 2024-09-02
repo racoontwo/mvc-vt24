@@ -15,6 +15,7 @@ h1 {
 
 .site-header {
     max-width: 600px;
+    max-height: 120px;
     background-size: cover;
     background-position: center;
 }
@@ -32,6 +33,7 @@ h1 {
 .navbar {
     background-color: #747e5d;
     padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-list {
@@ -42,9 +44,6 @@ h1 {
     justify-content: space-between;
 }
 
-.navbar-item {
-    /* No need for inline-block display */
-}
 
 .navbar-item a {
     color: white;
@@ -86,7 +85,7 @@ h1 {
 }
 
 footer {
-    background-color: rgb(31, 39, 35);
+    background-color: rgb(102, 107, 104);
     color: rgb(43, 56, 50);
     padding: 20px;
 }
@@ -97,6 +96,8 @@ footer p {
 
 footer ul {
     list-style: none;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0;
 }
 
@@ -111,13 +112,6 @@ footer ul li:last-child {
     margin-right: 0;
 }
 
-/* kmom02 style nedan */
-/* body {
-    margin: 0 auto;
-    max-width: 800px;
-    background-color: #eee;
-    font-size: 2em;
-} */
 
 main {
     padding: 0.5em;
@@ -374,7 +368,7 @@ background-color: #a1a1a1; /* Button background color on hover */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #57d0e6;
+    background-color: #3e5a4a;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -405,4 +399,62 @@ background-color: #a1a1a1; /* Button background color on hover */
 
 .dropdown:hover a {
     background-color: #b6b6b6;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #8b8b8b;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #112512;
+    color: rgb(145, 145, 145);
+    text-align: left;
+    font-weight: bold;
+}
+
+thead th {
+    padding: 12px;
+}
+
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #929292;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+tbody td:last-child {
+    border-right: none;
+}
+
+tbody td:first-child {
+    border-left: none;
+}
+
+
+#bin {
+    float: left;
+    width: 300px;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #eaeaea;
+}
+
+.content p {
+    text-align: justify;
 }
