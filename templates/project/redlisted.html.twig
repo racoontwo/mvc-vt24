@@ -12,9 +12,6 @@
     <img src="{{ asset('img/15_ekosystem.png') }}" alt="">
     </a>
 
-    <div id="res-result" data-res="{{ redlistedData | tojson }}" style="display: none;"></div>
-
-
 
 <div class="content">
     <p>
@@ -47,13 +44,6 @@
     
 
 
-<div id="karlvaxter">
-</div>
-
-<div id="mossor">
-</div>
-
-
 
 <table>
     <thead>
@@ -69,7 +59,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for species in redlistedData %}
+        {# {% for species in redlistedData %}
             <tr>
                 <td>{{ species.year }}</td>
                 <td>{{ species.karlvaxter }}</td>
@@ -81,9 +71,8 @@
                 <td>{{ species.daggdjur }}</td>
             </tr>
 
-        {% endfor %}
+        {% endfor %} #}
 
-        
 
     </tbody>
 </table>

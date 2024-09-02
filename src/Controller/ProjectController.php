@@ -50,7 +50,7 @@ class ProjectController extends AbstractController
         $data = array();
         $data['redlistedData'] = $redlistedData;
         
-        return $this->render('project/red_listed.html.twig', $data);
+        return $this->render('project/redlisted.html.twig');
     }
 
     #[Route("/project/about", name: "project_about")]
